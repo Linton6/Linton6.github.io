@@ -6,19 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://linton6.github.io">
-  <title>从 Jvm 内存模型到调优 | Linton&#39;s Blog</title>
+  <title>Spring五个事务隔离级别和七个事务传播行为 | Linton&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Jvm 内存模型 内存模型 运行时数据区 堆内存，虚拟机栈，本地方法栈，程序计数器，方法区   Jvm 内存模型 新生代（1-1.5） 就是将新创建的对象放在这里，分配比例按8：1：1分配成 eden 区和sur0/1区，采用复制清除算法   老年代（2-3） 在新生代中存留足够次数的对象就会放到老年代，也有可能会作为担保分配到老年代，采用整理算法   永久代（1.2-1.5） 类的源信息和常量数">
+  <meta name="description" content="脏读，不可重复读，幻读 脏读 : 所谓的脏读，其实就是读到了别的事务回滚前的脏数据。比如事务B执行过程中修改了数据X，在未提交前，事务A读取了X，而事务B却回滚了，这样事务A就形成了脏读   不可重复读 ： 不可重复读字面含义已经很明了了，比如事务A首先读取了一条数据，然后执行逻辑的时候，事务B将这条数据改变了，然后事务A再次读取的时候，发现数据不匹配了，就是所谓的不可重复读了。   幻读 ： 小">
 <meta property="og:type" content="article">
-<meta property="og:title" content="从 Jvm 内存模型到调优">
-<meta property="og:url" content="https://linton6.github.io/2019/05/12/从Jvm内存模型到调优/index.html">
+<meta property="og:title" content="Spring五个事务隔离级别和七个事务传播行为">
+<meta property="og:url" content="https://linton6.github.io/2019/05/25/Spring五个事务隔离级别和七个事务传播行为/index.html">
 <meta property="og:site_name" content="Linton&#39;s Blog">
-<meta property="og:description" content="Jvm 内存模型 内存模型 运行时数据区 堆内存，虚拟机栈，本地方法栈，程序计数器，方法区   Jvm 内存模型 新生代（1-1.5） 就是将新创建的对象放在这里，分配比例按8：1：1分配成 eden 区和sur0/1区，采用复制清除算法   老年代（2-3） 在新生代中存留足够次数的对象就会放到老年代，也有可能会作为担保分配到老年代，采用整理算法   永久代（1.2-1.5） 类的源信息和常量数">
+<meta property="og:description" content="脏读，不可重复读，幻读 脏读 : 所谓的脏读，其实就是读到了别的事务回滚前的脏数据。比如事务B执行过程中修改了数据X，在未提交前，事务A读取了X，而事务B却回滚了，这样事务A就形成了脏读   不可重复读 ： 不可重复读字面含义已经很明了了，比如事务A首先读取了一条数据，然后执行逻辑的时候，事务B将这条数据改变了，然后事务A再次读取的时候，发现数据不匹配了，就是所谓的不可重复读了。   幻读 ： 小">
 <meta property="og:locale" content="zh">
-<meta property="og:updated_time" content="2019-05-12T06:14:02.384Z">
+<meta property="og:updated_time" content="2019-05-25T13:13:39.710Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="从 Jvm 内存模型到调优">
-<meta name="twitter:description" content="Jvm 内存模型 内存模型 运行时数据区 堆内存，虚拟机栈，本地方法栈，程序计数器，方法区   Jvm 内存模型 新生代（1-1.5） 就是将新创建的对象放在这里，分配比例按8：1：1分配成 eden 区和sur0/1区，采用复制清除算法   老年代（2-3） 在新生代中存留足够次数的对象就会放到老年代，也有可能会作为担保分配到老年代，采用整理算法   永久代（1.2-1.5） 类的源信息和常量数">
+<meta name="twitter:title" content="Spring五个事务隔离级别和七个事务传播行为">
+<meta name="twitter:description" content="脏读，不可重复读，幻读 脏读 : 所谓的脏读，其实就是读到了别的事务回滚前的脏数据。比如事务B执行过程中修改了数据X，在未提交前，事务A读取了X，而事务B却回滚了，这样事务A就形成了脏读   不可重复读 ： 不可重复读字面含义已经很明了了，比如事务A首先读取了一条数据，然后执行逻辑的时候，事务B将这条数据改变了，然后事务A再次读取的时候，发现数据不匹配了，就是所谓的不可重复读了。   幻读 ： 小">
   
     <link rel="alternative" href="/atom.xml" title="Linton&#39;s Blog" type="application/atom+xml">
   
@@ -162,58 +162,47 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-从Jvm内存模型到调优" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-Spring五个事务隔离级别和七个事务传播行为" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      从 Jvm 内存模型到调优
+      Spring五个事务隔离级别和七个事务传播行为
     </h1>
   
 
         
-        <a href="/2019/05/12/从Jvm内存模型到调优/" class="archive-article-date">
-  	<time datetime="2019-05-12T04:46:11.667Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-12</time>
+        <a href="/2019/05/25/Spring五个事务隔离级别和七个事务传播行为/" class="archive-article-date">
+  	<time datetime="2019-05-25T13:07:04.865Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-25</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="Jvm-内存模型"><a href="#Jvm-内存模型" class="headerlink" title="Jvm 内存模型"></a>Jvm 内存模型</h2><ul>
-<li>内存模型<ul>
-<li>运行时数据区<ul>
-<li>堆内存，虚拟机栈，本地方法栈，程序计数器，方法区</li>
+        <h2 id="脏读，不可重复读，幻读"><a href="#脏读，不可重复读，幻读" class="headerlink" title="脏读，不可重复读，幻读"></a>脏读，不可重复读，幻读</h2><ul>
+<li>脏读 :<ul>
+<li>所谓的脏读，其实就是读到了别的事务回滚前的脏数据。比如事务B执行过程中修改了数据X，在未提交前，事务A读取了X，而事务B却回滚了，这样事务A就形成了脏读</li>
 </ul>
 </li>
-<li>Jvm 内存模型<ul>
-<li>新生代（1-1.5）<ul>
-<li>就是将新创建的对象放在这里，分配比例按8：1：1分配成 eden 区和sur0/1区，采用复制清除算法</li>
+<li>不可重复读 ：<ul>
+<li>不可重复读字面含义已经很明了了，比如事务A首先读取了一条数据，然后执行逻辑的时候，事务B将这条数据改变了，然后事务A再次读取的时候，发现数据不匹配了，就是所谓的不可重复读了。</li>
 </ul>
 </li>
-<li>老年代（2-3）<ul>
-<li>在新生代中存留足够次数的对象就会放到老年代，也有可能会作为担保分配到老年代，采用整理算法</li>
-</ul>
-</li>
-<li>永久代（1.2-1.5）<ul>
-<li>类的源信息和常量数据会存储在这里</li>
+<li>幻读 ：<ul>
+<li>小的时候数手指，第一次数十10个，第二次数是11个，怎么回事？产生幻觉了？</li>
+<li>幻读也是这样子，事务A首先根据条件索引得到10条数据，然后事务B改变了数据库一条数据，导致也符合事务A当时的搜索条件，这样事务A再次搜索发现有11条数据了，就产生了幻读。</li>
 </ul>
 </li>
 </ul>
-</li>
-</ul>
-</li>
-<li>双亲委派<ul>
-<li>在加载类的时候先委派给他的父类加载器进行加载，如果父类不能加载的时候才自己加载。<ul>
-<li>这样加载类就会有层级关系</li>
-<li>也可以防止底层类被篡改</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>对象的分配流程</li>
+<h2 id="事物的传播级别和隔离级别"><a href="#事物的传播级别和隔离级别" class="headerlink" title="事物的传播级别和隔离级别"></a>事物的传播级别和隔离级别</h2><pre><code> 事务是逻辑处理原子性的保证手段，通过使用事务控制，可以极大的避免出现逻辑处理失败导致的脏数据等问题。
+
+* 事务最重要的两个特性，是事务的传播级别和数据隔离级别。传播级别定义的是事务的控制范围，事务隔离级别定义的是事务在数据库读写方面的控制范围。
+
+* 对象的分配流程
+</code></pre><ul>
 <li>GC<ul>
 <li>如何判断对象已死<ul>
 <li>引用计数：通过计算对象之间的引用数量来判断是否死亡，问题:循环引用</li>
@@ -353,7 +342,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=https://linton6.github.io/2019/05/12/从Jvm内存模型到调优/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=https://linton6.github.io/2019/05/25/Spring五个事务隔离级别和七个事务传播行为/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -367,18 +356,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/05/19/Springboot/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Springboot框架
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/05/12/计算机网络/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">计算机网络</div>
+    <a href="/2019/05/19/Springboot/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Springboot框架</div>
       <i class="icon-circle-right"></i>
     </a>
   
