@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://linton6.github.io">
-  <title>Spring五个事务隔离级别和七个事务传播行为(待续) | Linton&#39;s Blog</title>
+  <title>ActiveMQ | Linton&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="脏读，不可重复读，幻读">
-<meta name="keywords" content="Spring">
+  <meta name="description" content="什么是ActiveMQ ActiveMQ是消息中间件的一种，所谓的消息中间件就是提供一种类似于异步解耦的作用在系统中，主要核心通过三部分来组成：生产者，消费者，消息。生产者来生产消息并发送到对应的队列或者是topic中，然后消费者在对应的队列或者是topic中进行消费。  为什么使用ActiveMQ ActiveMQ作为apache下的一个开源项目，不仅提供了一个高性能的MQ中间件，而且该中间件还">
+<meta name="keywords" content="框架">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Spring五个事务隔离级别和七个事务传播行为(待续)">
-<meta property="og:url" content="https://linton6.github.io/2019/05/25/Spring五个事务隔离级别和七个事务传播行为/index.html">
+<meta property="og:title" content="ActiveMQ">
+<meta property="og:url" content="https://linton6.github.io/2019/05/13/MD/框架使用/消息中间件框架/ActiveMQ/index.html">
 <meta property="og:site_name" content="Linton&#39;s Blog">
-<meta property="og:description" content="脏读，不可重复读，幻读">
+<meta property="og:description" content="什么是ActiveMQ ActiveMQ是消息中间件的一种，所谓的消息中间件就是提供一种类似于异步解耦的作用在系统中，主要核心通过三部分来组成：生产者，消费者，消息。生产者来生产消息并发送到对应的队列或者是topic中，然后消费者在对应的队列或者是topic中进行消费。  为什么使用ActiveMQ ActiveMQ作为apache下的一个开源项目，不仅提供了一个高性能的MQ中间件，而且该中间件还">
 <meta property="og:locale" content="zh">
-<meta property="og:updated_time" content="2019-05-26T05:48:31.385Z">
+<meta property="og:updated_time" content="2019-05-26T06:04:16.419Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Spring五个事务隔离级别和七个事务传播行为(待续)">
-<meta name="twitter:description" content="脏读，不可重复读，幻读">
+<meta name="twitter:title" content="ActiveMQ">
+<meta name="twitter:description" content="什么是ActiveMQ ActiveMQ是消息中间件的一种，所谓的消息中间件就是提供一种类似于异步解耦的作用在系统中，主要核心通过三部分来组成：生产者，消费者，消息。生产者来生产消息并发送到对应的队列或者是topic中，然后消费者在对应的队列或者是topic中进行消费。  为什么使用ActiveMQ ActiveMQ作为apache下的一个开源项目，不仅提供了一个高性能的MQ中间件，而且该中间件还">
   
     <link rel="alternative" href="/atom.xml" title="Linton&#39;s Blog" type="application/atom+xml">
   
@@ -163,46 +163,168 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Spring五个事务隔离级别和七个事务传播行为" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-MD/框架使用/消息中间件框架/ActiveMQ" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Spring五个事务隔离级别和七个事务传播行为(待续)
+      ActiveMQ
     </h1>
   
 
         
-        <a href="/2019/05/25/Spring五个事务隔离级别和七个事务传播行为/" class="archive-article-date">
-  	<time datetime="2019-05-25T13:07:04.865Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-25</time>
+        <a href="/2019/05/13/MD/框架使用/消息中间件框架/ActiveMQ/" class="archive-article-date">
+  	<time datetime="2019-05-12T23:04:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-13</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="脏读，不可重复读，幻读"><a href="#脏读，不可重复读，幻读" class="headerlink" title="脏读，不可重复读，幻读"></a>脏读，不可重复读，幻读</h2><a id="more"></a>
+        <h2 id="什么是ActiveMQ"><a href="#什么是ActiveMQ" class="headerlink" title="什么是ActiveMQ"></a>什么是ActiveMQ</h2><ul>
+<li>ActiveMQ是消息中间件的一种，所谓的消息中间件就是提供一种类似于异步解耦的作用在系统中，主要核心通过三部分来组成：生产者，消费者，消息。生产者来生产消息并发送到对应的队列或者是topic中，然后消费者在对应的队列或者是topic中进行消费。</li>
+</ul>
+<h2 id="为什么使用ActiveMQ"><a href="#为什么使用ActiveMQ" class="headerlink" title="为什么使用ActiveMQ"></a>为什么使用ActiveMQ</h2><ul>
+<li>ActiveMQ作为apache下的一个开源项目，不仅提供了一个高性能的MQ中间件，而且该中间件还支持跨语言（Java,C,C++,C#,Python,PHP）。另外一个选择它的理由是ActiveMQ完全支持JMS,这样在使用的时候提供了极大的便利。</li>
+</ul>
+<h2 id="怎么使用ActiveMQ"><a href="#怎么使用ActiveMQ" class="headerlink" title="怎么使用ActiveMQ"></a>怎么使用ActiveMQ</h2><ul>
+<li><p>安装ActiveMQ</p>
+<ol>
+<li><a href="http://activemq.apache.org/download-archives.html" target="_blank" rel="noopener">下载</a></li>
+<li>安装，解压下载的tar包</li>
+<li>运行 直接运行activemq/bin/activemq脚本</li>
+<li>访问控制台localhost:8161</li>
+</ol>
+</li>
+<li><p>集群模式</p>
 <ul>
-<li>脏读 :<ul>
-<li>所谓的脏读，其实就是读到了别的事务回滚前的脏数据。比如事务B执行过程中修改了数据X，在未提交前，事务A读取了X，而事务B却回滚了，这样事务A就形成了脏读</li>
+<li><p>高性能解决方案(networkconnection)</p>
+<ol>
+<li><p>修改activeMQ.xml</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">networkConnectors</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- by default just auto discover the other brokers --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">networkConnector</span> <span class="attr">name</span>=<span class="string">"default-nc"</span> <span class="attr">uri</span>=<span class="string">"multicast://default"</span>/&gt;</span> //动态链接</span><br><span class="line">    <span class="comment">&lt;!-- Example of a static configuration:      //静态链接</span></span><br><span class="line"><span class="comment">            &lt;networkConnector name="host1 and host2" uri="static://(tcp://host1:61616,tcp://host2:61616)"/&gt;</span></span><br><span class="line"><span class="comment">            --&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">networkConnectors</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>重启服务</p>
+<ul>
+<li>这个时候不同的broker之间可以共同处理消息，但是有个问题是会出现消息丢失，这个时候就要设置消息回流</li>
 </ul>
 </li>
-<li>不可重复读 ：<ul>
-<li>不可重复读字面含义已经很明了了，比如事务A首先读取了一条数据，然后执行逻辑的时候，事务B将这条数据改变了，然后事务A再次读取的时候，发现数据不匹配了，就是所谓的不可重复读了。</li>
+<li><p>消息回流</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">policyEntry</span> <span class="attr">queue</span>=<span class="string">"&gt;"</span> <span class="attr">enableAudit</span>=<span class="string">"false"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">networkBridgeFilterFactory</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">conditionalNetworkBridgeFilterFactory</span> <span class="attr">replayWhenNoConsumers</span>=<span class="string">"true"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">networkBridgeFilterFactory</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">policyEntry</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+<li><p>高可用解决方案(zookeeper+levelDB)</p>
+<ol>
+<li><p>修改配置文件</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">persistenceAdapter</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">replicatedLevelDB</span></span></span><br><span class="line"><span class="tag">		<span class="attr">directory</span>=<span class="string">"activemq-data"</span>     //数据存储地址</span></span><br><span class="line"><span class="tag">        <span class="attr">replicas</span>=<span class="string">"3"</span>				//集群中至少有<span class="attr">replicas</span>/<span class="attr">2</span> +<span class="attr">1</span> 台机器存活</span></span><br><span class="line"><span class="tag">        <span class="attr">bind</span>=<span class="string">"tcp://0.0.0.0:0"</span>		//相互通讯的</span></span><br><span class="line"><span class="tag">        <span class="attr">zkAddress</span>=<span class="string">"zoo1.example.org:2181,zoo2.example.org:2181,zoo3.example.org:2181"</span> //<span class="attr">zk</span></span></span><br><span class="line"><span class="tag">        <span class="attr">zkPassword</span>=<span class="string">"password"</span>     //<span class="attr">zk</span>密码</span></span><br><span class="line"><span class="tag">        <span class="attr">zkPath</span>=<span class="string">"/activemq/leveldb-stores"</span>   //<span class="attr">zk</span>路径</span></span><br><span class="line"><span class="tag">        <span class="attr">hostname</span>=<span class="string">"broker1.example.org"</span>   //<span class="attr">name</span></span></span><br><span class="line"><span class="tag">                       /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">persistenceAdapter</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>原理</p>
+<ul>
+<li>通过在zk上注册临时有序节点，来选择最小的节点作为master对外提供服务，当master宕机之后，重新选举最小的节点对外提供服务</li>
 </ul>
 </li>
-<li>幻读 ：<ul>
-<li>小的时候数手指，第一次数十10个，第二次数是11个，怎么回事？产生幻觉了？</li>
-<li>幻读也是这样子，事务A首先根据条件索引得到10条数据，然后事务B改变了数据库一条数据，导致也符合事务A当时的搜索条件，这样事务A再次搜索发现有11条数据了，就产生了幻读。</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>JMS操作ActiveMQ</p>
+<ul>
+<li><p>queue模式</p>
+<ul>
+<li><p>生产者</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">String host = <span class="string">"tcp://localhost:61616"</span>;</span><br><span class="line">ActiveMQConnectionFactory connectionFactory = <span class="keyword">new</span> ActiveMQConnectionFactory(host);</span><br><span class="line">Connection connection = connectionFactory.createConnection();</span><br><span class="line">connection.start();</span><br><span class="line">Session session = connection.createSession(<span class="keyword">false</span>, Session.AUTO_ACKNOWLEDGE);</span><br><span class="line">Queue queue = session.createQueue(queueName);</span><br><span class="line">MessageProducer producer = session.createProducer(queue);</span><br><span class="line">String message = <span class="string">"hello ActiveMQ"</span> + UUID.randomUUID().toString();</span><br><span class="line">System.out.println(<span class="string">"send message:"</span> + message);</span><br><span class="line">producer.send(session.createTextMessage(message));</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>消费者</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">String host = <span class="string">"tcp://localhost:61616"</span>;</span><br><span class="line">ActiveMQConnectionFactory connectionFactory = <span class="keyword">new</span> ActiveMQConnectionFactory(host);</span><br><span class="line">Connection connection = connectionFactory.createConnection();</span><br><span class="line">connection.start();</span><br><span class="line">Session session = connection.createSession(<span class="keyword">false</span>, Session.AUTO_ACKNOWLEDGE);</span><br><span class="line">Queue queue = session.createQueue(queueName);</span><br><span class="line">MessageConsumer consumer = session.createConsumer(queue);</span><br><span class="line">consumer.setMessageListener((message -&gt; &#123;</span><br><span class="line">    System.out.println(message);</span><br><span class="line">&#125;));</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>topic模式</p>
+<ul>
+<li><p>生产者</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">String host = <span class="string">"tcp://localhost:61616"</span>;</span><br><span class="line">ActiveMQConnectionFactory connectionFactory = <span class="keyword">new</span> ActiveMQConnectionFactory(host);</span><br><span class="line">Connection connection = connectionFactory.createConnection();</span><br><span class="line">connection.start();</span><br><span class="line">Session session = connection.createSession(<span class="keyword">false</span>, Session.AUTO_ACKNOWLEDGE);</span><br><span class="line">Topic topic = session.createTopic(topicName);</span><br><span class="line">MessageProducer producer = session.createProducer(topic);</span><br><span class="line">String message = <span class="string">"hello ActiveMQ"</span> + UUID.randomUUID().toString();</span><br><span class="line">System.out.println(<span class="string">"send message:"</span> + message);</span><br><span class="line">producer.send(session.createTextMessage(message));</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>消费者</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">String host = <span class="string">"tcp://localhost:61616"</span>;</span><br><span class="line">ActiveMQConnectionFactory connectionFactory = <span class="keyword">new</span> ActiveMQConnectionFactory(ActiveMQConnection.DEFAULT_USER,ActiveMQConnection.DEFAULT_PASSWORD,host);</span><br><span class="line">Connection connection = connectionFactory.createConnection();</span><br><span class="line">connection.start();</span><br><span class="line">Session session = connection.createSession(<span class="keyword">false</span>, Session.AUTO_ACKNOWLEDGE);</span><br><span class="line">Topic topic = session.createTopic(topicName);</span><br><span class="line">MessageConsumer consumer = session.createConsumer(topic);</span><br><span class="line">consumer.setMessageListener((message -&gt; &#123;</span><br><span class="line">    System.out.println(message);</span><br><span class="line">&#125;));</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
 </li>
 </ul>
-<h2 id="事物的传播级别和隔离级别"><a href="#事物的传播级别和隔离级别" class="headerlink" title="事物的传播级别和隔离级别"></a>事物的传播级别和隔离级别</h2><pre><code>事务是逻辑处理原子性的保证手段，通过使用事务控制，可以极大的避免出现逻辑处理失败导致的脏数据等问题。
+</li>
+</ul>
+<h2 id="ActiveMQ进阶"><a href="#ActiveMQ进阶" class="headerlink" title="ActiveMQ进阶"></a>ActiveMQ进阶</h2><ul>
+<li><p>ActiveMQ持久化策略</p>
+<ul>
+<li><p>JDBC会将消息持久化到数据库中，将数据存储在三个表中activemq-msgs/acks/lock</p>
+<ul>
+<li><p>在conf/activemq.xml文件中修改</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">beans</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">broker</span> <span class="attr">brokerName</span>=<span class="string">"test-broker"</span> <span class="attr">persistent</span>=<span class="string">"true"</span> <span class="attr">xmlns</span>=<span class="string">"http://activemq.apache.org/schema/core"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">persistenceAdapter</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">jdbcPersistenceAdapter</span> <span class="attr">dataSource</span>=<span class="string">"#mysql-ds"</span> <span class="attr">createTablesOnStartup</span>=<span class="string">"false"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">persistenceAdapter</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">broker</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"mysql-ds"</span> <span class="attr">class</span>=<span class="string">"org.apache.commons.dbcp.BasicDataSource"</span> <span class="attr">destroy-method</span>=<span class="string">"close"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"driverClassName"</span> <span class="attr">value</span>=<span class="string">"com.mysql.jdbc.Driver"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"url"</span> <span class="attr">value</span>=<span class="string">"jdbc:mysql://localhost/activemq?relaxAutoCommit=true"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"username"</span> <span class="attr">value</span>=<span class="string">"activemq"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"password"</span> <span class="attr">value</span>=<span class="string">"activemq"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"maxActive"</span> <span class="attr">value</span>=<span class="string">"200"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"poolPreparedStatements"</span> <span class="attr">value</span>=<span class="string">"true"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">beans</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>AMQ将消息写入到日志文件中</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">persistenceAdapter</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">amqPersistenceAdapter</span> <span class="attr">directory</span>=<span class="string">"$&#123;activemq.data&#125;/activemq-data"</span> <span class="attr">maxFileLength</span>=<span class="string">"32mb"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">persistenceAdapter</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>LevelDB</p>
+<ul>
+<li>集群模式下推荐使用的持久化策略</li>
+</ul>
+</li>
+<li><p>kahaDB</p>
+<ul>
+<li>默认的持久化策略，基于文件系统的</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>ActiveMQ消息签收和分发策略</p>
+<ul>
+<li><p>订阅策略</p>
+<ul>
+<li><p>持久订阅</p>
+<ul>
+<li><p>持久订阅的消费者在，离线状态下也不会丢失这段时间的消息，当消费者再次上线的时候MQ会主动将这段时间的消息进行推送。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">connection.setClientID(<span class="string">"clientId"</span>);  <span class="comment">//首先需要设置id</span></span><br><span class="line">Session session =  connection.createSession();</span><br><span class="line">Topic topic = session.createTopic(<span class="string">"topicName"</span>);</span><br><span class="line"><span class="comment">//设置持久订阅</span></span><br><span class="line">MessageConsumer consumer = session.createDurableSubscriber(topic,<span class="string">"clientId"</span>);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>非持久订阅</p>
+<ul>
+<li><p>非持久订阅的消费者，如果在离线状态下就会丢失这段时间的消息。这是默认的p/s订阅策略</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">connection.setClientID(<span class="string">"clientId"</span>);  <span class="comment">//首先需要设置id</span></span><br><span class="line">Session session =  connection.createSession();</span><br><span class="line">Topic topic = session.createTopic(<span class="string">"topicName"</span>);</span><br><span class="line"><span class="comment">//普通订阅</span></span><br><span class="line">MessageConsumer consumer = session.createConsumer(topic);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>签收策略</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//自动签收，当recive方法结束或者onMessage方法结束的时候就自动签收</span></span><br><span class="line">Session.AUTO_ACKNOWLEDGE;   </span><br><span class="line"><span class="comment">//手动签收，调用message的acknowledge()方法就可以签收当前session消费的数据</span></span><br><span class="line">Session.CLIENT_ACKNOWLEDGE;  </span><br><span class="line"><span class="comment">//批量签收，当接受到一定量数据后可以进行签收</span></span><br><span class="line">Session.DUPS_OK_ACKNOWLEDGE;</span><br><span class="line"><span class="comment">//当事物提交的时候会自动提交</span></span><br><span class="line">Session.SESSION_TRANSACTED;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Ack_Type</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">DELIVERED_ACK_TYPE = <span class="number">0</span>    <span class="comment">//消息"已接收"，但尚未处理结束</span></span><br><span class="line">STANDARD_ACK_TYPE = <span class="number">2</span>    <span class="comment">//"标准"类型,通常表示为消息"处理成功"，broker端可以删除消息了</span></span><br><span class="line">POSION_ACK_TYPE = <span class="number">1</span>    <span class="comment">//消息"错误",通常表示"抛弃"此消息</span></span><br><span class="line">REDELIVERED_ACK_TYPE = <span class="number">3</span>   <span class="comment">// 消息需"重发"</span></span><br><span class="line">INDIVIDUAL_ACK_TYPE = <span class="number">4</span>   <span class="comment">// 表示只确认"单条消息",无论在任何ACK_MODE下    </span></span><br><span class="line">UNMATCHED_ACK_TYPE = <span class="number">5</span>   <span class="comment">// BROKER间转发消息时,接收端"拒绝"消息</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>分发策略</p>
+<ul>
+<li>topic<ol>
+<li>轮询：按照订阅的顺序，依次发送给订阅者，但是会在第二次发送时反转顺序</li>
+<li>有序：按照订阅的顺序进行发送</li>
+<li>权重：根据权重进行发送</li>
+<li>默认：按照订阅者列表的顺序进行发送</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>ActiveMQ事物相关</p>
+<ul>
+<li>可以在创建session的时候指定开启事务，在开启之后需要手动的调用session.commit进行事物的提交。在发生异常的时候及时使用session.rolback进行回滚</li>
+</ul>
+</li>
+</ul>
 
-事务最重要的两个特性，是事务的传播级别和数据隔离级别。传播级别定义的是事务的控制范围，事务隔离级别定义的是事务在数据库读写方面的控制范围。
-</code></pre>
       
 
       
@@ -236,7 +358,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Spring</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">框架</a>
         		</li>
       		
 		</ul>
@@ -292,7 +414,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=https://linton6.github.io/2019/05/25/Spring五个事务隔离级别和七个事务传播行为/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=https://linton6.github.io/2019/05/13/MD/框架使用/消息中间件框架/ActiveMQ/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -306,9 +428,18 @@
   
 <nav id="article-nav">
   
+    <a href="/2019/05/15/MD/数据库相关/非关系型数据库/Mongodb/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          MongoDB
+        
+      </div>
+    </a>
   
-    <a href="/2019/05/15/MD/数据库相关/非关系型数据库/Redis/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Redis</div>
+  
+    <a href="/2019/05/13/MD/框架使用/消息中间件框架/Kafka/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Kafka</div>
       <i class="icon-circle-right"></i>
     </a>
   

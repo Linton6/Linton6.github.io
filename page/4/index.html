@@ -163,19 +163,19 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-MD/Java语言/JavaSE/JavaSE19" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-MD/Java语言/JavaSE/JavaSE03" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/10/MD/Java语言/JavaSE/JavaSE19/">反射</a>
+      <a class="article-title" href="/2019/05/10/MD/Java语言/JavaSE/JavaSE03/">常用方法</a>
     </h1>
   
 
         
-        <a href="/2019/05/10/MD/Java语言/JavaSE/JavaSE19/" class="archive-article-date">
+        <a href="/2019/05/10/MD/Java语言/JavaSE/JavaSE03/" class="archive-article-date">
   	<time datetime="2019-05-09T23:04:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-10</time>
 </a>
         
@@ -183,7 +183,117 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>1.反射:<br>    1.什么是反射?可以做什么?<br>        反射:在运行时,我们可以获取任意一个类的所有方法和属性<br>            在运行时,我们可以调用一个对象的所有方法和属性<br>        反射的前提:要获取类的对象(class对象)(获取class对象的三种方法,1.通过object类的getclass方法2.通过类名直接获取.class属性3.通过Class.forNmae(包含包名的类名)来获取)<br>    2.通过反射操作构造方法<br>        获取构造方法 getConstructors():返回所有的构造方法<br>                  getConstructor(参数列表):返回指定参数列表的构造方法<br>            只能获取public 的构造方法<br>            通过构造方法类的对象使用newInstance()可以创建一个对象<br>        创建对象的时候使用构造方法<br>    3.通过反射操作成员变量<br>        获取成员变量的方法:<br>                        getFields()<br>                        getField()<br>                        getDeclaredField()<br>        给成员变量赋值,获取成员变量的值<br>                    Field类的方法:<br>                        Get(对象)<br>                        Set(对象,值)<br>                        setAccessible():设置或者取消Java的访问检查,暴力访问<br>    4.通过反射操作成员方法<br>        获取成员方法的方法:<br>                        getMethod(“方法名”,参数列表)<br>                获取无参无返回值的成员方法:<br>                        c.getMethod(“成员方法名”)<br>                获取无参有返回值的方法;<br>                        c.getMethod(“成员方法”)<br>                获取有参有返回值的方法:<br>                        c.getMethod(成员方法”,String.class,int.class..)<br>        调用<br>            使用method类中的invoke方法<br>            m.invoke(对象名,参数列表)<br>    5.步骤:<br>        1.获取字节码对象:Class p=Class.forName(String path)<br>        2.通过字节码对象获取构造方法:Constructor c=p.getConstructor(参数列表)<br>        3.通过构造器构造成员对象:Object person=c.newInstance(参数列表)<br>        4.通过字节码对象获取类的成员变量:Field f=p.getField(String 参数名)<br>        5.通过field对象来操作成员变量,get()获得set()修改<br>        6.通过字节码对象获取成员方法:Method m=p.getMethod(参数列表)<br>        7.通过Method对象操作成员方法:m.invoke(对象,参数列表)<br>2.JavaBean<br>    JavaBean标准类;用于封装数据<br>    要求:<br>        类被public修饰<br>        成员变量被private修饰并且提供对应的getter和setter方法<br>        有一个公共的无参构造,有参构造不强求<br>        实现序列号接口<br>3.BeanUtils工具包<br>    方法:<br>        setProperty(对象名,成员变量名,成员变量值)<br>        getProperty(对象名,成员变量名)<br>        Property(对象名,Map集合&lt;变量名,变量值&gt;)</p>
+        <ol>
+<li>键盘录入的基本步骤和使用<ul>
+<li>导包:import java.util.Scanner;</li>
+<li>创建Scanner对象</li>
+<li>Scanner sc = new Scanner(System.in);</li>
+<li>调用其 方法接收数据<ul>
+<li>int i = sc.nextInt();</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>随机数生成<ul>
+<li>导包  java.util.Random;</li>
+<li>创建对象  Random ran = new Random();</li>
+<li>调用方法 ran.nextInt(上限); <ul>
+<li>0~上限的整数   包含0不包含上限</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h1 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h1><hr>
+<ol>
+<li><p>定义格式：</p>
+<ul>
+<li>概念：存储同一种类型数据的容器</li>
+<li>定义：<ul>
+<li>int[] arr = new int[3];</li>
+</ul>
+</li>
+<li>获取数组中的元素<ul>
+<li>int a = arr[索引];<ul>
+<li>索引从0开始</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>赋值：<ul>
+<li>arr[索引] = 值;</li>
+</ul>
+</li>
+<li>内存泄漏：<ul>
+<li>内存在程序运行过程中，越来越小。<ul>
+<li>预防：代码提高质量</li>
+<li>解决：重启服务器</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>内存图分析：</p>
+<ul>
+<li>数组是一个对象(引用数据类型)</li>
+<li>存储在堆内存中。</li>
+<li>数组中的元素会有默认的初始化值。</li>
+</ul>
+</li>
+<li><p>局部变量：方法中定义的变量</p>
+<ul>
+<li>存储在栈内存中。会随着方法的执行完的弹栈，而消失</li>
+<li>当堆内存中的对象失去栈中的变量对其引用时，它将会变为垃圾。会被垃圾回收器自动回收</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h1 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h1><hr>
+<ol>
+<li>方法定义：<ul>
+<li>完成特定功能的代码块</li>
+</ul>
+</li>
+<li>方法格式：</li>
+</ol>
+<pre><code>修饰符 数据类型 标识符(数据类型 参数名，数据类型 参数名){
+                功能代码块；
+            }    
+- 解释：
+    * 修饰符：public static
+    * 数据类型： 方法返回数据的数据类型
+        - 没有返回值的方法：用void作为返回值的数据类型
+    * 标识符： 方法的方法名  第一个单词小写后续单词的第一个字母大写
+    * 参数列表： 执行方法时需要传入的数据类型和数据个数    
+    * 功能代码块： 完成某种功能的代码
+- 定义方法注意的地方：
+    * 运行方法需要什么参数？       参数列表 
+    * 运行完方法会返回什么样的参数？        返回值类型
+</code></pre><ol start="3">
+<li>方法调用方法：(返回值类型为基础数据类型)<ul>
+<li>直接调用没有意义</li>
+<li>输出调用，有意义但是不够好</li>
+<li>赋值调用，比较好</li>
+</ul>
+</li>
+<li>方法的重载的特点：<ul>
+<li>同名不同参，与返回值类型无关<ol>
+<li>参数的类型不同（每一个位置对应参数的类型）</li>
+<li>参数的数量不同</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>形式参数和实际参数<ul>
+<li>形式参数：定义方法时的参数</li>
+<li>实际参数：调用方法的时候实际传递的参数<ul>
+<li>如果形式参数是基本数据类型则在方法中对形式参数的操作不会影响实际参数的值</li>
+<li>如果形式参数是引用数据类型则在方法中对形式参数的操作会影响实际参数的值</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
 
       
 
@@ -207,7 +317,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/05/10/MD/Java语言/JavaSE/JavaSE19/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/05/10/MD/Java语言/JavaSE/JavaSE03/">展开全文 >></a>
         </p>
       
 
@@ -237,19 +347,19 @@
 
 
   
-    <article id="post-MD/Java语言/JavaSE/JavaSE06" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-MD/Java语言/JavaSE/JavaSE05" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/10/MD/Java语言/JavaSE/JavaSE06/">IO流</a>
+      <a class="article-title" href="/2019/05/10/MD/Java语言/JavaSE/JavaSE05/">String常用API</a>
     </h1>
   
 
         
-        <a href="/2019/05/10/MD/Java语言/JavaSE/JavaSE06/" class="archive-article-date">
+        <a href="/2019/05/10/MD/Java语言/JavaSE/JavaSE05/" class="archive-article-date">
   	<time datetime="2019-05-09T23:04:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-10</time>
 </a>
         
@@ -257,102 +367,73 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <hr>
-<ol>
-<li>分类：<ul>
-<li>输入流，输出流（以数据流向分类）</li>
-<li>字符流，字节流（以数据格式分类）</li>
+        <ul>
+<li>String的构造方法：<ul>
+<li>String（String）</li>
+<li>String（char[] arr）</li>
+<li>String（char[] arr,int idex,int count）</li>
 </ul>
 </li>
-<li>作用：<ul>
-<li>可以把数据存储到文件中，也可以从文件中读取数据</li>
-<li>使用场景：文件复制， 上传文件，下载文件</li>
+<li>String的判断功能：<ul>
+<li>boolean equals（objec obj）：比较内容</li>
+<li>boolean equalsIgnoreCase（String str）：比较内容忽略大小写</li>
+<li>boolean startWith（String str）：判断是否以str为开头    - 使用场景：在删除某个姓的所有人</li>
+<li>boolean endWith（String str）：判断是否以strWie结尾                 使用场景：获取某个盘符的某种类型的文件</li>
 </ul>
 </li>
-<li><p>输出流FileWriter</p>
+<li>String的获取功能：<ul>
+<li>int length():获取字符串的长度，其实也就是字符的个数   可以遍历字符串</li>
+<li>char charAt(int index):获取指定索引处的字符</li>
+<li>int indexof(String str):获取str在字符串中第一次出现时的索引</li>
+<li>String substring(int start):从start处开始截取字符串</li>
+<li>String substring(int start,int end):从start处开始截取，到end处结束   （含头不含尾）</li>
+</ul>
+</li>
+<li>String的转换功能：<ul>
+<li>char[] toCharArray():</li>
+<li>String toLowerCase():</li>
+<li>String toUpperCase():</li>
+</ul>
+</li>
+<li><p>String的其他功能：</p>
 <ul>
-<li><p>构造方法：</p>
-<ul>
-<li>FileWriter（String fileName）：传递一个文件名称</li>
+<li>String trim(): 去掉字符串两端的空格</li>
+<li>String[] split(String str):按照指定符号分割字符串  ‘.’  ‘+’不能用来当做切割标识</li>
 </ul>
-</li>
-<li><p>输出流写数据的步骤：</p>
-<ol>
-<li><p>创建输出流对象 </p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">FileWriter fw=<span class="keyword">new</span> FileWriter(d:\\a.txt);</span><br><span class="line"><span class="comment">//1.调用系统资源创建了一个文件(要求：路径合法，权限正常)</span></span><br><span class="line"><span class="comment">//	FileWriter的构造方法有要求，要求这个文件的路径是合法，是存在的，权限是允许的，当这个路径合法，</span></span><br><span class="line"><span class="comment">//	那么，如果这个文件不存在FileWriter会帮你创建这个文件，如果这个文件已经存在，</span></span><br><span class="line"><span class="comment">//	那么FileWriter则直接指向这个文件</span></span><br><span class="line"><span class="comment">//2.创建输出流对象</span></span><br><span class="line"><span class="comment">//3.把输出流对象指向文件</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>调用输出流对象的写数据方法</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//写入一个字符串数据，但是只是写入到缓冲区</span></span><br><span class="line">writer(String str);</span><br><span class="line"><span class="comment">//刷新该流的缓冲区，可以将缓冲区的数据写入到文件</span></span><br><span class="line">flush();</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>释放资源</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//通知系统释放和该文件相关的资源，该方法自带flush（）功能</span></span><br><span class="line">close();</span><br></pre></td></tr></table></figure>
-</li>
+<ul>
+<li>使用环境：<ol>
+<li>搜索文件夹内的指定类型的文件，使用endsWith（String str）来进行判断</li>
+<li>通过一个字符串来判断某姓的人数，使用String[] split（String str）来对字符串进行切割</li>
+<li>在生成的字符数组中遍历使用boolean startWith(String str)</li>
 </ol>
 </li>
+<li>小知识<ul>
+<li>==：<ul>
+<li>基本数据类型：比较的是基本数据类型的值</li>
+<li>引用数据类型：比较的是引用数据类型的地址值是否相等<br>字符串的内容存储在方法区的常量池里面的，目的是为了方便字符串的重复使用</li>
 </ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="StringBuilder的常用API"><a href="#StringBuilder的常用API" class="headerlink" title="StringBuilder的常用API"></a>StringBuilder的常用API</h1><hr>
 <ul>
-<li>相对路径：相对当前项目而言的，在项目的根目录下</li>
-<li>绝对路径：以盘符开始的路径</li>
-<li>close()和flush()方法的区别：<ul>
-<li>flush():刷新缓冲区</li>
-<li>close()：先刷新缓冲区，然后再通知系统释放资源。流对象不可以再被使用了</li>
+<li>StringBuilder的构造方法：<ul>
+<li>StringBuilder();</li>
+<li>StringBuilder(String str);</li>
+</ul>
+</li>
+<li>StringBuilderde 方法：<ul>
+<li>public int capacity():返回当前容量   理论值</li>
+<li>public int length()：返回长度        实际值</li>
+<li>public StringBuilder append(任意类型)：添加功能</li>
+<li>public StringBuilder revers（）： 反转功能</li>
+<li>public String toString();</li>
 </ul>
 </li>
 </ul>
-<ul>
-<li>FileWriter写数据的方法：<ul>
-<li>void write(String str):写一个字符串数据</li>
-<li>void write(String str,int index)：写一个字符串数据的一部分</li>
-<li>void write(int ch)：写一个字符数据，这里写int类型的好处是既可以char类型的数据，也可以写char类型对象的int类型数据</li>
-<li>void write(char[] chs)：写一个字符数组数据</li>
-<li>void write(char[] chs,int index,int len)：写一个字符数组的一部分</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>输入流FileReader：</p>
-<ul>
-<li><p>构造方法：</p>
-<ul>
-<li>FileReader（String fileName）</li>
-</ul>
-</li>
-<li><p>输入流读数据的步骤：</p>
-<ol>
-<li><p>创建输入流，绑定文件源</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">FileReader fw=<span class="keyword">new</span> FileReader(<span class="string">"d:\\a.txt"</span>);</span><br><span class="line"><span class="comment">/*	1.调用系统资源创建了一个文件(要求：路径合法，权限正常)</span></span><br><span class="line"><span class="comment">		FileWriter的构造方法有要求，要求这个文件的路径是合法，是存在的，全新啊是允许的，当这个路径合法，</span></span><br><span class="line"><span class="comment">		那么，如果这个文件不存在FileWriter会帮你创建这个文件，如果这个文件已经存在，</span></span><br><span class="line"><span class="comment">		那么FileWriter则直接指向这个文件</span></span><br><span class="line"><span class="comment">	2.创建输出流对象</span></span><br><span class="line"><span class="comment">	3.把输出流对象指向文件	*/</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>调用输入流对象的读入方法</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//创建一个int类型的变量存储read读出来的ansic码</span></span><br><span class="line">read():</span><br><span class="line"><span class="comment">//创建一个char[] 类型的数组来存储read读出来的字符数组</span></span><br><span class="line"><span class="comment">//同时创建一个int类型的长度</span></span><br><span class="line">read(<span class="keyword">char</span>[] chr):</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>释放资源</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">close():</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-</li>
-<li><p>注意:</p>
-<ul>
-<li>在调用read（chs）方法的时候，下一次读到的数据会覆盖前一次的数据，但是有时候，下一次的数据不能完全覆盖前一次的内容，那么会造成垃圾的出现。所以我们要明确每次读到字符的个数来过滤垃圾</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>缓冲流：<ul>
-<li>分类：<br> 输出流和输入流<br> BufferedWriter<br> BufferedReader</li>
-<li>构造方法：<ul>
-<li>BufferedWriter bw=new BufferedWriter(new FileWriter(“a.txt”));</li>
-<li>BufferedRander bw=new BufferedRander(new FileRander(“a.txt”));<br>因为缓冲流的速度极快，所以大部分使用的Buffer流。<br>  ® 基本流：可以读写<br>  ® 包装流：不可以读写，只是有了一些特点。</li>
-<li>缓冲流的特殊功能：<ul>
-<li>void newLine():写一个换行符，会根据系统自定义更换</li>
-<li>void readLine():一次读取一行的数据，但是不读取换行符</li>
-</ul>
-</li>
-<li>输入流和输出流指向同一个源文件的时候，之后当一个流关闭之后，另外一个流才能对这个源文件进行绑定</li>
-</ul>
-</li>
-</ul>
-</li>
-</ol>
 
       
 
@@ -376,7 +457,354 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/05/10/MD/Java语言/JavaSE/JavaSE06/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/05/10/MD/Java语言/JavaSE/JavaSE05/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-MD/Java语言/JavaSE/JavaSE07" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/05/10/MD/Java语言/JavaSE/JavaSE07/">final关键字</a>
+    </h1>
+  
+
+        
+        <a href="/2019/05/10/MD/Java语言/JavaSE/JavaSE07/" class="archive-article-date">
+  	<time datetime="2019-05-09T23:04:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-10</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ul>
+<li><p>修饰符:可以修饰类,方法,变量</p>
+<ul>
+<li><p>final修饰的类:不能被继承,不能有子类</p>
+</li>
+<li><p>final修饰的方法:不能被子类重写</p>
+</li>
+<li><p>final修饰的变量:不能被更改,是常量,</p>
+</li>
+<li><p>常量:</p>
+<ul>
+<li>字面值常量:123</li>
+<li>自定义常量:被final所修饰的成员变量,一单被初始化不能被改变</li>
+</ul>
+</li>
+<li><p>注意:自定义常量必须初始化,可以选择显示初始化,也可以再构造方法结束之前.</p>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="static关键字"><a href="#static关键字" class="headerlink" title="static关键字"></a>static关键字</h1><hr>
+<ul>
+<li><p>Static:是一个关键字,也是一个修饰符,用来修饰成员变量和成员方法</p>
+</li>
+<li><p>static特点:</p>
+<ul>
+<li>被所有的对象共享(归属)</li>
+<li>可以直接使用类名来调用,也可以使用对象名调用.(使用)</li>
+<li>静态所修饰的成员加载优先于对象(加载顺序)</li>
+<li>随着类的加载而加载</li>
+</ul>
+</li>
+<li><p>static的注意事项</p>
+<ul>
+<li><p>静态方法:</p>
+<ul>
+<li>可以调用静态的成员变量</li>
+<li>可以调用静态的成员方法</li>
+<li>不可以调用非静态的成员变量</li>
+<li>不可以调用非静态的成员方法  </li>
+<li>只能在静态的方法中调用静态的成员变量和成员方法</li>
+</ul>
+</li>
+<li><p>非静态方法:</p>
+<ul>
+<li>可以调用静态的成员变量和成员方法</li>
+<li>也可以调用非静态的成员变量和成员方法</li>
+</ul>
+</li>
+<li><p>在静态的方法中没有this对象.</p>
+</li>
+</ul>
+</li>
+<li><p>static的优缺点:</p>
+<ul>
+<li>优点:节省空间,可以被类名直接调用</li>
+<li>缺点:访问限制</li>
+</ul>
+</li>
+<li><p>静态的使用场景:</p>
+<ul>
+<li>用于工具类的定义,(私有构造方法,所有的成员必须使用静态)</li>
+</ul>
+<h1 id="工具类"><a href="#工具类" class="headerlink" title="工具类"></a>工具类</h1><hr>
+</li>
+<li><p>math类的使用:</p>
+<ul>
+<li><p>工具类的特点;私有构造方法和所有的成员必须使用静态</p>
+</li>
+<li><p>小数的处理:</p>
+</li>
+<li><p>四舍五入:public  static int round(float a)</p>
+</li>
+<li><p>进一法:public static  double ceil(double a )</p>
+</li>
+<li><p>去一法:public static  double floor(double a)</p>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="代码块"><a href="#代码块" class="headerlink" title="代码块"></a>代码块</h1><hr>
+<ul>
+<li>局部代码块:存在于方法中,控制变量的生命周期(作用域)(几乎不用)</li>
+<li>构造代码块:存在于类中方法外,提取构造方法中的共性,每次创建对象都会执行,并且在构造方法执行之前执行(用的很少)</li>
+<li>静态代码块:随着类的加载而加载,只加载一次.(作用:加载类时,需要做的一些初始化操作,比如加载驱动)</li>
+<li><p>同步代码块</p>
+<ul>
+<li><p>静态代码块和静态成员执行的时机:</p>
+<ul>
+<li>静态代码块:在类加载的时候执行,而且只执行一次,随着类的加载而执行</li>
+<li>静态成员:调用的时候执行,调用多少次执行多少次.随着类的加载而存在</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">JavaSE</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/05/10/MD/Java语言/JavaSE/JavaSE07/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-MD/Java语言/JavaSE/JavaSE09" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/05/10/MD/Java语言/JavaSE/JavaSE09/">接口</a>
+    </h1>
+  
+
+        
+        <a href="/2019/05/10/MD/Java语言/JavaSE/JavaSE09/" class="archive-article-date">
+  	<time datetime="2019-05-09T23:04:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-10</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ul>
+<li><p>接口的定义</p>
+<ul>
+<li><p>格式:</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Interface 接口名&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>接口名的命名和类名相同.每一单词的首字母都大写.</p>
+</li>
+<li><p>类和接口是实现关系,一个类实现一个接口要实现这个接口中的所有方法</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Class A implements 接口名&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>接口的成员特点:</p>
+<ul>
+<li>只能有抽象方法</li>
+<li>默认只能使用public&amp;abstracte修饰方法</li>
+<li>默认使用public&amp;static&amp;final来修饰成员变量</li>
+</ul>
+</li>
+<li><p>注意:接口不能实例化(创建对象)</p>
+</li>
+</ul>
+</li>
+<li>java支持多继承吗?<ul>
+<li>类与类的关系:继承关系,单一继承,多层继承</li>
+<li>类和接口的关系:实现关系,多实现</li>
+<li>接口与接口的关系:继承关系,多继承</li>
+</ul>
+</li>
+<li>接口的思想<ul>
+<li>Collection(接口):集合的顶层接口,定义规则,要求所有的容器类必须具备的功能</li>
+<li>接口的优点:<ol>
+<li>类与接口的关系,实现关系,而且是多实现,一个类可以实现多个接口,<br> 类与类之间是继承关系,java中的继承是单一继承,一个类只能有一个父类<br> 打破了继承的局限性.</li>
+<li>对外提供规则/规范</li>
+<li>接口的出现降低了程序的耦合性(可以实现模块化开发,定义好规则,每个人实现自己的模块,提高了开发效率)</li>
+</ol>
+</li>
+<li>接口和抽象类的区别:<ul>
+<li>共性:不断的抽取,抽取抽象的概念</li>
+<li>区别1:与类的关系<ul>
+<li>类与接口是实现关系,而且是多实现,一个类可以是先多个接口</li>
+<li>类与抽象类时继承关系,Java中的继承是单一继承,一个类智能有一个父类,java中继承是多层继承</li>
+</ul>
+</li>
+<li>区别2:成员<ul>
+<li>成员变量:<ul>
+<li>抽象类可以有成员变量,也可以有常量</li>
+<li>接口只能有常量</li>
+</ul>
+</li>
+<li>成员方法:<ul>
+<li>接口类可以有抽象方法,可以有非抽象方法</li>
+<li>接口只能有抽象方法,而且方法默认修饰符public abstract</li>
+</ul>
+</li>
+<li>构造方法:<ul>
+<li>抽象类时有构造方法的</li>
+<li>接口没有构造方法</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>什么时候使用抽象类,什么时候使用接口?<ul>
+<li>抽象类:定义的都是共性的东西</li>
+<li>接口:将扩展的东西定义在接口中</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h1><hr>
+<ul>
+<li>在Java中的体现:父类引用指向子类对象</li>
+<li>多态的前提:<ol>
+<li>子父类的继承关系</li>
+<li>方法的重写</li>
+<li>父类引用指向子类对象</li>
+</ol>
+</li>
+<li><p>动态绑定:运行期间调用的方法,是根据其具体的类型</p>
+</li>
+<li><p>多态的成员特点:</p>
+<ol>
+<li>成员变量:编译时看到是左边,运行时看左边</li>
+<li>成员方法:编译是看的是左边,运行时看右边</li>
+<li>静态方法:编译时看的是左边,运行时看的也是左边</li>
+</ol>
+</li>
+<li>向上转型:<br>  父类引用指向子类对象</li>
+<li>向下转型:<br>  子类型 变量名=(子类型) 父类型引用(向下转型之前必须先向上转型)</li>
+<li>多态的优缺点:<ul>
+<li>优点:可以提高可维护性(多态前提所保证的),提高代码的可扩展性</li>
+<li>缺点:无法直接访问子类特有的成员</li>
+</ul>
+</li>
+<li>难点:接口名作为形式参数,name实际参数是该接口实现类的对象<ul>
+<li>抽象类名作为形式参数,name实际参数是该抽象类子类的对象</li>
+<li>具体类名作为形式参数,name实际参数是该类的对象/该类子类的对象</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>如何判断一个类时不是某个父类的对象使用instanceof方法</p>
+</blockquote>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">JavaSE</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/05/10/MD/Java语言/JavaSE/JavaSE09/">展开全文 >></a>
         </p>
       
 
@@ -595,184 +1023,6 @@
 
 
   
-    <article id="post-MD/Java语言/JavaSE/JavaSE09" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/10/MD/Java语言/JavaSE/JavaSE09/">接口</a>
-    </h1>
-  
-
-        
-        <a href="/2019/05/10/MD/Java语言/JavaSE/JavaSE09/" class="archive-article-date">
-  	<time datetime="2019-05-09T23:04:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <ul>
-<li><p>接口的定义</p>
-<ul>
-<li><p>格式:</p>
-  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Interface 接口名&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>接口名的命名和类名相同.每一单词的首字母都大写.</p>
-</li>
-<li><p>类和接口是实现关系,一个类实现一个接口要实现这个接口中的所有方法</p>
-  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Class A implements 接口名&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>接口的成员特点:</p>
-<ul>
-<li>只能有抽象方法</li>
-<li>默认只能使用public&amp;abstracte修饰方法</li>
-<li>默认使用public&amp;static&amp;final来修饰成员变量</li>
-</ul>
-</li>
-<li><p>注意:接口不能实例化(创建对象)</p>
-</li>
-</ul>
-</li>
-<li>java支持多继承吗?<ul>
-<li>类与类的关系:继承关系,单一继承,多层继承</li>
-<li>类和接口的关系:实现关系,多实现</li>
-<li>接口与接口的关系:继承关系,多继承</li>
-</ul>
-</li>
-<li>接口的思想<ul>
-<li>Collection(接口):集合的顶层接口,定义规则,要求所有的容器类必须具备的功能</li>
-<li>接口的优点:<ol>
-<li>类与接口的关系,实现关系,而且是多实现,一个类可以实现多个接口,<br> 类与类之间是继承关系,java中的继承是单一继承,一个类只能有一个父类<br> 打破了继承的局限性.</li>
-<li>对外提供规则/规范</li>
-<li>接口的出现降低了程序的耦合性(可以实现模块化开发,定义好规则,每个人实现自己的模块,提高了开发效率)</li>
-</ol>
-</li>
-<li>接口和抽象类的区别:<ul>
-<li>共性:不断的抽取,抽取抽象的概念</li>
-<li>区别1:与类的关系<ul>
-<li>类与接口是实现关系,而且是多实现,一个类可以是先多个接口</li>
-<li>类与抽象类时继承关系,Java中的继承是单一继承,一个类智能有一个父类,java中继承是多层继承</li>
-</ul>
-</li>
-<li>区别2:成员<ul>
-<li>成员变量:<ul>
-<li>抽象类可以有成员变量,也可以有常量</li>
-<li>接口只能有常量</li>
-</ul>
-</li>
-<li>成员方法:<ul>
-<li>接口类可以有抽象方法,可以有非抽象方法</li>
-<li>接口只能有抽象方法,而且方法默认修饰符public abstract</li>
-</ul>
-</li>
-<li>构造方法:<ul>
-<li>抽象类时有构造方法的</li>
-<li>接口没有构造方法</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>什么时候使用抽象类,什么时候使用接口?<ul>
-<li>抽象类:定义的都是共性的东西</li>
-<li>接口:将扩展的东西定义在接口中</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h1 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h1><hr>
-<ul>
-<li>在Java中的体现:父类引用指向子类对象</li>
-<li>多态的前提:<ol>
-<li>子父类的继承关系</li>
-<li>方法的重写</li>
-<li>父类引用指向子类对象</li>
-</ol>
-</li>
-<li><p>动态绑定:运行期间调用的方法,是根据其具体的类型</p>
-</li>
-<li><p>多态的成员特点:</p>
-<ol>
-<li>成员变量:编译时看到是左边,运行时看左边</li>
-<li>成员方法:编译是看的是左边,运行时看右边</li>
-<li>静态方法:编译时看的是左边,运行时看的也是左边</li>
-</ol>
-</li>
-<li>向上转型:<br>  父类引用指向子类对象</li>
-<li>向下转型:<br>  子类型 变量名=(子类型) 父类型引用(向下转型之前必须先向上转型)</li>
-<li>多态的优缺点:<ul>
-<li>优点:可以提高可维护性(多态前提所保证的),提高代码的可扩展性</li>
-<li>缺点:无法直接访问子类特有的成员</li>
-</ul>
-</li>
-<li>难点:接口名作为形式参数,name实际参数是该接口实现类的对象<ul>
-<li>抽象类名作为形式参数,name实际参数是该抽象类子类的对象</li>
-<li>具体类名作为形式参数,name实际参数是该类的对象/该类子类的对象</li>
-</ul>
-</li>
-</ul>
-<blockquote>
-<p>如何判断一个类时不是某个父类的对象使用instanceof方法</p>
-</blockquote>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">JavaSE</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/05/10/MD/Java语言/JavaSE/JavaSE09/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-MD/Java语言/JavaSE/JavaSE11" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -848,136 +1098,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2019/05/10/MD/Java语言/JavaSE/JavaSE11/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-MD/Java语言/JavaSE/JavaSE13" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/10/MD/Java语言/JavaSE/JavaSE13/">集合2</a>
-    </h1>
-  
-
-        
-        <a href="/2019/05/10/MD/Java语言/JavaSE/JavaSE13/" class="archive-article-date">
-  	<time datetime="2019-05-09T23:04:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <ul>
-<li><p>体系:</p>
-<ul>
-<li><p>Collection(接口)</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">|---List(接口)特点:有序,可存储重复值,有索引</span><br><span class="line">	|---ArrayLIst(实现类)</span><br><span class="line">		底层是数组:查询快,增删慢,		</span><br><span class="line">	|--LinkedList(实现类)</span><br><span class="line">		底层是链表:查询慢,增删快</span><br><span class="line">|----Set(接口)特点:无序,不可存储重复值,无索引</span><br><span class="line">	|---HashSet(实现类)</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-<li><p>Set(接口)</p>
-<ul>
-<li><p>如何实现不可存储重复元素</p>
-<ul>
-<li><p>set集合的特点:</p>
-<pre><code>     1.     无序(存储和输出的顺序不一样)(底层有算法来确定排序,如果存入的是某个正确顺序则一定会返回同样的顺序)
-         2.     不允许重复(要求元素唯一)
-             3.     因为没有顺序所以没有索引
-
-​        
-</code></pre><ul>
-<li>Add()方法解析:<ol>
-<li>根据新添加元素的hashcode()返回值计算出hash值</li>
-<li>遍历每一个集合中元素</li>
-<li>比较每一个元素的hash值和添加元素的hash值是否一样,如果hash值一样,则使用equa/., /ls方法进行比较,</li>
-<li>如果所有条件都不满足则添加成功.</li>
-</ol>
-</li>
-</ul>
-</li>
-<li>hashCode():<ul>
-<li>我们发现当hashcode方法永远返回整数1是,所有对象的hash值是一样的</li>
-<li>有一些对象他们的成员变量玩安全不同,但是他们还需要hash和equals方法的比较</li>
-<li>我们可以通过对hashcode方法进行改进;改进成成员变量的和,基本数据类型直接用,,引用数据类型用对应的hashcode方法</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>Collections类:<ul>
-<li>Collection是集合体系的最高层,包含了集合体系的共性</li>
-<li>Collections是一个工具类,(私有构造器,成员全部被static修饰)</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">常用方法:</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; <span class="function"><span class="keyword">int</span> <span class="title">binarySearch</span><span class="params">(List list,T key)</span>:二分查找</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; <span class="keyword">void</span> <span class="title">copy</span><span class="params">(List dest, List src)</span>:src源列表,把源列表的元素覆盖到目标列中</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; <span class="keyword">void</span> <span class="title">fill</span><span class="params">(List list,T obj)</span>:使用指定元素覆盖目标列表的所有元素</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">reverse</span><span class="params">(List list)</span>:反转目标列表中的元素</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">shuffle</span><span class="params">(List list)</span>:随机置换</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span>  <span class="keyword">void</span> <span class="title">sort</span><span class="params">(List list)</span>:按照元素的自然规则进行排序</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">swap</span><span class="params">(List list,<span class="keyword">int</span> i,<span class="keyword">int</span> j)</span>:在指定列表的指定位置处交换元素</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>双列集合体系Map(接口)<ul>
-<li>为了体现这种有对应关系的数据,我们使用跟以前所学的内容是可以实现的,但是略有不便,所以Java为我们提供了一种新的存储容器</li>
-<li>Collection:存储的是一个一个的对象<br>​    </li>
-<li>Map:存储的是一对一对的数据,存储的是映射关系<pre><code>​    格式:Map&lt;K,V&gt;: K---&gt;key键
-​                      V----&gt;value值
-</code></pre></li>
-<li>成员方法:<br>​        1. 添加:put(K key,V value):就是讲Key映射到value,如果key存在则覆盖原先的value,并将原来的value返回<br>​        2. 修改:put(K key,V value)<br>​        3. 删除:remove(Object key):根据指定键值删除对应的映射关系,并返回key对应的值.如果没有删除成功则返回null<br>​        4. 获取:get(Object key):根据对应的键值获取对应的映射关系.<br>​        5. 判断是否有指定的键:containsKey(Object key):判断指定的键值是否存在<br>​        6. 判断是否有指定的值:containsValue(Object value):判断指定的valu额是否存在<br>​        7. 长度size():返回对应的关系对数<br>​        8. keySet():获取所有的键值,放置到Set集合中.因为键值不允许重复所以使用的是set的集合<br>​        9. Values():获取所有的value值,并将返回值放在Collection中,因为放在value的值可以重复,所以返回了一个Collection,通过源码可以知道这个返回的是一个实现了Collection的成员内部类.</li>
-</ul>
-</li>
-</ul>
-<p>​<br>​<br>​    Map:将键值映射到值的对象.一个映射不能包含多个键值,</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">JavaSE</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/05/10/MD/Java语言/JavaSE/JavaSE13/">展开全文 >></a>
         </p>
       
 
@@ -1237,19 +1357,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JVM</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Spring</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">IDEA</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
+                <a href="javascript:void(0)" class="js-tag color4">JVM</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1257,7 +1369,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Maven</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">IDEA</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1265,11 +1385,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
+                <a href="javascript:void(0)" class="js-tag color4">SQL</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">SQL</a>
+                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
               </li>
              
               <li class="article-tag-list-item">
