@@ -163,300 +163,6 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-副本 - 副本" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/25/副本 - 副本/">5-25</a>
-    </h1>
-  
-
-        
-        <a href="/2019/05/25/副本 - 副本/" class="archive-article-date">
-  	<time datetime="2019-05-25T13:20:18.475Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-25</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="物理层"><a href="#物理层" class="headerlink" title="物理层"></a>物理层</h2><ul>
-<li>物理层关注的是怎样构建不同种类设备之间的连接。怎样尽可能屏蔽掉差异。这样就可以让上一层只需要考虑自身所需要实现的功能。</li>
-</ul>
-<h2 id="数据链路层"><a href="#数据链路层" class="headerlink" title="数据链路层"></a>数据链路层</h2><ul>
-<li>数据链路层的主要目的是为了把上层传递下来的数据封装成帧，来进行链路传输。</li>
-</ul>
-<h2 id="网络层"><a href="#网络层" class="headerlink" title="网络层"></a>网络层</h2><ul>
-<li>网络层的核心是向上层提供简单灵活的，无连接的，尽最大努力交互的额数据报服务</li>
-<li>相关协议<ul>
-<li>ARP(Adress Reslution Protocl)：完成从IP地址到物理地址的解析</li>
-<li>RARP(Reverse Adress Reslution Protocl)：完成从物理地址到IP地址的解析</li>
-<li>IP(Internet Protocl):将这个网络进行抽象，可以再次屏蔽差异。使得从网络层看起来都是一样的。从而提供一个统一网络。</li>
-<li>ICMP(Internet Control Message Protocol)：提供了对差错和异常情况的描述，从而提高了数据报交付效率和质量</li>
-<li>IGMP(Internet Group Management Protocol)：提供了多播的功能，来扩展功能</li>
-</ul>
-</li>
-</ul>
-<h2 id="运输层"><a href="#运输层" class="headerlink" title="运输层"></a>运输层</h2><ul>
-<li><p>在实际通讯过程中是主机中的程序和程序之间进行通讯，但是对于网络层而言是不区分的，因此运输层的主要职责就是将不同进程通讯的数据进行封装，这样可以屏蔽掉差异交给下一层。</p>
-</li>
-<li><p>相关协议</p>
-<ul>
-<li><p>UDP：是无连接的，进最大可能交付，没有拥塞控制，面向报文（对于应用程序传下来的报文不合并也不拆分，只是添加 UDP 首部），支持一对一、一对多、多对一和多对多的交互通信。</p>
-</li>
-<li><p>TCP：是面向连接的，提供可靠交付，有流量控制，拥塞控制，提供全双工通信，面向字节流（把应用层传下来的报文看成字节流，把字节流组织成大小不等的数据块），每一条 TCP 连接只能是点对点的（一对一）。</p>
-<ul>
-<li><p>三次握手</p>
-<ul>
-<li><p>假设 A 为客户端，B 为服务器端。</p>
-<ul>
-<li>首先 B 处于 LISTEN（监听）状态，等待客户的连接请求。</li>
-<li>A 向 B 发送连接请求报文，SYN=1，ACK=0，选择一个初始的序号 x。</li>
-<li>B 收到连接请求报文，如果同意建立连接，则向 A 发送连接确认报文，SYN=1，ACK=1，确认号为 x+1，同时也选择一个初始的序号 y。</li>
-<li>A 收到 B 的连接确认报文后，还要向 B 发出确认，确认号为 y+1，序号为 x+1。</li>
-<li>B 收到 A 的确认后，连接建立。</li>
-</ul>
-<p><strong>三次握手的原因</strong></p>
-<p>第三次握手是为了防止失效的连接请求到达服务器，让服务器错误打开连接。</p>
-<p>客户端发送的连接请求如果在网络中滞留，那么就会隔很长一段时间才能收到服务器端发回的连接确认。客户端等待一个超时重传时间之后，就会重新请求连接。但是这个滞留的连接请求最后还是会到达服务器，如果不进行三次握手，那么服务器就会打开两个连接。如果有第三次握手，客户端会忽略服务器之后发送的对滞留连接请求的连接确认，不进行第三次握手，因此就不会再次打开连接。</p>
-</li>
-</ul>
-</li>
-<li><p>四次挥手</p>
-<ul>
-<li><p>假设 A 为客户端，B 为服务器端。</p>
-<ul>
-<li>A 发送连接释放报文，FIN=1。</li>
-<li>B 收到之后发出确认，此时 TCP 属于半关闭状态，B 能向 A 发送数据但是 A 不能向 B 发送数据。</li>
-<li>当 B 不再需要连接时，发送连接释放报文，FIN=1。</li>
-<li>A 收到后发出确认，进入 TIME-WAIT 状态，等待 2 MSL（最大报文存活时间）后释放连接。</li>
-<li>B 收到 A 的确认后释放连接。</li>
-</ul>
-<p><strong>四次挥手的原因</strong></p>
-<p>客户端发送了 FIN 连接释放报文之后，服务器收到了这个报文，就进入了 CLOSE-WAIT 状态。这个状态是为了让服务器端发送还未传送完毕的数据，传送完毕之后，服务器会发送 FIN 连接释放报文。</p>
-<p><strong>TIME_WAIT</strong></p>
-<p>客户端接收到服务器端的 FIN 报文后进入此状态，此时并不是直接进入 CLOSED 状态，还需要等待一个时间计时器设置的时间 2MSL。这么做有两个理由：</p>
-<ul>
-<li>确保最后一个确认报文能够到达。如果 B 没收到 A 发送来的确认报文，那么就会重新发送连接释放请求报文，A 等待一段时间就是为了处理这种情况的发生。</li>
-<li>等待一段时间是为了让本连接持续时间内所产生的所有报文都从网络中消失，使得下一个新的连接不会出现旧的连接请求报文。</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>滑动窗口协议</p>
-<ul>
-<li><p>窗口是缓存的一部分，用来暂时存放字节流。发送方和接收方各有一个窗口，接收方通过 TCP 报文段中的窗口字段告诉发送方自己的窗口大小，发送方根据这个值和其它信息设置自己的窗口大小。</p>
-<p>发送窗口内的字节都允许被发送，接收窗口内的字节都允许被接收。如果发送窗口左部的字节已经发送并且收到了确认，那么就将发送窗口向右滑动一定距离，直到左部第一个字节不是已发送并且已确认的状态；接收窗口的滑动类似，接收窗口左部字节已经发送确认并交付主机，就向右滑动接收窗口。</p>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="应用层"><a href="#应用层" class="headerlink" title="应用层"></a>应用层</h2><ul>
-<li>应用层为程序使用的层级，建立在运输层之上。</li>
-<li>相关协议<ul>
-<li>DNS：域名解析服务</li>
-<li>FTP协议：用来进行文件传输</li>
-<li>DHCP协议：用来自动分配地址相关</li>
-<li>HTTP协议：用来传输超文本数据</li>
-</ul>
-</li>
-</ul>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/05/25/副本 - 副本/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-副本" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/25/副本/">5-25</a>
-    </h1>
-  
-
-        
-        <a href="/2019/05/25/副本/" class="archive-article-date">
-  	<time datetime="2019-05-25T13:19:31.721Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-25</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="物理层"><a href="#物理层" class="headerlink" title="物理层"></a>物理层</h2><ul>
-<li>物理层关注的是怎样构建不同种类设备之间的连接。怎样尽可能屏蔽掉差异。这样就可以让上一层只需要考虑自身所需要实现的功能。</li>
-</ul>
-<h2 id="数据链路层"><a href="#数据链路层" class="headerlink" title="数据链路层"></a>数据链路层</h2><ul>
-<li>数据链路层的主要目的是为了把上层传递下来的数据封装成帧，来进行链路传输。</li>
-</ul>
-<h2 id="网络层"><a href="#网络层" class="headerlink" title="网络层"></a>网络层</h2><ul>
-<li>网络层的核心是向上层提供简单灵活的，无连接的，尽最大努力交互的额数据报服务</li>
-<li>相关协议<ul>
-<li>ARP(Adress Reslution Protocl)：完成从IP地址到物理地址的解析</li>
-<li>RARP(Reverse Adress Reslution Protocl)：完成从物理地址到IP地址的解析</li>
-<li>IP(Internet Protocl):将这个网络进行抽象，可以再次屏蔽差异。使得从网络层看起来都是一样的。从而提供一个统一网络。</li>
-<li>ICMP(Internet Control Message Protocol)：提供了对差错和异常情况的描述，从而提高了数据报交付效率和质量</li>
-<li>IGMP(Internet Group Management Protocol)：提供了多播的功能，来扩展功能</li>
-</ul>
-</li>
-</ul>
-<h2 id="运输层"><a href="#运输层" class="headerlink" title="运输层"></a>运输层</h2><ul>
-<li><p>在实际通讯过程中是主机中的程序和程序之间进行通讯，但是对于网络层而言是不区分的，因此运输层的主要职责就是将不同进程通讯的数据进行封装，这样可以屏蔽掉差异交给下一层。</p>
-</li>
-<li><p>相关协议</p>
-<ul>
-<li><p>UDP：是无连接的，进最大可能交付，没有拥塞控制，面向报文（对于应用程序传下来的报文不合并也不拆分，只是添加 UDP 首部），支持一对一、一对多、多对一和多对多的交互通信。</p>
-</li>
-<li><p>TCP：是面向连接的，提供可靠交付，有流量控制，拥塞控制，提供全双工通信，面向字节流（把应用层传下来的报文看成字节流，把字节流组织成大小不等的数据块），每一条 TCP 连接只能是点对点的（一对一）。</p>
-<ul>
-<li><p>三次握手</p>
-<ul>
-<li><p>假设 A 为客户端，B 为服务器端。</p>
-<ul>
-<li>首先 B 处于 LISTEN（监听）状态，等待客户的连接请求。</li>
-<li>A 向 B 发送连接请求报文，SYN=1，ACK=0，选择一个初始的序号 x。</li>
-<li>B 收到连接请求报文，如果同意建立连接，则向 A 发送连接确认报文，SYN=1，ACK=1，确认号为 x+1，同时也选择一个初始的序号 y。</li>
-<li>A 收到 B 的连接确认报文后，还要向 B 发出确认，确认号为 y+1，序号为 x+1。</li>
-<li>B 收到 A 的确认后，连接建立。</li>
-</ul>
-<p><strong>三次握手的原因</strong></p>
-<p>第三次握手是为了防止失效的连接请求到达服务器，让服务器错误打开连接。</p>
-<p>客户端发送的连接请求如果在网络中滞留，那么就会隔很长一段时间才能收到服务器端发回的连接确认。客户端等待一个超时重传时间之后，就会重新请求连接。但是这个滞留的连接请求最后还是会到达服务器，如果不进行三次握手，那么服务器就会打开两个连接。如果有第三次握手，客户端会忽略服务器之后发送的对滞留连接请求的连接确认，不进行第三次握手，因此就不会再次打开连接。</p>
-</li>
-</ul>
-</li>
-<li><p>四次挥手</p>
-<ul>
-<li><p>假设 A 为客户端，B 为服务器端。</p>
-<ul>
-<li>A 发送连接释放报文，FIN=1。</li>
-<li>B 收到之后发出确认，此时 TCP 属于半关闭状态，B 能向 A 发送数据但是 A 不能向 B 发送数据。</li>
-<li>当 B 不再需要连接时，发送连接释放报文，FIN=1。</li>
-<li>A 收到后发出确认，进入 TIME-WAIT 状态，等待 2 MSL（最大报文存活时间）后释放连接。</li>
-<li>B 收到 A 的确认后释放连接。</li>
-</ul>
-<p><strong>四次挥手的原因</strong></p>
-<p>客户端发送了 FIN 连接释放报文之后，服务器收到了这个报文，就进入了 CLOSE-WAIT 状态。这个状态是为了让服务器端发送还未传送完毕的数据，传送完毕之后，服务器会发送 FIN 连接释放报文。</p>
-<p><strong>TIME_WAIT</strong></p>
-<p>客户端接收到服务器端的 FIN 报文后进入此状态，此时并不是直接进入 CLOSED 状态，还需要等待一个时间计时器设置的时间 2MSL。这么做有两个理由：</p>
-<ul>
-<li>确保最后一个确认报文能够到达。如果 B 没收到 A 发送来的确认报文，那么就会重新发送连接释放请求报文，A 等待一段时间就是为了处理这种情况的发生。</li>
-<li>等待一段时间是为了让本连接持续时间内所产生的所有报文都从网络中消失，使得下一个新的连接不会出现旧的连接请求报文。</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>滑动窗口协议</p>
-<ul>
-<li><p>窗口是缓存的一部分，用来暂时存放字节流。发送方和接收方各有一个窗口，接收方通过 TCP 报文段中的窗口字段告诉发送方自己的窗口大小，发送方根据这个值和其它信息设置自己的窗口大小。</p>
-<p>发送窗口内的字节都允许被发送，接收窗口内的字节都允许被接收。如果发送窗口左部的字节已经发送并且收到了确认，那么就将发送窗口向右滑动一定距离，直到左部第一个字节不是已发送并且已确认的状态；接收窗口的滑动类似，接收窗口左部字节已经发送确认并交付主机，就向右滑动接收窗口。</p>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="应用层"><a href="#应用层" class="headerlink" title="应用层"></a>应用层</h2><ul>
-<li>应用层为程序使用的层级，建立在运输层之上。</li>
-<li>相关协议<ul>
-<li>DNS：域名解析服务</li>
-<li>FTP协议：用来进行文件传输</li>
-<li>DHCP协议：用来自动分配地址相关</li>
-<li>HTTP协议：用来传输超文本数据</li>
-</ul>
-</li>
-</ul>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/05/25/副本/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-Spring五个事务隔离级别和七个事务传播行为" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -464,7 +170,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/25/Spring五个事务隔离级别和七个事务传播行为/">Spring五个事务隔离级别和七个事务传播行为</a>
+      <a class="article-title" href="/2019/05/25/Spring五个事务隔离级别和七个事务传播行为/">Spring五个事务隔离级别和七个事务传播行为(待续)</a>
     </h1>
   
 
@@ -477,88 +183,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="脏读，不可重复读，幻读"><a href="#脏读，不可重复读，幻读" class="headerlink" title="脏读，不可重复读，幻读"></a>脏读，不可重复读，幻读</h2><ul>
-<li>脏读 :<ul>
-<li>所谓的脏读，其实就是读到了别的事务回滚前的脏数据。比如事务B执行过程中修改了数据X，在未提交前，事务A读取了X，而事务B却回滚了，这样事务A就形成了脏读</li>
-</ul>
-</li>
-<li>不可重复读 ：<ul>
-<li>不可重复读字面含义已经很明了了，比如事务A首先读取了一条数据，然后执行逻辑的时候，事务B将这条数据改变了，然后事务A再次读取的时候，发现数据不匹配了，就是所谓的不可重复读了。</li>
-</ul>
-</li>
-<li>幻读 ：<ul>
-<li>小的时候数手指，第一次数十10个，第二次数是11个，怎么回事？产生幻觉了？</li>
-<li>幻读也是这样子，事务A首先根据条件索引得到10条数据，然后事务B改变了数据库一条数据，导致也符合事务A当时的搜索条件，这样事务A再次搜索发现有11条数据了，就产生了幻读。</li>
-</ul>
-</li>
-</ul>
-<h2 id="事物的传播级别和隔离级别"><a href="#事物的传播级别和隔离级别" class="headerlink" title="事物的传播级别和隔离级别"></a>事物的传播级别和隔离级别</h2><pre><code> 事务是逻辑处理原子性的保证手段，通过使用事务控制，可以极大的避免出现逻辑处理失败导致的脏数据等问题。
-
-* 事务最重要的两个特性，是事务的传播级别和数据隔离级别。传播级别定义的是事务的控制范围，事务隔离级别定义的是事务在数据库读写方面的控制范围。
-
-* 对象的分配流程
-</code></pre><ul>
-<li>GC<ul>
-<li>如何判断对象已死<ul>
-<li>引用计数：通过计算对象之间的引用数量来判断是否死亡，问题:循环引用</li>
-<li>根节点搜索：通过分析栈和方法区中的数据有没有指向该对象来判断对象是否死亡</li>
-</ul>
-</li>
-<li>常见的GC算法<ul>
-<li>标记清除：标记之后直接及逆行清理，这样会造成大量的碎片空间</li>
-<li>标记整理：为了解决标记清除带来的大量碎片空间问题，采用整理清除完的空间。</li>
-<li>标记复制：大量的对象移动不如复制的效率高。</li>
-</ul>
-</li>
-<li>GC的类型<ul>
-<li>MinorGC：代表新生代进行GC操作</li>
-<li>MajorGC：代表了老年代进行GC操作</li>
-<li>FullGC：上述两种GC的总和</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>垃圾回收器<ul>
-<li>Serlizeable：该种垃圾回收器的特点是采用单线程进行垃圾回收操作，同时在回收期间暂停其他用户线程的操作</li>
-<li>Prepal：该种垃圾回收器的特点是采用多线程进行垃圾回收操作，同时也是在回收期间暂停其他用户线程的操作</li>
-<li>CMS：这种垃圾回收期在标记阶段采用和用户线程并行操作，标记结束后启动多线程进行回收</li>
-<li>G1：采用分块的模式，来减少 fullGC 的操作。</li>
-</ul>
-</li>
-</ul>
-<h2 id="常见调优的流程"><a href="#常见调优的流程" class="headerlink" title="常见调优的流程"></a>常见调优的流程</h2><ol>
-<li><p>首先查看当前机器的状态</p>
-<ul>
-<li>top：用来查看当前机器cpu / 内存 状态，如果出现异常可以通过 jstack pid 打印线程信息</li>
-<li>df -h：查看磁盘的状态</li>
-</ul>
-</li>
-<li><p>查看当前 Jvm 的垃圾回收器类型,并查看配置</p>
-<ul>
-<li>java -XX:+PrintCommandLineFlags -version</li>
-<li>jstat -gcutil pid 1000  动态打印日志</li>
-<li>jmap -heap pid 查看堆内存使用情况</li>
-</ul>
-</li>
-<li><p>配置 Jvm 打印对应的 GC 日志</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#输出日志</span><br><span class="line">-XX:+PrintGCTimeStamps</span><br><span class="line">-XX:+PrintGCDetails</span><br><span class="line">-Xloggc：/dir/gc.log</span><br><span class="line">#日志文件控制</span><br><span class="line">-XX:-UseGCLogFileRotation</span><br><span class="line">-XX：GCLogFileSize=8k</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>查看 GC 日志，分析 GC 日志</p>
-</li>
-<li><p>通过 Jstack 查看是否有死锁</p>
-</li>
-<li><p>配置 OOM 的时候保存内存快照</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-XX：+HeapDumpOnOutOfMemoryError</span><br><span class="line">-XX：HeapDumpPath=/dir/error.hporf</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>常见的推荐配置大小</p>
-<ul>
-<li><p>确定活跃数据，活跃数据为运行稳定后Full GC后老年代的大小。</p>
-<p>|  名称  |              倍数              |<br>| :—-: | :—————————-: |<br>| 总大小 |              3-4               |<br>| 新生代 |             1-1.5              |<br>| 老年带 |              2-3               |<br>| 永久代 | 1.2-1.5(Full GC后永久代的大小) |</p>
-</li>
-</ul>
-</li>
-</ol>
-
+        <h2 id="脏读，不可重复读，幻读"><a href="#脏读，不可重复读，幻读" class="headerlink" title="脏读，不可重复读，幻读"></a>脏读，不可重复读，幻读</h2>
+        
+          <a class="article-more-a" href="/2019/05/25/Spring五个事务隔离级别和七个事务传播行为/#more">more >></a>
+        
       
 
       
@@ -566,6 +194,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Spring</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -600,20 +239,613 @@
 
 
   
-    <article id="post-Springboot" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-MD/数据库相关/关系型数据库/MySql" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/19/Springboot/">Springboot框架</a>
+      <a class="article-title" href="/2019/05/15/MD/数据库相关/关系型数据库/MySql/">MySQL</a>
     </h1>
   
 
         
-        <a href="/2019/05/19/Springboot/" class="archive-article-date">
-  	<time datetime="2019-05-19T14:11:39.418Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-19</time>
+        <a href="/2019/05/15/MD/数据库相关/关系型数据库/MySql/" class="archive-article-date">
+  	<time datetime="2019-05-14T23:04:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-15</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="基本"><a href="#基本" class="headerlink" title="基本"></a>基本</h2><ul>
+<li>存储引擎<ul>
+<li>概念：MySQL中的数据用各种不同的技术存储在文件(或者内存)中。这些技术中的每一种技术都使用不同的存储机制、索引技巧、锁定水平并且最终提供广泛的不同的功能和能力。通过选择不同的技术，你能够获得额外的速度或者功能，从而改善你的应用的整体功能。这些不同的技术以及配套的相关功能在 MySQL中被称作存储引擎(也称作表类型)。</li>
+<li>常见的存储引擎：<ol>
+<li>InnoDB：默认的存储引擎。支持事物，容灾恢复，外键约束。</li>
+<li>MyISAM：不支持事物，和外键，但是访问速度快。</li>
+<li>MEMORY：数据存放在内存中，性能好</li>
+<li>ARCHIVE：比较好的压缩机制，可以作为仓库</li>
+</ol>
+</li>
+<li>事物<ul>
+<li>ACID<ol>
+<li>隔离性：隔离状态执行事务，使它们好像是系统在给定时间内执行的唯一操作</li>
+<li>持久性：在事务完成以后，该事务对数据库所作的更改便持久的保存在数据库之中，并不会被回滚。</li>
+<li>原子性：整个事务中的所有操作，要么全部完成，要么全部不完成，不可能停滞在中间某个环节。</li>
+<li>一致性：一个事务可以封装状态改变（除非它是一个只读的）。事务必须始终保持系统处于一致的状态，不管在任何给定的时间<a href="https://baike.baidu.com/item/%E5%B9%B6%E5%8F%91" target="_blank" rel="noopener"><strong>并发</strong></a>事务有多少。</li>
+</ol>
+</li>
+<li>隔离级别<ul>
+<li>读未提交，不可重复读，可重复读，串行化。</li>
+</ul>
+</li>
+<li>事物并发产生的问题<ol>
+<li>脏读：事物1读取到了事物2未提交的数据，在事物2回滚的时候，1读到脏数据</li>
+<li>不可重复读：事物1读到事物2对数据的修改。这样导致多次读取的值不一样</li>
+<li>幻读：在事物1读取到了事物2添加或删除的操作</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="高性能"><a href="#高性能" class="headerlink" title="高性能"></a>高性能</h2><ul>
+<li><p>读写分离</p>
+<ul>
+<li><p>概念：读写分离的场景是为了缓解，高并发读取，小部分写入的场景下的性能问题。采用的是mysql的主从复制来实现</p>
+</li>
+<li><p>操作：</p>
+<ul>
+<li><p>配置master</p>
+<ol>
+<li><p>创建同步用户</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">user</span> rel1; //创建用户</span><br><span class="line"><span class="keyword">GRANT</span> <span class="keyword">REPLICATION</span> <span class="keyword">SLAVE</span> <span class="keyword">ON</span> *.* <span class="keyword">TO</span> <span class="string">'repl'</span>@<span class="string">'192.168.0.%'</span> <span class="keyword">IDENTIFIED</span> <span class="keyword">BY</span> <span class="string">'mysql'</span>; //配置权限</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改my.ini配置</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">server-id</span>=xxx  //服务id，全局唯一</span><br><span class="line"><span class="attr">log-bin</span>=mysql-bin   //启用二进制日志文件</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>重启服务：systemct1 restart mysqld</p>
+</li>
+<li><p>查看状态：show master status</p>
+</li>
+</ol>
+</li>
+<li><p>配置slave</p>
+<ol>
+<li><p>修改my.ini配置</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">server-id</span>=xxx</span><br><span class="line"><span class="attr">relay-log-index</span>=slave-relay-bin.index</span><br><span class="line"><span class="attr">relay-log</span>=slave-relay-bin</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>重启服务：systemct1 restart mysqld</p>
+</li>
+<li><p>建立同步链接</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">change</span> <span class="keyword">master</span> <span class="keyword">to</span> master_host=<span class="string">'192.168.0.1'</span>, //<span class="keyword">Master</span> 服务器Ip</span><br><span class="line">master_port=<span class="number">3306</span>,</span><br><span class="line">master_user=<span class="string">'root'</span>,</span><br><span class="line">master_password=<span class="string">'root'</span>, </span><br><span class="line">master_log_file=<span class="string">'master-bin.000001'</span>,//<span class="keyword">Master</span>服务器产生的日志</span><br><span class="line">master_log_pos=<span class="number">0</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>启动slave：start slave</p>
+</li>
+<li><p>查看状态：show slave status</p>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>分库分表</p>
+<ul>
+<li>垂直拆分<ul>
+<li>垂直分库：解决表过多的问题，可以将有关系的表放到一个数据库中</li>
+<li>垂直分表：解决的是表列过多的问题</li>
+</ul>
+</li>
+<li>水平拆分<ul>
+<li>解决的是单表数据量过大问题</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="Mycat"><a href="#Mycat" class="headerlink" title="Mycat"></a>Mycat</h2><ul>
+<li><p>安装</p>
+<ol>
+<li><p><a href="http://dl.mycat.io/1.6-RELEASE/" target="_blank" rel="noopener">下载</a></p>
+</li>
+<li><p>解压</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -xzvf Mycat-1.***.tar.gz</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>启动</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sh mycat start</span><br><span class="line">sh mycat stop</span><br><span class="line">sh mycat restart</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+<li><p>配置</p>
+<ul>
+<li><p>server.xml：配置用户相关信息</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">user</span> <span class="attr">name</span>=<span class="string">"root"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"password"</span>&gt;</span>123456<span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"schemas"</span>&gt;</span>TESTDB<span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- 表级 DML 权限设置 --&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 		</span></span><br><span class="line"><span class="comment">  &lt;privileges check="false"&gt;</span></span><br><span class="line"><span class="comment">   &lt;schema name="TESTDB" dml="0110" &gt;</span></span><br><span class="line"><span class="comment">    &lt;table name="tb01" dml="0000"&gt;&lt;/table&gt;</span></span><br><span class="line"><span class="comment">    &lt;table name="tb02" dml="1111"&gt;&lt;/table&gt;</span></span><br><span class="line"><span class="comment">   &lt;/schema&gt;</span></span><br><span class="line"><span class="comment">  &lt;/privileges&gt;		</span></span><br><span class="line"><span class="comment">   --&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">user</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>schema.xml：配置逻辑表相关</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">schema</span> <span class="attr">name</span>=<span class="string">"TESTDB"</span> <span class="attr">checkSQLschema</span>=<span class="string">"false"</span> <span class="attr">sqlMaxLimit</span>=<span class="string">"100"</span>&gt;</span>   //逻辑数据库</span><br><span class="line">    //逻辑表水平拆分 （dataNode：表示数据库源，rule：表示水平拆分规则）          </span><br><span class="line">    <span class="tag">&lt;<span class="name">table</span> <span class="attr">name</span>=<span class="string">"travelrecord"</span> <span class="attr">dataNode</span>=<span class="string">"dn1,dn2,dn3"</span> <span class="attr">rule</span>=<span class="string">"auto-sharding-long"</span> /&gt;</span>  </span><br><span class="line">    //全局表</span><br><span class="line">    <span class="tag">&lt;<span class="name">table</span> <span class="attr">name</span>=<span class="string">"company"</span> <span class="attr">primaryKey</span>=<span class="string">"ID"</span> <span class="attr">type</span>=<span class="string">"global"</span> <span class="attr">dataNode</span>=<span class="string">"dn1,dn2,dn3"</span> /&gt;</span></span><br><span class="line">	//关联子表</span><br><span class="line">    <span class="tag">&lt;<span class="name">table</span> <span class="attr">name</span>=<span class="string">"customer"</span> <span class="attr">primaryKey</span>=<span class="string">"ID"</span> <span class="attr">dataNode</span>=<span class="string">"dn1,dn2"</span></span></span><br><span class="line"><span class="tag">           <span class="attr">rule</span>=<span class="string">"sharding-by-intfile"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">childTable</span> <span class="attr">name</span>=<span class="string">"orders"</span> <span class="attr">primaryKey</span>=<span class="string">"ID"</span> <span class="attr">joinKey</span>=<span class="string">"customer_id"</span></span></span><br><span class="line"><span class="tag">                    <span class="attr">parentKey</span>=<span class="string">"id"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">childTable</span> <span class="attr">name</span>=<span class="string">"order_items"</span> <span class="attr">joinKey</span>=<span class="string">"order_id"</span></span></span><br><span class="line"><span class="tag">                        <span class="attr">parentKey</span>=<span class="string">"id"</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">childTable</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">childTable</span> <span class="attr">name</span>=<span class="string">"customer_addr"</span> <span class="attr">primaryKey</span>=<span class="string">"ID"</span> <span class="attr">joinKey</span>=<span class="string">"customer_id"</span></span></span><br><span class="line"><span class="tag">                    <span class="attr">parentKey</span>=<span class="string">"id"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">schema</span>&gt;</span></span><br><span class="line">//数据源配置</span><br><span class="line"><span class="tag">&lt;<span class="name">dataNode</span> <span class="attr">name</span>=<span class="string">"dn1"</span> <span class="attr">dataHost</span>=<span class="string">"localhost1"</span> <span class="attr">database</span>=<span class="string">"db1"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dataNode</span> <span class="attr">name</span>=<span class="string">"dn2"</span> <span class="attr">dataHost</span>=<span class="string">"localhost1"</span> <span class="attr">database</span>=<span class="string">"db2"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dataNode</span> <span class="attr">name</span>=<span class="string">"dn3"</span> <span class="attr">dataHost</span>=<span class="string">"localhost1"</span> <span class="attr">database</span>=<span class="string">"db3"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">dataHost</span> <span class="attr">name</span>=<span class="string">"localhost1"</span> <span class="attr">maxCon</span>=<span class="string">"1000"</span> <span class="attr">minCon</span>=<span class="string">"10"</span> <span class="attr">balance</span>=<span class="string">"0"</span></span></span><br><span class="line"><span class="tag">          <span class="attr">writeType</span>=<span class="string">"0"</span> <span class="attr">dbType</span>=<span class="string">"mysql"</span> <span class="attr">dbDriver</span>=<span class="string">"native"</span> <span class="attr">switchType</span>=<span class="string">"1"</span>  <span class="attr">slaveThreshold</span>=<span class="string">"100"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">heartbeat</span>&gt;</span>select user()<span class="tag">&lt;/<span class="name">heartbeat</span>&gt;</span></span><br><span class="line">    //读写分离</span><br><span class="line">    <span class="tag">&lt;<span class="name">writeHost</span> <span class="attr">host</span>=<span class="string">"hostM1"</span> <span class="attr">url</span>=<span class="string">"localhost:3306"</span> <span class="attr">user</span>=<span class="string">"root"</span></span></span><br><span class="line"><span class="tag">               <span class="attr">password</span>=<span class="string">"123456"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">readHost</span> <span class="attr">host</span>=<span class="string">"hostS2"</span> <span class="attr">url</span>=<span class="string">"192.168.1.200:3306"</span> <span class="attr">user</span>=<span class="string">"root"</span> <span class="attr">password</span>=<span class="string">"xxx"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">writeHost</span>&gt;</span></span><br><span class="line">    //高可用</span><br><span class="line">    <span class="tag">&lt;<span class="name">writeHost</span> <span class="attr">host</span>=<span class="string">"hostS1"</span> <span class="attr">url</span>=<span class="string">"localhost:3316"</span> <span class="attr">user</span>=<span class="string">"root"</span></span></span><br><span class="line"><span class="tag">               <span class="attr">password</span>=<span class="string">"123456"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dataHost</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">数据库</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/05/15/MD/数据库相关/关系型数据库/MySql/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-MD/数据库相关/非关系型数据库/Mongodb" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/05/15/MD/数据库相关/非关系型数据库/Mongodb/">MongoDB</a>
+    </h1>
+  
+
+        
+        <a href="/2019/05/15/MD/数据库相关/非关系型数据库/Mongodb/" class="archive-article-date">
+  	<time datetime="2019-05-14T23:04:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-15</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="是么是Mongodb"><a href="#是么是Mongodb" class="headerlink" title="是么是Mongodb"></a>是么是Mongodb</h2><ul>
+<li>mongodb是一个nosql型数据库，也是一个开源文档数据库，提供高性能，高可用性和自动扩展</li>
+</ul>
+<h2 id="为什么使用Mongodb"><a href="#为什么使用Mongodb" class="headerlink" title="为什么使用Mongodb"></a>为什么使用Mongodb</h2><ul>
+<li>相比较于关系型数据库有更高的性能，相较于其他的nosql数据库提供丰富的查询语言，同时他支持多个存储引擎，具有高可用，和水平可伸缩性</li>
+</ul>
+<h2 id="怎么使用Mongodb"><a href="#怎么使用Mongodb" class="headerlink" title="怎么使用Mongodb"></a>怎么使用Mongodb</h2><ul>
+<li><p>安装</p>
+<ol>
+<li><p>下载，解压</p>
+</li>
+<li><p>启动</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">./mongod --dbpath /data/dir     //启动</span><br><span class="line">./mongod -f /config/dir    //指定配置文件启动</span><br><span class="line">./mongo --host=localhost --port=27017         //连接mongodb</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+<li><p>核心概念</p>
+<p>|       mysql       |     mongodb      |<br>| :—————: | :————–: |<br>| 数据库(database)  | 数据库(database) |<br>|     表(table)     | 集合(collection) |<br>|      行(row)      |  文档(document)  |<br>|    列(columm)     |   字段(field)    |<br>| 主键(primary key) |  id(object id)   |<br>|    索引(index)    |   索引(index)    |</p>
+</li>
+<li><p>常见shell命令</p>
+<p>|      含义       |                     命令                     |<br>| :————-: | :——————————————: |<br>| 创建/删除数据库 |       use “db-name”/db.dropDatabase()        |<br>|  创建/删除集合  | db.createCollection(“c-name”)/db.c-name.drop |<br>|    添加数据     |       db.c-name.insert({json:”json”})        |<br>|    更新数据     |       db.c-name.update(query，update)        |<br>|    删除数据     |          db.c-name.remove({match})           |<br>|    查询数据     |               db.c-name.find()               |<br>| 展示数据库/集合 |         show dbs/show dropDatebase()         |</p>
+</li>
+</ul>
+<h2 id="Mongodb进阶"><a href="#Mongodb进阶" class="headerlink" title="Mongodb进阶"></a>Mongodb进阶</h2><ul>
+<li><p>使用java操作</p>
+<ol>
+<li><p>原生api</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">MongoClient client = <span class="keyword">new</span> MongoClient(host,port);</span><br><span class="line"><span class="comment">//database</span></span><br><span class="line">MongoDatabase database = client.getDatabase(<span class="string">"test"</span>);</span><br><span class="line"><span class="comment">//client.getDatabase("test").drop();</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//collection</span></span><br><span class="line">MongoCollection&lt;Document&gt; collection = database.getCollection(<span class="string">"test"</span>);</span><br><span class="line">database.createCollection(<span class="string">"c-name"</span>);</span><br><span class="line">database.getCollection(<span class="string">"c-name"</span>).drop();</span><br><span class="line"></span><br><span class="line"><span class="comment">//document</span></span><br><span class="line">collection.insertOne(Document.parse(<span class="string">"&#123;\"age\":13,\"address\":\"hz\"&#125;"</span>));</span><br><span class="line"><span class="comment">//collection.updateOne();</span></span><br><span class="line">FindIterable&lt;Document&gt; documents = collection.find();</span><br><span class="line"><span class="keyword">for</span> (Document document : documents)&#123;</span><br><span class="line">    System.out.println(document);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//collection.deleteOne(BsonDocument.parse(""));</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>spring-data-mongodb</p>
+<ol>
+<li><p>组装MongoTemplate</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"mongoClient"</span> <span class="attr">class</span>=<span class="string">"com.mongodb.MongoClient"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">name</span>=<span class="string">"host"</span> <span class="attr">value</span>=<span class="string">"localhost"</span>&gt;</span><span class="tag">&lt;/<span class="name">constructor-arg</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">name</span>=<span class="string">"port"</span> <span class="attr">value</span>=<span class="string">"27017"</span>&gt;</span><span class="tag">&lt;/<span class="name">constructor-arg</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"mongoDbFactory"</span> <span class="attr">class</span>=<span class="string">"org.springframework.data.mongodb.core.SimpleMongoDbFactory"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">name</span>=<span class="string">"mongoClient"</span> <span class="attr">ref</span>=<span class="string">"mongoClient"</span>&gt;</span><span class="tag">&lt;/<span class="name">constructor-arg</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">name</span>=<span class="string">"databaseName"</span> <span class="attr">value</span>=<span class="string">"test"</span>&gt;</span><span class="tag">&lt;/<span class="name">constructor-arg</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"mongodbTemplate"</span> <span class="attr">class</span>=<span class="string">"org.springframework.data.mongodb.core.MongoTemplate"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">ref</span>=<span class="string">"mongoDbFactory"</span>&gt;</span><span class="tag">&lt;/<span class="name">constructor-arg</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用template</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">FindIterable&lt;Document&gt; documents = mongoTemplate.getCollection(<span class="string">"test"</span>).find();</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (Document document : documents)&#123;</span><br><span class="line">    System.out.println(document);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p>集群搭建</p>
+</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">数据库</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/05/15/MD/数据库相关/非关系型数据库/Mongodb/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-MD/数据库相关/非关系型数据库/Redis" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/05/15/MD/数据库相关/非关系型数据库/Redis/">Redis</a>
+    </h1>
+  
+
+        
+        <a href="/2019/05/15/MD/数据库相关/非关系型数据库/Redis/" class="archive-article-date">
+  	<time datetime="2019-05-14T23:04:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-15</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="什么是Redis"><a href="#什么是Redis" class="headerlink" title="什么是Redis"></a>什么是Redis</h2><ul>
+<li>redis是一个开源的基于内存的KV型数据库。通常用来作为数据库，缓存，或者是消息中间件进行使用，它支持的数据类型有String，hash，list，set，zset</li>
+</ul>
+<h2 id="为什么使用Redis"><a href="#为什么使用Redis" class="headerlink" title="为什么使用Redis"></a>为什么使用Redis</h2><ul>
+<li>redis可以提供在少数（100以内）连接时12W的QPS,在多数链接（6W）时5W的QPS高性能。同时redis本身在集群模式下可以保证数据的一致性，以及本身对事物的支持和对发布订阅模式的支持可以应用于更多的业务场景。</li>
+</ul>
+<h2 id="怎么使用Redis"><a href="#怎么使用Redis" class="headerlink" title="怎么使用Redis"></a>怎么使用Redis</h2><ul>
+<li><p>安装</p>
+<ul>
+<li><p>单机</p>
+<ol>
+<li><a href="https://redis.io/download" target="_blank" rel="noopener">下载</a></li>
+<li>解压 tar -xvf redis-*.tar.gz</li>
+<li>编译make &amp;make test&amp; make install   PREFIX=dir (如果没有安装gcc会报错，使用 yum install gcc)</li>
+<li>整理：将redis.conf和redis-server,redis-cli复制到指定的目录(/usr/local/redis)</li>
+<li>启动服务：/usr/local/redis/bin/redis-server  /user/local/redis/etc/redis.conf</li>
+<li>登陆：/user/lcoal/redis/bin/redis-cli  -h lcoalhost -p 6379</li>
+</ol>
+</li>
+<li><p>集群</p>
+<ol>
+<li><p>单机安装</p>
+</li>
+<li><p>修改配置文件redis.conf</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#开启集群模式</span><br><span class="line">cluster-enabled yes</span><br><span class="line">#设置配置文件</span><br><span class="line">cluster-config-file nodes9001.conf（9001和port要对应）</span><br><span class="line">#设置节点超时时间</span><br><span class="line">cluster-node-timeout 15000</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装ruby</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">yum install ruby</span><br><span class="line">yum install rubygems</span><br><span class="line">gem install reids</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建集群</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/local/redis-cluster/bin/redis-trib.rb create --replicas 1 192.168.119.131:9001 192.168.119.131:9002 192.168.119.131:9003 192.168.119.131:9004 192.168.119.131:9005 192.168.119.131:9006</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>配置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">#常用</span><br><span class="line"></span><br><span class="line">#是否后台运行</span><br><span class="line">daemonize no</span><br><span class="line">#监听端口</span><br><span class="line">port 6379</span><br><span class="line">#client空闲多少秒自动关闭（0就是不管）</span><br><span class="line">timeout 0</span><br><span class="line">#制定日志文件的位置</span><br><span class="line">logfile &quot;/usr/local/log/redis-log.txt&quot;</span><br><span class="line">#数据库的数量</span><br><span class="line">database 16</span><br><span class="line">#工作目录</span><br><span class="line">dir ./</span><br><span class="line">#指定 redis 只接收来自于该 IP 地址的请求，如果不进行设置，那么将处理所有请求</span><br><span class="line">bind 127.0.0.1</span><br><span class="line"></span><br><span class="line">#持久化配置</span><br><span class="line">#rdb模式</span><br><span class="line">#rdb持久化策略</span><br><span class="line">save [间隔时间] [写入的此时]</span><br><span class="line">#是否压缩快照文件</span><br><span class="line">rdbcompression yes</span><br><span class="line">#设置快照文件名</span><br><span class="line">dbfilename dump.rdb</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#aof模式</span><br><span class="line">#是否开启aof模式</span><br><span class="line">appendonly no</span><br><span class="line">#aof模式下的文件保存名</span><br><span class="line">appendfilename &apos;appendonly.aof&apos;</span><br><span class="line">#aof持久化策略</span><br><span class="line">appendfsync always 每次写入都执行同步</span><br><span class="line">appendfsync everysec 每秒执行一次</span><br><span class="line">apendfsync no  根据系统来进行调度</span><br><span class="line">#aof持久化文件重写规则</span><br><span class="line">auto-aof-rewrite-percentage 100</span><br><span class="line">#设置最小aof文件大小，避免频繁重写</span><br><span class="line">auto-aof-rewrite-min-size 64mb</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>常用命令</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>选择数据库</span><br><span class="line">select [index]</span><br><span class="line"><span class="meta">#</span>查看key</span><br><span class="line">keys *</span><br><span class="line"><span class="meta">#</span>查看集群状态</span><br><span class="line">cluster info</span><br><span class="line">cluster nodes</span><br><span class="line"><span class="meta">#</span>设置过期时间</span><br><span class="line">expire key seconds</span><br><span class="line"><span class="meta">#</span>查看过期时间</span><br><span class="line">ttl key</span><br><span class="line"><span class="meta">#</span>publish/subscribe</span><br><span class="line">publish channelName msg</span><br><span class="line">subscribe channelName </span><br><span class="line"><span class="meta">#</span>string类型</span><br><span class="line">set key value</span><br><span class="line">del key</span><br><span class="line">get key</span><br><span class="line"><span class="meta">#</span>hsah类型</span><br><span class="line">hset key field value</span><br><span class="line">hget key fueld</span><br><span class="line">hkeys key</span><br><span class="line">hdel key field</span><br><span class="line"><span class="meta">#</span>list类型</span><br><span class="line">lpush key value1 [value2]</span><br><span class="line">lpop key</span><br><span class="line">del key</span><br><span class="line">llen ley</span><br><span class="line"><span class="meta">#</span>set类型</span><br><span class="line">sadd key memnber</span><br><span class="line">spop key</span><br><span class="line">smembers key</span><br><span class="line"><span class="meta">#</span>zset类型</span><br><span class="line">zadd key member</span><br><span class="line">zrange key</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="Redis进阶"><a href="#Redis进阶" class="headerlink" title="Redis进阶"></a>Redis进阶</h2><ul>
+<li><p>使用java操作redis</p>
+<ol>
+<li><p>jedis</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//直连</span></span><br><span class="line">Jedis jedis = <span class="keyword">new</span> Jeids(<span class="string">"localhost"</span>);</span><br><span class="line">jedis.set(<span class="string">"mhc"</span>,mhc);</span><br><span class="line">String result = jedis.get(<span class="string">"mhc"</span>);</span><br><span class="line">Pipelined pipelined = jedis.pipelined();</span><br><span class="line">pipelined.set(<span class="string">"aaa"</span>,<span class="string">"aaa"</span>);</span><br><span class="line">pipelined.sync();</span><br><span class="line"></span><br><span class="line"><span class="comment">//连接池</span></span><br><span class="line">JedisPool jedisPool = <span class="keyword">new</span> JedisPool(<span class="string">"localhost"</span>);</span><br><span class="line">Jedis jedis = jedisPool.getResource();</span><br><span class="line"></span><br><span class="line"><span class="comment">//分布式</span></span><br><span class="line">ShardedJedisPool shardedJedisPool = <span class="keyword">new</span> ShardedJedisPool(<span class="keyword">new</span> GenericObjectPoolConfig(),</span><br><span class="line">                Arrays.asList( <span class="keyword">new</span> JedisShardInfo[]&#123;<span class="keyword">new</span> JedisShardInfo(host)&#125; ));</span><br><span class="line">        ShardedJedis shardedJedis = shardedJedisPool.getResource();</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>spring-data-redis</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ClassPathXmlApplicationContext context = <span class="keyword">new</span> ClassPathXmlApplicationContext(<span class="string">"applicationContext.xml"</span>);</span><br><span class="line">RedisTemplate template = context.getBean(RedisTemplate.class);</span><br><span class="line">template.opsForValue().set(<span class="string">"wyl"</span>,<span class="string">"wyl"</span>);</span><br><span class="line">Object wyl = template.opsForValue().get(<span class="string">"wyl"</span>);</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+<li><p>缓存应用遇到的问题</p>
+<ol>
+<li><p>缓存穿透</p>
+<ul>
+<li>缓存穿透是指查询一个一定不存在的数据，这样会导致这个不存在的数据每次都要去存储层查询，当流量大时，DB可能就会宕机。一般常见的解决方案为采用布隆过滤器，将所有可能存在的数据hash到一个足够大的bitmap中，一个不存在的数据会被bitmap过滤掉，这样就可以降低压力。也可以将返回的空数据进行缓存也可以解决。</li>
+</ul>
+</li>
+<li><p>缓存击穿</p>
+<ul>
+<li>缓存击穿是指当一个数据失效的时候，有大量并发的请求来请求，这样或导致大量并发的请求落到数据库上，可能会导致数据库宕机。这个时候一般采用的是互斥锁方案。在发现缓存失效后，如果要访问DB需要先获得锁，这样在没有获得锁的时候进行等待即可。redis的key不能重复就可以作为互斥的锁的实现基础。</li>
+</ul>
+</li>
+<li><p>缓存雪崩</p>
+<ul>
+<li>缓存雪崩是指当缓存的失效时间在同一个时间点失效，会导致下一次的请求无法命中而直接访问数据库从而导致DB宕机。可以在设置失效时间的时间加上随机值来处理这种情况。</li>
+</ul>
+</li>
+<li><p>缓存更新</p>
+<ul>
+<li>缓存更新是指缓存中的数据失效后需要更新的场景，这个时候一般可以采用在DB中存储完成后，删除缓存中的数据或者是设置失效时间，对于并发比较高的场景可以采用异步队列将更新数据放到消息队列中进行消费。</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">数据库</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/05/15/MD/数据库相关/非关系型数据库/Redis/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-MD/框架使用/消息中间件框架/Kafka" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/05/13/MD/框架使用/消息中间件框架/Kafka/">Kafka</a>
+    </h1>
+  
+
+        
+        <a href="/2019/05/13/MD/框架使用/消息中间件框架/Kafka/" class="archive-article-date">
+  	<time datetime="2019-05-12T23:04:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-13</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="什么是kafka"><a href="#什么是kafka" class="headerlink" title="什么是kafka"></a>什么是kafka</h2><ul>
+<li>kafka是一个分布式流媒体平台，它具有发布订阅记录流，类似于消息队列或企业消息传递系统。以容错的持久方式存储记录流。记录发生时处理流。</li>
+</ul>
+<h2 id="为什么使用kafka"><a href="#为什么使用kafka" class="headerlink" title="为什么使用kafka"></a>为什么使用kafka</h2><ul>
+<li>高性能，相比ActiveMQ来说性能可以提高5-10倍，并且特殊的存储机制可以保证高容错性。以及消息持久存储的便利性。</li>
+</ul>
+<h2 id="怎么使用kafka"><a href="#怎么使用kafka" class="headerlink" title="怎么使用kafka"></a>怎么使用kafka</h2><ul>
+<li><p>安装</p>
+<ol>
+<li><p><a href="https://www.apache.org/dyn/closer.cgi?path=/kafka/2.1.0/kafka_2.11-2.1.0.tgz" target="_blank" rel="noopener">下载</a></p>
+</li>
+<li><p>解压 : tar -xzvf kafka_2.11.tgz</p>
+</li>
+<li><p>配置 : </p>
+<ul>
+<li><p>修改/config/server.properties</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">broker.id=0  //节点id</span><br><span class="line">listeners=PLAINTEXT://:9092    //监听端口</span><br><span class="line">advertised.listeners=PLAINTEXT://114.116.67.84:9092     //绑定地址</span><br><span class="line">zookeeper.connect=localhost:2181   //zk地址</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>启动</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>启动服务</span><br><span class="line">sh kafka-server-start.sh /config/dir</span><br><span class="line"><span class="meta">#</span>创建topic</span><br><span class="line">sh kafka--topic.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic test</span><br><span class="line"><span class="meta">#</span>查看topic</span><br><span class="line">sh kafka-topics.sh --list --zookeeper localhost:2181</span><br><span class="line"><span class="meta">#</span>控制台生产者</span><br><span class="line">sh kafka-console-producer.sh --broker-list localhost:9092 --topic test</span><br><span class="line"><span class="meta">#</span>控制台消费者</span><br><span class="line">sh kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic test --from-beginning</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+<li><p>kafka核心概念</p>
+<ul>
+<li><p>topic</p>
+<ul>
+<li><p>topic对于kafka是一个逻辑分区，其实在硬盘上存储的是将topic分别存储在partition中，数据真实存储的地方是partition中,数据的存储流程大致为：</p>
+<ol>
+<li>生产者发送数据到kafka</li>
+<li>kafka接收到消息后，根据路由策略将选择消息存储在哪个partition中</li>
+<li>确定后将数据追加到指定partition后完成存储</li>
+</ol>
+<p><img src="http://kafka.apache.org/20/images/log_anatomy.png" alt="topic"></p>
+</li>
+</ul>
+</li>
+<li><p>partition</p>
+<ul>
+<li><p>partition是kafka存储数据的真正位置，也是kafka高性能的秘密之一。为了克服磁盘io的瓶颈，kafka通过顺序写的操作来提高数据的写入速率，因此partition的写入方式就是追加顺序写。通过记录offset来确定消费的消息</p>
+<p>​    <img src="http://kafka.apache.org/20/images/log_consumer.png" alt="partition"></p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>java API操作</p>
+<ol>
+<li><p>provider</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">Map&lt;String, Object&gt; configs = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line"><span class="comment">//设置brokerlist</span></span><br><span class="line">configs.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG,<span class="string">"114.116.67.84:9092"</span>);</span><br><span class="line"><span class="comment">//设置keyvalue的序列化方式</span></span><br><span class="line">configs.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());</span><br><span class="line">configs.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());</span><br><span class="line"><span class="comment">//设置ack。0代表不用等到leader返回ack，1代表会等待leader返回ack，-1代表等到所有的broker同步到消息后才返回ack</span></span><br><span class="line">configs.put(ProducerConfig.ACKS_CONFIG, <span class="string">"all"</span>);</span><br><span class="line"><span class="comment">//设置clientid</span></span><br><span class="line">configs.put(ProducerConfig.CLIENT_ID_CONFIG,<span class="string">"productor1"</span>);</span><br><span class="line"><span class="comment">//设置batchsize</span></span><br><span class="line">configs.put(ProducerConfig.BATCH_SIZE_CONFIG,<span class="string">"1"</span>);</span><br><span class="line"><span class="comment">//设置延迟</span></span><br><span class="line">configs.put(ProducerConfig.LINGER_MS_CONFIG,<span class="string">"1"</span>);</span><br><span class="line"><span class="comment">//设置buffer大小</span></span><br><span class="line">configs.put(ProducerConfig.BUFFER_MEMORY_CONFIG,<span class="string">"10240"</span>);</span><br><span class="line"><span class="comment">//设置请求和发送的超时时间</span></span><br><span class="line">configs.put(ProducerConfig.REQUEST_TIMEOUT_MS_CONFIG,<span class="string">"20000"</span>);</span><br><span class="line">configs.put(ProducerConfig.DELIVERY_TIMEOUT_MS_CONFIG,<span class="string">"30000"</span>);</span><br><span class="line">KafkaProducer producer = <span class="keyword">new</span> KafkaProducer(configs);</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">10</span>;i++) &#123;</span><br><span class="line">    String result = UUID.randomUUID().toString();</span><br><span class="line">    String topic = <span class="string">"test"</span>;</span><br><span class="line">    <span class="comment">//ProducerRecord对象有多种构造方式，可以根据需要选择</span></span><br><span class="line">    producer.send(<span class="keyword">new</span> ProducerRecord(topic,result));</span><br><span class="line">    System.out.println(<span class="string">"send message : "</span>+ result + <span class="string">",to TOPIC ： "</span> + topic );</span><br><span class="line">    TimeUnit.SECONDS.sleep(<span class="number">2</span>);</span><br><span class="line">&#125;</span><br><span class="line">producer.close();</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>consumer</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">Properties config = <span class="keyword">new</span> Properties();</span><br><span class="line"><span class="comment">//设置brokerlist</span></span><br><span class="line">config.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG,<span class="string">"114.116.67.84:9092"</span>);</span><br><span class="line"><span class="comment">//设置反序列化配置</span></span><br><span class="line">config.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class.getName());</span><br><span class="line">config.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG,StringDeserializer.class.getName());</span><br><span class="line"><span class="comment">//设置groupid</span></span><br><span class="line">config.put(ConsumerConfig.GROUP_ID_CONFIG,<span class="string">"consumer1"</span>);</span><br><span class="line"><span class="comment">//设置是否自动提交</span></span><br><span class="line">config.put(ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG,<span class="string">"true"</span>);</span><br><span class="line"><span class="comment">//设置自动提交的时间配置</span></span><br><span class="line">config.put(ConsumerConfig.AUTO_COMMIT_INTERVAL_MS_CONFIG,<span class="string">"100"</span>);</span><br><span class="line">KafkaConsumer consumer = <span class="keyword">new</span> KafkaConsumer(config);</span><br><span class="line">consumer.subscribe(Arrays.asList(<span class="string">"test"</span>));</span><br><span class="line">ConsumerRecords&lt;String,String&gt; consumerRecords = consumer.poll(Duration.ofDays(<span class="number">1</span>));</span><br><span class="line"><span class="keyword">for</span> (ConsumerRecord&lt;String,String&gt; record : consumerRecords)&#123;</span><br><span class="line">    System.out.println(<span class="string">"recive data key: "</span> + record.key()+<span class="string">",value:"</span> + record.value());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>adminCli</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Properties config = <span class="keyword">new</span> Properties();</span><br><span class="line"><span class="comment">//设置brokerlist</span></span><br><span class="line">config.put(AdminClientConfig.BOOTSTRAP_SERVERS_CONFIG,<span class="string">"192.168.0.185:9092"</span>);</span><br><span class="line"><span class="comment">//设置clientid</span></span><br><span class="line">config.put(AdminClientConfig.CLIENT_ID_CONFIG,<span class="string">"adminClient1"</span>);</span><br><span class="line">AdminClient adminClient = AdminClient.create(config);</span><br><span class="line"><span class="comment">//创建topic</span></span><br><span class="line">adminClient.createTopics(Arrays.asList(<span class="keyword">new</span> NewTopic(<span class="string">"topic1"</span>, <span class="number">4</span>, (<span class="keyword">short</span>) <span class="number">1</span>)));</span><br><span class="line"><span class="comment">//删除topic</span></span><br><span class="line">adminClient.deleteTopics(Arrays.asList(<span class="string">"topic1"</span>));</span><br><span class="line"><span class="comment">//获得topic列表</span></span><br><span class="line">Set&lt;String&gt; topics = adminClient.listTopics().names().get();</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+</ul>
+<h2 id="kafka进阶"><a href="#kafka进阶" class="headerlink" title="kafka进阶"></a>kafka进阶</h2><ul>
+<li>connect</li>
+<li>stream</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">框架</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/05/13/MD/框架使用/消息中间件框架/Kafka/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-MD/框架使用/微服务架构/Springboot" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/05/13/MD/框架使用/微服务架构/Springboot/">SpringBoot</a>
+    </h1>
+  
+
+        
+        <a href="/2019/05/13/MD/框架使用/微服务架构/Springboot/" class="archive-article-date">
+  	<time datetime="2019-05-12T23:04:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-13</time>
 </a>
         
       </header>
@@ -723,11 +955,22 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">框架</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/05/19/Springboot/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/05/13/MD/框架使用/微服务架构/Springboot/">展开全文 >></a>
         </p>
       
 
@@ -877,6 +1120,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">JVM</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -1031,10 +1285,6 @@
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
         		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">SQL</a>
-        		</li>
       		
 		</ul>
 	</div>
@@ -1073,117 +1323,114 @@
 
 
   
-    <article id="post-README - 副本" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-MD/框架使用/持久层框架/hibernate" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/31/README - 副本/">Java 知识点，持续迭代中。</a>
+      <a class="article-title" href="/2019/05/12/MD/框架使用/持久层框架/hibernate/">Hiberante框架</a>
     </h1>
   
 
         
-        <a href="/2018/07/31/README - 副本/" class="archive-article-date">
-  	<time datetime="2018-07-30T23:04:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-31</time>
+        <a href="/2019/05/12/MD/框架使用/持久层框架/hibernate/" class="archive-article-date">
+  	<time datetime="2019-05-11T23:04:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-12</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <hr>
-<h1 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h1><ol>
-<li><a href="./MD/设计模式/单例模式.md">单例模式</a></li>
-<li><a href="./MD/设计模式/工厂模式.md">工厂模式</a></li>
-<li><a href="./MD/设计模式/适配器模式.md">适配器模式</a></li>
-<li><a href="./MD/设计模式/装饰模式.md">装饰模式</a></li>
-<li><a href="./MD/设计模式/代理模式.md">代理模式</a></li>
-<li><a href="./MD/设计模式/模板模式.md">模板模式</a></li>
-<li><a href="./MD/设计模式/策略模式.md">策略模式</a></li>
-<li><a href="./MD/设计模式/观察者模式.md">观察者模式</a></li>
-<li><a href="./MD/设计模式/责任链模式.md">责任链模式</a></li>
-<li><a href="./MD/设计模式/委派模式.md">委派模式</a></li>
+        <h2 id="什么是Hibernate"><a href="#什么是Hibernate" class="headerlink" title="什么是Hibernate"></a>什么是Hibernate</h2><ul>
+<li>Hibernate是一款优秀的持久层ORM框架，所谓的oRM(Object relational Mapping)意思是对象关系映射,这种框架将程序中的实体类和数据库中表对应其来。其中每个表中的一个Row代表一个实体。在程序中通过操作实体类，来完成对数据的操作。其框架底层还是根据配置文件将实体和数据库表对应起来。在用户操作对象之后根据这种对应在数据库中进行对应的修改。</li>
+</ul>
+<h2 id="为什么使用Hibernate"><a href="#为什么使用Hibernate" class="headerlink" title="为什么使用Hibernate"></a>为什么使用Hibernate</h2><ul>
+<li>在持久层的开发过程中，因为使用原生JDBC太过繁琐（每次都要进行加载驱动，获得链接，编写statement，解析result，封装数据），导致开发速度缓慢。虽然在后来也有对应简化方法，比如使用数据库连接池，使用dbUtils等方法，但是都不尽人意。这个时候出现了自动化的ORM框架。在ORM框架中通过操作对象来完成对数据的操作。框架底层屏蔽了具体的实现过程，不需要开发人员编写sql，以及大量重复的工作。这样极大的提高了开发效率。并且使用ORM框架对于后台人员而言，降低了开发门槛，减少了数据库方面的知识要求。因此在开发过程中使用Hibernate可以为后台程序部分带来更快的开发速度，特别是在和spring-data-jpa整合之后更是方便开发。但是这款优秀的框架也有不足之处，因为框架底层进行了大量的封装，导致在项目开发后期出现问题的时候追踪问题，以及进行对应优化的时候也有很大的难度。因此在追求速度与更好控制的场景下，建议使用Mybatis来作为持久层框架。</li>
+</ul>
+<h2 id="怎么使用Hibernate"><a href="#怎么使用Hibernate" class="headerlink" title="怎么使用Hibernate"></a>怎么使用Hibernate</h2><ul>
+<li><p>单独使用</p>
+<ol>
+<li><p>建立普通maven工程，导入对应hibernate依赖</p>
+</li>
+<li><p>建立对应的数据表和实体类</p>
+</li>
+<li><p>编写实体类和对应表的映射配置文件XXX.hbm.xml</p>
+ <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">hibernate-mapping</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">class</span> <span class="attr">name</span>=<span class="string">""</span> <span class="attr">table</span>=<span class="string">""</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">id</span> <span class="attr">name</span>=<span class="string">""</span> <span class="attr">colum</span>=<span class="string">""</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">generator</span> <span class="attr">class</span>=<span class="string">"uuid"</span>&gt;</span><span class="tag">&lt;/<span class="name">generator</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">""</span> <span class="attr">type</span>=<span class="string">""</span> <span class="attr">colum</span>=<span class="string">""</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">class</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">hibernate-mapping</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>编写hibernate.cfg.xml主配置文件</p>
+ <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">hibernate-configuration</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">session-factory</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"connection.url"</span>&gt;</span>jdbc:mysql://localhost:3306/mysql<span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"connection.username"</span>&gt;</span>root<span class="tag">&lt;/<span class="name">property</span>&gt;</span> </span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"connection.password"</span>&gt;</span>ddd<span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"connection.driver_class"</span>&gt;</span>com.mysql.jdbc.Driver<span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"show_sql"</span>&gt;</span>true<span class="tag">&lt;/<span class="name">property</span>&gt;</span> </span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"format_sql"</span>&gt;</span>true<span class="tag">&lt;/<span class="name">property</span>&gt;</span>  </span><br><span class="line">        <span class="tag">&lt;<span class="name">mapping</span> <span class="attr">resource</span>=<span class="string">"entity/CourseSelectUser.hbm.xml"</span> /&gt;</span>   </span><br><span class="line">    <span class="tag">&lt;/<span class="name">session-factory</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">hibernate-configuration</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建configuration，并根据configuration创建sessionFactory再创建session.根据session进行对应的操作</p>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestHbernate</span></span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line"></span><br><span class="line">		User user = <span class="keyword">new</span> User();</span><br><span class="line"></span><br><span class="line">		Configuration configuration = <span class="keyword">new</span> Configuration();</span><br><span class="line">       		 configuration.configure();</span><br><span class="line">        	SessionFactory factory = configuration.buildSessionFactory();</span><br><span class="line">        	Session session = factory.openSession();</span><br><span class="line">        	Transaction transaction = session.getTransaction();</span><br><span class="line">        	transaction.begin();</span><br><span class="line">        	session.save(user);</span><br><span class="line">        	transaction.commit();</span><br><span class="line">        	session.close();</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
 </ol>
-<h1 id="源码分析"><a href="#源码分析" class="headerlink" title="源码分析"></a>源码分析</h1><ol>
-<li><a href="./MD/源码分析/JDK集合源码.md">JDK 集合源码</a></li>
-<li><a href="./MD/源码分析/Spring框架源码.md">Spring 框架源码</a></li>
-<li><a href="./MD/源码分析/SpringMVC框架源码.md">SpringMVC 源码分析</a></li>
-<li><a href="./MD/源码分析/Mybatis框架源码.md">MyBatis 源码分析</a></li>
-<li><a href="./MD/源码分析/JDK线程相关源码.md">JDK 线程相关源码</a></li>
+</li>
+<li><p>整合spring-data-jpa</p>
+<ol>
+<li><p>编写对应的实体类在实体类上添加@Entity,@Table,@Id,@GenerateValue,@Column,@Temporal注解进行映射配置</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Entity</span></span><br><span class="line"><span class="meta">@Table</span>(name=<span class="string">"tb_user"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@Id</span></span><br><span class="line">    <span class="meta">@GeneratedValue</span>(strategy=Generation.AUTO)</span><br><span class="line">    <span class="meta">@Column</span>(name=<span class="string">"userId"</span>)</span><br><span class="line">    <span class="keyword">private</span> Integer userId;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@Temporal</span>(TemporalType.TIME)   <span class="comment">//时间类字段的标注方式</span></span><br><span class="line">    <span class="keyword">private</span> Date time;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@Column</span>(name=<span class="string">"userNaem"</span>)</span><br><span class="line">    <span class="keyword">private</span> String userName;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@Column</span>(name=<span class="string">"password"</span>)</span><br><span class="line">    <span class="keyword">private</span> String password;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>编写接口继承对应的Repository接口，并添加上@Repository注解。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Repository</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">UserRepository</span> <span class="title">extend</span> <span class="title">JpaRepository</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在使用的地方注入这个接口，可以直接根据对应的方法命名规则进行调用。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Autowired</span></span><br><span class="line"><span class="keyword">private</span> UserRepository userRepository;</span><br></pre></td></tr></table></figure>
+</li>
 </ol>
-<h1 id="框架使用"><a href="#框架使用" class="headerlink" title="框架使用"></a>框架使用</h1><ol>
-<li><p><a href="./MD/框架使用/web层框架">web 层框架</a></p>
+</li>
+</ul>
+<h2 id="Hibernate进阶"><a href="#Hibernate进阶" class="headerlink" title="Hibernate进阶"></a>Hibernate进阶</h2><ul>
+<li><p>多表关联和级联操作</p>
 <ul>
-<li><a href="./MD/框架使用/web层框架/springMVC.md">Spring MVC</a></li>
-<li>Webflux</li>
-</ul>
-</li>
-<li><p><a href="./MD/框架使用/持久层框架">持久层框架</a></p>
+<li><p>一对多关联</p>
 <ul>
-<li><a href="./MD/框架使用/持久层框架/hibernate.md">Hibernate</a></li>
-<li><a href="./MD/框架使用/持久层框架/mybatis.md">Mybits</a></li>
+<li>在创建对应的实体类的时候，在对应的实体中添加另外一个实体类的引用或者集合的引用</li>
+<li>在这些引用上面添加对应的@OneToMany(targetEntity=XX.class,mappedBy=”user”)和@ManyToOne(targetEntity=XX.class)注解，并且在一的一方放弃主键维护权</li>
+<li>在多的一方的引用上添加@JoinColum(name=”userId”)指定关联的外键</li>
+<li>在两方的对应引用上添加@Cascade(CascadeType.ALL)注解，进行级联操作</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Entity</span></span><br><span class="line"><span class="meta">@Table</span>(name=<span class="string">"tb_user"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span></span>&#123;</span><br><span class="line">    <span class="meta">@Id</span></span><br><span class="line">    <span class="meta">@GeneratedValue</span>(strategy=GenerationType.AUTO)</span><br><span class="line">    <span class="meta">@Column</span>(name=<span class="string">"userId"</span>)</span><br><span class="line">    <span class="keyword">private</span> Integer userId;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">	<span class="meta">@OneToMany</span>(targetEntity=Order.class,mappedBy=<span class="string">"user"</span>)</span><br><span class="line">	<span class="meta">@Cascade</span>(CascadeType.ALL)</span><br><span class="line">	<span class="keyword">private</span> Collection&lt;Order&gt; orders = <span class="keyword">new</span> ArrayList&lt;Order&gt;();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//----------------------------------------------------------------</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@Entity</span></span><br><span class="line"><span class="meta">@Table</span>(name=<span class="string">"tb_order"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Order</span></span>&#123;</span><br><span class="line">    <span class="meta">@Id</span></span><br><span class="line">    <span class="meta">@GeneratedValue</span>(strategy=<span class="string">"uuid"</span>)</span><br><span class="line">    <span class="meta">@GenericGenerator</span>(name=<span class="string">"uuid"</span>,strategy=<span class="string">"uuid"</span>)</span><br><span class="line">    <span class="meta">@Column</span>(name=<span class="string">"orderId"</span>)</span><br><span class="line">    <span class="keyword">private</span> String orderId;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@ManyToOne</span>(targetEntity=User.class)</span><br><span class="line">    <span class="meta">@JoinColumn</span>(name=<span class="string">"userId"</span>)</span><br><span class="line">    <span class="meta">@Cascade</span>(CascadeType.SAVE_UPDATE)</span><br><span class="line">    <span class="meta">@JsonIgnore</span></span><br><span class="line">    <span class="keyword">private</span> User user;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
 </li>
-<li><p><a href="./MD/框架使用/消息中间件框架">消息中间件框架</a></p>
+<li><p>级联查询死循环处理办法</p>
 <ul>
-<li><a href="./MD/框架使用/消息中间件框架/ActiveMQ.md">ActiveMQ</a></li>
-<li><a href="./MD/框架使用/消息中间件框架/Kafka.md">kafka</a></li>
+<li>在对应的多的一方，打上忽略序列化的注解@JasonIgnore，或者在一的一方的引用上添加@Transient注解进行忽略</li>
 </ul>
 </li>
-<li><p><a href="./MD/框架使用/全文搜索引擎">全文搜索引擎</a></p>
+<li><p>复杂条件查询</p>
 <ul>
-<li><a href="./MD/框架使用/全文搜索引擎/ElasticSearch.md">ElasticSearch</a></li>
+<li>在持久层接口中，继承JpaSpecificationExecutor<t>接口</t></li>
+<li>这个接口可以提供findAll(Specification<t>)复杂条件查询方法</t></li>
+<li>在serviceImpl里面可以调用这些方法，通过实现一个Specification接口，重写其中的toPredicate(root,query,cb)方法</li>
+<li>使用cb.like();cb.equal(“字段”，“值”)等来实现业务条件。</li>
+<li>字段通过root.get(“字段名”).as(类型.class)————-&gt;(在多表关联查询的时候，可以使用get(“对象的引用”).get(“新的字段名”))</li>
+<li>值通过对象.getXXX()获得,———&gt;()</li>
+<li>最后通过cb.and(Predicate… predicates)或者cb.or()来吧条件组装起来</li>
 </ul>
 </li>
-<li><p><a href="./MD/框架使用/微服务架构">微服务架构</a></p>
+<li><p>分页查询及实体封装</p>
 <ul>
-<li><a href="./MD/框架使用/微服务架构/Springboot.md">Spring Boot</a></li>
-<li>Spring Cloud</li>
+<li>在pagingAndStoreRepository接口中对简单的分页查询进行了封装，可以使用指定的方法find All(PageAble)进行查询</li>
+<li>在service层将请求的页数和每页显示数封装成PageRequest对象，使用PageRequest.of(pageIndex,size)创建</li>
+<li>在调用对应方法后会返回一个Page对象，通过这个对象可以获得当前页数据(getContent())，总分页数(getTotalPages())，总记录数(getTotalElements())</li>
 </ul>
 </li>
-</ol>
-<h1 id="开发语言"><a href="#开发语言" class="headerlink" title="开发语言"></a>开发语言</h1><ol>
-<li><a href="./MD/Java语言">Java</a><ul>
-<li><a href="./MD/Java语言/JavaSE">JavaSE</a>    </li>
-<li>JavaEE</li>
+<li><p>自定义sql</p>
+<ul>
+<li>在repository的接口的对应方法上添加注解@Query(value=“HQL”)和@Modify</li>
+<li>编写HQL的时候，和sql一样但是省略select *。从from开始写。<ul>
+<li>例子：from  实体名  where  userId = ： userId<ul>
+<li>参数传递，通过在方法形参上添加@Param（“parameter”）,然后在HQL中通过：parameter来进行引用</li>
 </ul>
 </li>
-<li><a href="./MD/Java语言/SQL/SQL.md">SQL</a></li>
-<li>Go</li>
-</ol>
-<h1 id="数据库相关"><a href="#数据库相关" class="headerlink" title="数据库相关"></a>数据库相关</h1><ul>
-<li><a href="./MD/数据库相关/关系型数据库">关系型数据库</a><ol>
-<li><a href="./MD/数据库相关/关系型数据库/MySql.md">MySql</a></li>
-</ol>
-</li>
-<li><a href="./MD/数据库相关/非关系型数据库">非关系型数据库</a><ol>
-<li><a href="./MD/数据库相关/非关系型数据库/Redis.md">Redis</a></li>
-<li><a href="./MD/数据库相关/非关系型数据库/Mongodb.md">Mongodb</a></li>
-</ol>
+</ul>
 </li>
 </ul>
-<h1 id="计算机基础"><a href="#计算机基础" class="headerlink" title="计算机基础"></a>计算机基础</h1><ol>
-<li><a href="./MD/计算机基础/计算机网络.md">计算机网络</a> </li>
-<li>数据结构及算法</li>
-<li>计算机组成  </li>
-<li>计算机操作系统  </li>
-</ol>
-<h1 id="Tools"><a href="#Tools" class="headerlink" title="Tools"></a>Tools</h1><ul>
-<li><a href="./MD/Tools/IDEA.md">IDEA</a></li>
-<li><a href="./MD/Tools/Maven.md">Maven</a></li>
-<li><a href="./MD/Tools/Git.md">Git</a></li>
-<li><a href="./MD/Tools/Nginx.md">Nginx</a></li>
+</li>
 </ul>
-<h1 id="杂谈"><a href="#杂谈" class="headerlink" title="杂谈"></a>杂谈</h1><ol>
-<li><a href="./MD/杂谈/从架构演变到展望未来.md">从架构演变到展望未来</a></li>
-<li><a href="./MD/杂谈/从Synchronized到cas.md">从Synchronized 到 cas </a></li>
-<li><a href="./MD/杂谈/从数据一致性到zab协议.md">从数据一致性到zab协议</a></li>
-<li>从 Spring 自动组装到 SpringBoot</li>
-<li><a href="./MD/杂谈/从Jvm内存模型到调优.md">从 Jvm 内存模型到调优</a></li>
-<li><a href="./MD/杂谈/从索引到MySql调优.md">从索引到 MySql 调优</a></li>
-</ol>
 
       
 
@@ -1192,11 +1439,22 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">框架</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/07/31/README - 副本/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/05/12/MD/框架使用/持久层框架/hibernate/">展开全文 >></a>
         </p>
       
 
@@ -1226,6 +1484,224 @@
 
 
   
+    <article id="post-MD/框架使用/消息中间件框架/ActiveMQ" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/05/12/MD/框架使用/消息中间件框架/ActiveMQ/">ActiveMQ</a>
+    </h1>
+  
+
+        
+        <a href="/2019/05/12/MD/框架使用/消息中间件框架/ActiveMQ/" class="archive-article-date">
+  	<time datetime="2019-05-11T23:04:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-12</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="什么是ActiveMQ"><a href="#什么是ActiveMQ" class="headerlink" title="什么是ActiveMQ"></a>什么是ActiveMQ</h2><ul>
+<li>ActiveMQ是消息中间件的一种，所谓的消息中间件就是提供一种类似于异步解耦的作用在系统中，主要核心通过三部分来组成：生产者，消费者，消息。生产者来生产消息并发送到对应的队列或者是topic中，然后消费者在对应的队列或者是topic中进行消费。</li>
+</ul>
+<h2 id="为什么使用ActiveMQ"><a href="#为什么使用ActiveMQ" class="headerlink" title="为什么使用ActiveMQ"></a>为什么使用ActiveMQ</h2><ul>
+<li>ActiveMQ作为apache下的一个开源项目，不仅提供了一个高性能的MQ中间件，而且该中间件还支持跨语言（Java,C,C++,C#,Python,PHP）。另外一个选择它的理由是ActiveMQ完全支持JMS,这样在使用的时候提供了极大的便利。</li>
+</ul>
+<h2 id="怎么使用ActiveMQ"><a href="#怎么使用ActiveMQ" class="headerlink" title="怎么使用ActiveMQ"></a>怎么使用ActiveMQ</h2><ul>
+<li><p>安装ActiveMQ</p>
+<ol>
+<li><a href="http://activemq.apache.org/download-archives.html" target="_blank" rel="noopener">下载</a></li>
+<li>安装，解压下载的tar包</li>
+<li>运行 直接运行activemq/bin/activemq脚本</li>
+<li>访问控制台localhost:8161</li>
+</ol>
+</li>
+<li><p>集群模式</p>
+<ul>
+<li><p>高性能解决方案(networkconnection)</p>
+<ol>
+<li><p>修改activeMQ.xml</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">networkConnectors</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- by default just auto discover the other brokers --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">networkConnector</span> <span class="attr">name</span>=<span class="string">"default-nc"</span> <span class="attr">uri</span>=<span class="string">"multicast://default"</span>/&gt;</span> //动态链接</span><br><span class="line">    <span class="comment">&lt;!-- Example of a static configuration:      //静态链接</span></span><br><span class="line"><span class="comment">            &lt;networkConnector name="host1 and host2" uri="static://(tcp://host1:61616,tcp://host2:61616)"/&gt;</span></span><br><span class="line"><span class="comment">            --&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">networkConnectors</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>重启服务</p>
+<ul>
+<li>这个时候不同的broker之间可以共同处理消息，但是有个问题是会出现消息丢失，这个时候就要设置消息回流</li>
+</ul>
+</li>
+<li><p>消息回流</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">policyEntry</span> <span class="attr">queue</span>=<span class="string">"&gt;"</span> <span class="attr">enableAudit</span>=<span class="string">"false"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">networkBridgeFilterFactory</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">conditionalNetworkBridgeFilterFactory</span> <span class="attr">replayWhenNoConsumers</span>=<span class="string">"true"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">networkBridgeFilterFactory</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">policyEntry</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+<li><p>高可用解决方案(zookeeper+levelDB)</p>
+<ol>
+<li><p>修改配置文件</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">persistenceAdapter</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">replicatedLevelDB</span></span></span><br><span class="line"><span class="tag">		<span class="attr">directory</span>=<span class="string">"activemq-data"</span>     //数据存储地址</span></span><br><span class="line"><span class="tag">        <span class="attr">replicas</span>=<span class="string">"3"</span>				//集群中至少有<span class="attr">replicas</span>/<span class="attr">2</span> +<span class="attr">1</span> 台机器存活</span></span><br><span class="line"><span class="tag">        <span class="attr">bind</span>=<span class="string">"tcp://0.0.0.0:0"</span>		//相互通讯的</span></span><br><span class="line"><span class="tag">        <span class="attr">zkAddress</span>=<span class="string">"zoo1.example.org:2181,zoo2.example.org:2181,zoo3.example.org:2181"</span> //<span class="attr">zk</span></span></span><br><span class="line"><span class="tag">        <span class="attr">zkPassword</span>=<span class="string">"password"</span>     //<span class="attr">zk</span>密码</span></span><br><span class="line"><span class="tag">        <span class="attr">zkPath</span>=<span class="string">"/activemq/leveldb-stores"</span>   //<span class="attr">zk</span>路径</span></span><br><span class="line"><span class="tag">        <span class="attr">hostname</span>=<span class="string">"broker1.example.org"</span>   //<span class="attr">name</span></span></span><br><span class="line"><span class="tag">                       /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">persistenceAdapter</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>原理</p>
+<ul>
+<li>通过在zk上注册临时有序节点，来选择最小的节点作为master对外提供服务，当master宕机之后，重新选举最小的节点对外提供服务</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>JMS操作ActiveMQ</p>
+<ul>
+<li><p>queue模式</p>
+<ul>
+<li><p>生产者</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">String host = <span class="string">"tcp://localhost:61616"</span>;</span><br><span class="line">ActiveMQConnectionFactory connectionFactory = <span class="keyword">new</span> ActiveMQConnectionFactory(host);</span><br><span class="line">Connection connection = connectionFactory.createConnection();</span><br><span class="line">connection.start();</span><br><span class="line">Session session = connection.createSession(<span class="keyword">false</span>, Session.AUTO_ACKNOWLEDGE);</span><br><span class="line">Queue queue = session.createQueue(queueName);</span><br><span class="line">MessageProducer producer = session.createProducer(queue);</span><br><span class="line">String message = <span class="string">"hello ActiveMQ"</span> + UUID.randomUUID().toString();</span><br><span class="line">System.out.println(<span class="string">"send message:"</span> + message);</span><br><span class="line">producer.send(session.createTextMessage(message));</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>消费者</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">String host = <span class="string">"tcp://localhost:61616"</span>;</span><br><span class="line">ActiveMQConnectionFactory connectionFactory = <span class="keyword">new</span> ActiveMQConnectionFactory(host);</span><br><span class="line">Connection connection = connectionFactory.createConnection();</span><br><span class="line">connection.start();</span><br><span class="line">Session session = connection.createSession(<span class="keyword">false</span>, Session.AUTO_ACKNOWLEDGE);</span><br><span class="line">Queue queue = session.createQueue(queueName);</span><br><span class="line">MessageConsumer consumer = session.createConsumer(queue);</span><br><span class="line">consumer.setMessageListener((message -&gt; &#123;</span><br><span class="line">    System.out.println(message);</span><br><span class="line">&#125;));</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>topic模式</p>
+<ul>
+<li><p>生产者</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">String host = <span class="string">"tcp://localhost:61616"</span>;</span><br><span class="line">ActiveMQConnectionFactory connectionFactory = <span class="keyword">new</span> ActiveMQConnectionFactory(host);</span><br><span class="line">Connection connection = connectionFactory.createConnection();</span><br><span class="line">connection.start();</span><br><span class="line">Session session = connection.createSession(<span class="keyword">false</span>, Session.AUTO_ACKNOWLEDGE);</span><br><span class="line">Topic topic = session.createTopic(topicName);</span><br><span class="line">MessageProducer producer = session.createProducer(topic);</span><br><span class="line">String message = <span class="string">"hello ActiveMQ"</span> + UUID.randomUUID().toString();</span><br><span class="line">System.out.println(<span class="string">"send message:"</span> + message);</span><br><span class="line">producer.send(session.createTextMessage(message));</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>消费者</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">String host = <span class="string">"tcp://localhost:61616"</span>;</span><br><span class="line">ActiveMQConnectionFactory connectionFactory = <span class="keyword">new</span> ActiveMQConnectionFactory(ActiveMQConnection.DEFAULT_USER,ActiveMQConnection.DEFAULT_PASSWORD,host);</span><br><span class="line">Connection connection = connectionFactory.createConnection();</span><br><span class="line">connection.start();</span><br><span class="line">Session session = connection.createSession(<span class="keyword">false</span>, Session.AUTO_ACKNOWLEDGE);</span><br><span class="line">Topic topic = session.createTopic(topicName);</span><br><span class="line">MessageConsumer consumer = session.createConsumer(topic);</span><br><span class="line">consumer.setMessageListener((message -&gt; &#123;</span><br><span class="line">    System.out.println(message);</span><br><span class="line">&#125;));</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="ActiveMQ进阶"><a href="#ActiveMQ进阶" class="headerlink" title="ActiveMQ进阶"></a>ActiveMQ进阶</h2><ul>
+<li><p>ActiveMQ持久化策略</p>
+<ul>
+<li><p>JDBC会将消息持久化到数据库中，将数据存储在三个表中activemq-msgs/acks/lock</p>
+<ul>
+<li><p>在conf/activemq.xml文件中修改</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">beans</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">broker</span> <span class="attr">brokerName</span>=<span class="string">"test-broker"</span> <span class="attr">persistent</span>=<span class="string">"true"</span> <span class="attr">xmlns</span>=<span class="string">"http://activemq.apache.org/schema/core"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">persistenceAdapter</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">jdbcPersistenceAdapter</span> <span class="attr">dataSource</span>=<span class="string">"#mysql-ds"</span> <span class="attr">createTablesOnStartup</span>=<span class="string">"false"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">persistenceAdapter</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">broker</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"mysql-ds"</span> <span class="attr">class</span>=<span class="string">"org.apache.commons.dbcp.BasicDataSource"</span> <span class="attr">destroy-method</span>=<span class="string">"close"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"driverClassName"</span> <span class="attr">value</span>=<span class="string">"com.mysql.jdbc.Driver"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"url"</span> <span class="attr">value</span>=<span class="string">"jdbc:mysql://localhost/activemq?relaxAutoCommit=true"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"username"</span> <span class="attr">value</span>=<span class="string">"activemq"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"password"</span> <span class="attr">value</span>=<span class="string">"activemq"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"maxActive"</span> <span class="attr">value</span>=<span class="string">"200"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"poolPreparedStatements"</span> <span class="attr">value</span>=<span class="string">"true"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">beans</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>AMQ将消息写入到日志文件中</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">persistenceAdapter</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">amqPersistenceAdapter</span> <span class="attr">directory</span>=<span class="string">"$&#123;activemq.data&#125;/activemq-data"</span> <span class="attr">maxFileLength</span>=<span class="string">"32mb"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">persistenceAdapter</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>LevelDB</p>
+<ul>
+<li>集群模式下推荐使用的持久化策略</li>
+</ul>
+</li>
+<li><p>kahaDB</p>
+<ul>
+<li>默认的持久化策略，基于文件系统的</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>ActiveMQ消息签收和分发策略</p>
+<ul>
+<li><p>订阅策略</p>
+<ul>
+<li><p>持久订阅</p>
+<ul>
+<li><p>持久订阅的消费者在，离线状态下也不会丢失这段时间的消息，当消费者再次上线的时候MQ会主动将这段时间的消息进行推送。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">connection.setClientID(<span class="string">"clientId"</span>);  <span class="comment">//首先需要设置id</span></span><br><span class="line">Session session =  connection.createSession();</span><br><span class="line">Topic topic = session.createTopic(<span class="string">"topicName"</span>);</span><br><span class="line"><span class="comment">//设置持久订阅</span></span><br><span class="line">MessageConsumer consumer = session.createDurableSubscriber(topic,<span class="string">"clientId"</span>);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>非持久订阅</p>
+<ul>
+<li><p>非持久订阅的消费者，如果在离线状态下就会丢失这段时间的消息。这是默认的p/s订阅策略</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">connection.setClientID(<span class="string">"clientId"</span>);  <span class="comment">//首先需要设置id</span></span><br><span class="line">Session session =  connection.createSession();</span><br><span class="line">Topic topic = session.createTopic(<span class="string">"topicName"</span>);</span><br><span class="line"><span class="comment">//普通订阅</span></span><br><span class="line">MessageConsumer consumer = session.createConsumer(topic);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>签收策略</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//自动签收，当recive方法结束或者onMessage方法结束的时候就自动签收</span></span><br><span class="line">Session.AUTO_ACKNOWLEDGE;   </span><br><span class="line"><span class="comment">//手动签收，调用message的acknowledge()方法就可以签收当前session消费的数据</span></span><br><span class="line">Session.CLIENT_ACKNOWLEDGE;  </span><br><span class="line"><span class="comment">//批量签收，当接受到一定量数据后可以进行签收</span></span><br><span class="line">Session.DUPS_OK_ACKNOWLEDGE;</span><br><span class="line"><span class="comment">//当事物提交的时候会自动提交</span></span><br><span class="line">Session.SESSION_TRANSACTED;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Ack_Type</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">DELIVERED_ACK_TYPE = <span class="number">0</span>    <span class="comment">//消息"已接收"，但尚未处理结束</span></span><br><span class="line">STANDARD_ACK_TYPE = <span class="number">2</span>    <span class="comment">//"标准"类型,通常表示为消息"处理成功"，broker端可以删除消息了</span></span><br><span class="line">POSION_ACK_TYPE = <span class="number">1</span>    <span class="comment">//消息"错误",通常表示"抛弃"此消息</span></span><br><span class="line">REDELIVERED_ACK_TYPE = <span class="number">3</span>   <span class="comment">// 消息需"重发"</span></span><br><span class="line">INDIVIDUAL_ACK_TYPE = <span class="number">4</span>   <span class="comment">// 表示只确认"单条消息",无论在任何ACK_MODE下    </span></span><br><span class="line">UNMATCHED_ACK_TYPE = <span class="number">5</span>   <span class="comment">// BROKER间转发消息时,接收端"拒绝"消息</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>分发策略</p>
+<ul>
+<li>topic<ol>
+<li>轮询：按照订阅的顺序，依次发送给订阅者，但是会在第二次发送时反转顺序</li>
+<li>有序：按照订阅的顺序进行发送</li>
+<li>权重：根据权重进行发送</li>
+<li>默认：按照订阅者列表的顺序进行发送</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>ActiveMQ事物相关</p>
+<ul>
+<li>可以在创建session的时候指定开启事务，在开启之后需要手动的调用session.commit进行事物的提交。在发生异常的时候及时使用session.rolback进行回滚</li>
+</ul>
+</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">框架</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/05/12/MD/框架使用/消息中间件框架/ActiveMQ/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+  
+    <nav id="page-nav">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+    </nav>
   
 
 
@@ -1323,7 +1799,43 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JVM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">IDEA</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Maven</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">JavaSE</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">SQL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">框架</a>
               </li>
             
             <div class="clearfix"></div>

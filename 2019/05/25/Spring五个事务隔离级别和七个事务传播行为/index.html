@@ -6,19 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://linton6.github.io">
-  <title>Spring五个事务隔离级别和七个事务传播行为 | Linton&#39;s Blog</title>
+  <title>Spring五个事务隔离级别和七个事务传播行为(待续) | Linton&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="脏读，不可重复读，幻读 脏读 : 所谓的脏读，其实就是读到了别的事务回滚前的脏数据。比如事务B执行过程中修改了数据X，在未提交前，事务A读取了X，而事务B却回滚了，这样事务A就形成了脏读   不可重复读 ： 不可重复读字面含义已经很明了了，比如事务A首先读取了一条数据，然后执行逻辑的时候，事务B将这条数据改变了，然后事务A再次读取的时候，发现数据不匹配了，就是所谓的不可重复读了。   幻读 ： 小">
+  <meta name="description" content="脏读，不可重复读，幻读">
+<meta name="keywords" content="Spring">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Spring五个事务隔离级别和七个事务传播行为">
+<meta property="og:title" content="Spring五个事务隔离级别和七个事务传播行为(待续)">
 <meta property="og:url" content="https://linton6.github.io/2019/05/25/Spring五个事务隔离级别和七个事务传播行为/index.html">
 <meta property="og:site_name" content="Linton&#39;s Blog">
-<meta property="og:description" content="脏读，不可重复读，幻读 脏读 : 所谓的脏读，其实就是读到了别的事务回滚前的脏数据。比如事务B执行过程中修改了数据X，在未提交前，事务A读取了X，而事务B却回滚了，这样事务A就形成了脏读   不可重复读 ： 不可重复读字面含义已经很明了了，比如事务A首先读取了一条数据，然后执行逻辑的时候，事务B将这条数据改变了，然后事务A再次读取的时候，发现数据不匹配了，就是所谓的不可重复读了。   幻读 ： 小">
+<meta property="og:description" content="脏读，不可重复读，幻读">
 <meta property="og:locale" content="zh">
-<meta property="og:updated_time" content="2019-05-25T13:13:39.710Z">
+<meta property="og:updated_time" content="2019-05-26T05:48:31.385Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Spring五个事务隔离级别和七个事务传播行为">
-<meta name="twitter:description" content="脏读，不可重复读，幻读 脏读 : 所谓的脏读，其实就是读到了别的事务回滚前的脏数据。比如事务B执行过程中修改了数据X，在未提交前，事务A读取了X，而事务B却回滚了，这样事务A就形成了脏读   不可重复读 ： 不可重复读字面含义已经很明了了，比如事务A首先读取了一条数据，然后执行逻辑的时候，事务B将这条数据改变了，然后事务A再次读取的时候，发现数据不匹配了，就是所谓的不可重复读了。   幻读 ： 小">
+<meta name="twitter:title" content="Spring五个事务隔离级别和七个事务传播行为(待续)">
+<meta name="twitter:description" content="脏读，不可重复读，幻读">
   
     <link rel="alternative" href="/atom.xml" title="Linton&#39;s Blog" type="application/atom+xml">
   
@@ -169,7 +170,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Spring五个事务隔离级别和七个事务传播行为
+      Spring五个事务隔离级别和七个事务传播行为(待续)
     </h1>
   
 
@@ -182,7 +183,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="脏读，不可重复读，幻读"><a href="#脏读，不可重复读，幻读" class="headerlink" title="脏读，不可重复读，幻读"></a>脏读，不可重复读，幻读</h2><ul>
+        <h2 id="脏读，不可重复读，幻读"><a href="#脏读，不可重复读，幻读" class="headerlink" title="脏读，不可重复读，幻读"></a>脏读，不可重复读，幻读</h2><a id="more"></a>
+<ul>
 <li>脏读 :<ul>
 <li>所谓的脏读，其实就是读到了别的事务回滚前的脏数据。比如事务B执行过程中修改了数据X，在未提交前，事务A读取了X，而事务B却回滚了，这样事务A就形成了脏读</li>
 </ul>
@@ -197,73 +199,10 @@
 </ul>
 </li>
 </ul>
-<h2 id="事物的传播级别和隔离级别"><a href="#事物的传播级别和隔离级别" class="headerlink" title="事物的传播级别和隔离级别"></a>事物的传播级别和隔离级别</h2><pre><code> 事务是逻辑处理原子性的保证手段，通过使用事务控制，可以极大的避免出现逻辑处理失败导致的脏数据等问题。
+<h2 id="事物的传播级别和隔离级别"><a href="#事物的传播级别和隔离级别" class="headerlink" title="事物的传播级别和隔离级别"></a>事物的传播级别和隔离级别</h2><pre><code>事务是逻辑处理原子性的保证手段，通过使用事务控制，可以极大的避免出现逻辑处理失败导致的脏数据等问题。
 
-* 事务最重要的两个特性，是事务的传播级别和数据隔离级别。传播级别定义的是事务的控制范围，事务隔离级别定义的是事务在数据库读写方面的控制范围。
-
-* 对象的分配流程
-</code></pre><ul>
-<li>GC<ul>
-<li>如何判断对象已死<ul>
-<li>引用计数：通过计算对象之间的引用数量来判断是否死亡，问题:循环引用</li>
-<li>根节点搜索：通过分析栈和方法区中的数据有没有指向该对象来判断对象是否死亡</li>
-</ul>
-</li>
-<li>常见的GC算法<ul>
-<li>标记清除：标记之后直接及逆行清理，这样会造成大量的碎片空间</li>
-<li>标记整理：为了解决标记清除带来的大量碎片空间问题，采用整理清除完的空间。</li>
-<li>标记复制：大量的对象移动不如复制的效率高。</li>
-</ul>
-</li>
-<li>GC的类型<ul>
-<li>MinorGC：代表新生代进行GC操作</li>
-<li>MajorGC：代表了老年代进行GC操作</li>
-<li>FullGC：上述两种GC的总和</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>垃圾回收器<ul>
-<li>Serlizeable：该种垃圾回收器的特点是采用单线程进行垃圾回收操作，同时在回收期间暂停其他用户线程的操作</li>
-<li>Prepal：该种垃圾回收器的特点是采用多线程进行垃圾回收操作，同时也是在回收期间暂停其他用户线程的操作</li>
-<li>CMS：这种垃圾回收期在标记阶段采用和用户线程并行操作，标记结束后启动多线程进行回收</li>
-<li>G1：采用分块的模式，来减少 fullGC 的操作。</li>
-</ul>
-</li>
-</ul>
-<h2 id="常见调优的流程"><a href="#常见调优的流程" class="headerlink" title="常见调优的流程"></a>常见调优的流程</h2><ol>
-<li><p>首先查看当前机器的状态</p>
-<ul>
-<li>top：用来查看当前机器cpu / 内存 状态，如果出现异常可以通过 jstack pid 打印线程信息</li>
-<li>df -h：查看磁盘的状态</li>
-</ul>
-</li>
-<li><p>查看当前 Jvm 的垃圾回收器类型,并查看配置</p>
-<ul>
-<li>java -XX:+PrintCommandLineFlags -version</li>
-<li>jstat -gcutil pid 1000  动态打印日志</li>
-<li>jmap -heap pid 查看堆内存使用情况</li>
-</ul>
-</li>
-<li><p>配置 Jvm 打印对应的 GC 日志</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#输出日志</span><br><span class="line">-XX:+PrintGCTimeStamps</span><br><span class="line">-XX:+PrintGCDetails</span><br><span class="line">-Xloggc：/dir/gc.log</span><br><span class="line">#日志文件控制</span><br><span class="line">-XX:-UseGCLogFileRotation</span><br><span class="line">-XX：GCLogFileSize=8k</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>查看 GC 日志，分析 GC 日志</p>
-</li>
-<li><p>通过 Jstack 查看是否有死锁</p>
-</li>
-<li><p>配置 OOM 的时候保存内存快照</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-XX：+HeapDumpOnOutOfMemoryError</span><br><span class="line">-XX：HeapDumpPath=/dir/error.hporf</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>常见的推荐配置大小</p>
-<ul>
-<li><p>确定活跃数据，活跃数据为运行稳定后Full GC后老年代的大小。</p>
-<p>|  名称  |              倍数              |<br>| :—-: | :—————————-: |<br>| 总大小 |              3-4               |<br>| 新生代 |             1-1.5              |<br>| 老年带 |              2-3               |<br>| 永久代 | 1.2-1.5(Full GC后永久代的大小) |</p>
-</li>
-</ul>
-</li>
-</ol>
-
+事务最重要的两个特性，是事务的传播级别和数据隔离级别。传播级别定义的是事务的控制范围，事务隔离级别定义的是事务在数据库读写方面的控制范围。
+</code></pre>
       
 
       
@@ -292,6 +231,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Spring</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -356,18 +306,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/05/25/副本/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          5-25
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/05/19/Springboot/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Springboot框架</div>
+    <a href="/2019/05/15/MD/数据库相关/关系型数据库/MySql/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">MySQL</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -497,7 +438,43 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JVM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">IDEA</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Maven</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">JavaSE</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">SQL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">框架</a>
               </li>
             
             <div class="clearfix"></div>

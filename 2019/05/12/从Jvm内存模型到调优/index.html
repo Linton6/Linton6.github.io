@@ -9,13 +9,14 @@
   <title>从 Jvm 内存模型到调优 | Linton&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="Jvm 内存模型 内存模型 运行时数据区 堆内存，虚拟机栈，本地方法栈，程序计数器，方法区   Jvm 内存模型 新生代（1-1.5） 就是将新创建的对象放在这里，分配比例按8：1：1分配成 eden 区和sur0/1区，采用复制清除算法   老年代（2-3） 在新生代中存留足够次数的对象就会放到老年代，也有可能会作为担保分配到老年代，采用整理算法   永久代（1.2-1.5） 类的源信息和常量数">
+<meta name="keywords" content="JVM">
 <meta property="og:type" content="article">
 <meta property="og:title" content="从 Jvm 内存模型到调优">
 <meta property="og:url" content="https://linton6.github.io/2019/05/12/从Jvm内存模型到调优/index.html">
 <meta property="og:site_name" content="Linton&#39;s Blog">
 <meta property="og:description" content="Jvm 内存模型 内存模型 运行时数据区 堆内存，虚拟机栈，本地方法栈，程序计数器，方法区   Jvm 内存模型 新生代（1-1.5） 就是将新创建的对象放在这里，分配比例按8：1：1分配成 eden 区和sur0/1区，采用复制清除算法   老年代（2-3） 在新生代中存留足够次数的对象就会放到老年代，也有可能会作为担保分配到老年代，采用整理算法   永久代（1.2-1.5） 类的源信息和常量数">
 <meta property="og:locale" content="zh">
-<meta property="og:updated_time" content="2019-05-12T06:14:02.384Z">
+<meta property="og:updated_time" content="2019-05-26T05:45:48.433Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="从 Jvm 内存模型到调优">
 <meta name="twitter:description" content="Jvm 内存模型 内存模型 运行时数据区 堆内存，虚拟机栈，本地方法栈，程序计数器，方法区   Jvm 内存模型 新生代（1-1.5） 就是将新创建的对象放在这里，分配比例按8：1：1分配成 eden 区和sur0/1区，采用复制清除算法   老年代（2-3） 在新生代中存留足够次数的对象就会放到老年代，也有可能会作为担保分配到老年代，采用整理算法   永久代（1.2-1.5） 类的源信息和常量数">
@@ -303,6 +304,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">JVM</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -367,11 +379,11 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/05/19/Springboot/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/05/13/MD/框架使用/微服务架构/Springboot/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          Springboot框架
+          SpringBoot
         
       </div>
     </a>
@@ -508,7 +520,43 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JVM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">IDEA</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Maven</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">JavaSE</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">SQL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">框架</a>
               </li>
             
             <div class="clearfix"></div>
