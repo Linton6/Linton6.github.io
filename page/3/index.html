@@ -46,10 +46,10 @@
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="/linton.github.io/" class="profilepic">
-			<img src="https://img-blog.csdnimg.cn/20190512162525636.png" class="js-avatar">
+			<img src="/sl.jpg" class="js-avatar">
 		</a>
 		<hgroup>
-		  <h1 class="header-author"><a href="/linton.github.io/">Linton</a></h1>
+		  <h1 class="header-author"><a href="/linton.github.io/">恰克与飞鸟</a></h1>
 		</hgroup>
 		
 		<p class="header-subtitle">技术易学，刚毅难学</p>
@@ -108,10 +108,10 @@
 	<div class="intrude-less">
 		<header id="header" class="inner">
 			<div class="profilepic">
-				<img src="https://img-blog.csdnimg.cn/20190512162525636.png" class="js-avatar">
+				<img src="/sl.jpg" class="js-avatar">
 			</div>
 			<hgroup>
-			  <h1 class="header-author js-header-author">Linton</h1>
+			  <h1 class="header-author js-header-author">恰克与飞鸟</h1>
 			</hgroup>
 			
 			<p class="header-subtitle"><i class="icon icon-quo-left"></i>技术易学，刚毅难学<i class="icon icon-quo-right"></i></p>
@@ -162,238 +162,6 @@
           </div>
           <div id="js-content" class="content-ll">
             
-  
-    <article id="post-MD/Java语言/JavaSE/JavaSE15" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/10/MD/Java语言/JavaSE/JavaSE15/">递归</a>
-    </h1>
-  
-
-        
-        <a href="/2019/05/10/MD/Java语言/JavaSE/JavaSE15/" class="archive-article-date">
-  	<time datetime="2019-05-09T23:04:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <ul>
-<li><p>递归</p>
-<ul>
-<li><p>主要思想:        </p>
-<ul>
-<li>递归的基本思想就是把规模大的问题转化为规模小的相似的子问题来解决。</li>
-</ul>
-</li>
-<li>归纳法主要包含以下三个关键要素：<ul>
-<li>步进表达式：问题蜕变成子问题的表达式 </li>
-<li>结束条件：什么时候可以不再使用步进表达式 </li>
-<li>直接求解表达式：在结束条件下能够直接计算返回值的表达式 </li>
-</ul>
-</li>
-<li>递归的三要素:<ol>
-<li>明确递归终止条件；</li>
-<li>给出递归终止时的处理办法；</li>
-<li>提取重复的逻辑，缩小问题规模。    </li>
-</ol>
-</li>
-<li>递归的注意事项<ul>
-<li>递归一定要有出口,内存溢出</li>
-<li>递归次数不宜过多,内存溢出​        </li>
-</ul>
-</li>
-<li>格式:    <pre><code><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">模型一： 在递去的过程中解决问题</span><br><span class="line">  	<span class="function">function <span class="title">recursion</span><span class="params">(大规模)</span></span>&#123;</span><br><span class="line">  		<span class="keyword">if</span> (end_condition)&#123;      <span class="comment">// 明确的递归终止条件</span></span><br><span class="line">  			end;   <span class="comment">// 简单情景</span></span><br><span class="line">  		&#125;<span class="keyword">else</span>&#123;            <span class="comment">// 在将问题转换为子问题的每一步，解决该步中剩余部分的问题</span></span><br><span class="line">  			solve;                <span class="comment">// 递去</span></span><br><span class="line">  			recursion(小规模);     <span class="comment">// 递到最深处后，不断地归来</span></span><br><span class="line">  		&#125;</span><br><span class="line">  	&#125;</span><br><span class="line">  	模型二： 在归来的过程中解决问题</span><br><span class="line">  	<span class="function">function <span class="title">recursion</span><span class="params">(大规模)</span></span>&#123;</span><br><span class="line">  		<span class="keyword">if</span> (end_condition)&#123;      <span class="comment">// 明确的递归终止条件</span></span><br><span class="line">  			end;   <span class="comment">// 简单情景</span></span><br><span class="line">  		&#125;<span class="keyword">else</span>&#123;            <span class="comment">// 先将问题全部描述展开，再由尽头“返回”依次解决每步中剩余部分的问题</span></span><br><span class="line">  			recursion(小规模);     <span class="comment">// 递去</span></span><br><span class="line">  			solve;                <span class="comment">// 归来</span></span><br><span class="line">  		&#125;</span><br><span class="line">  	&#125;</span><br></pre></td></tr></table></figure>
-</code></pre></li>
-</ul>
-</li>
-<li><p>File类</p>
-<ul>
-<li><p>作用:文件和目录路径名的抽象表示形式。File的实例一旦创建不可改变    </p>
-<ul>
-<li><p>构造方法:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">File(String pathname):通过将给定路径字符串转换成抽象路径名来创建一个新File实例</span><br><span class="line">File(String parent,String child):根据parent路径名字符串和child路径字符串创建一个新File实例</span><br><span class="line">File(File parent,String child):根据parent路径和child路径创建一个新的file实例</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>方法:        </p>
-<ul>
-<li>创建方法:<ul>
-<li>createNewFile():创建文件</li>
-<li>Mkdirs:创建次抽象路径指定的目录</li>
-</ul>
-</li>
-<li>删除方法:<ul>
-<li>Delete():删除文件</li>
-<li>注意:删除一个文件夹的时候需要先删除文件下面的所有文件和文件夹​            </li>
-</ul>
-</li>
-<li>获取功能:<ul>
-<li>Length():获取文件的字节数,不能获取文件夹的字节数</li>
-<li>getName():获取文件名</li>
-<li>getPath():获取路径名</li>
-<li>getParent():获取父路径</li>
-<li>getParentFile():获取父路径,返回的是File对象</li>
-<li>List():这个目录下所有的文件名                    <ul>
-<li>注意:只有指向文件夹的file文件才能使用这个方法​                    </li>
-</ul>
-</li>
-<li>Rename()修改文件或者文件名</li>
-<li>listRoots():获取所有的根盘符<br>​            </li>
-</ul>
-</li>
-<li>判断方法:                <ul>
-<li>Exists():判断文件或者文件夹是否存在                    </li>
-<li>isFile(0判断是否是文件                </li>
-<li>isDirectory:判断是否是文件夹</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">JavaSE</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/05/10/MD/Java语言/JavaSE/JavaSE15/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-MD/Java语言/JavaSE/JavaSE17" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/10/MD/Java语言/JavaSE/JavaSE17/">多线程</a>
-    </h1>
-  
-
-        
-        <a href="/2019/05/10/MD/Java语言/JavaSE/JavaSE17/" class="archive-article-date">
-  	<time datetime="2019-05-09T23:04:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>1.对象操作流<br>            序列化ID:未明确的时候系统会根据成员变量计算版本号,则当你改变成员变量的时候对应的ID会改变<br>            我们正常的时候会生成固定的ID.<br>2.编码集<br>        把计算机底层的二进制数据转换成我们能看见的字符<br>        ASCII<br>        GB2312—GBK<br>        Unicode 所有的字符都占2个字节<br>        UTF-8:长度可变的码表<br>        ISO-8859-1:不支持中文的编码表<br>        ANSI:本地编码表跟系统的环境语言有关系  中文简体用:GBK<br>        Java中的字符默认使用ANSI编码<br>        乱码:编码保持前后一致即可解决<br>        什么时候使用编码表?<br>                    字符和字节之间转换的时候就要使用编码表<br>                        将字符串转换成字节数组<br>                            .getBytes[]:将字符串转换为字符数组,使用的是ANSI本地编码表,GBK,也可以使用用指定的编码表进行转换<br>                        将字节数组转换成字符串<br>                            String(byte[] ,String charsetName)<br>        字符流=字节流+编码<br>3.Properties<br>            实现了Map&lt;&gt;接口,继承自Hashtable(),每一个键和值都是String类型的<br>            Map&lt;K,V&gt;(接口)<br>                    Hashtable&lt;K,V&gt;:线程安全的,键只能是非null对象<br>                            Properties:键和值都是String<br>                    HashMap&lt;K,V&gt;:线程不安全的,键可以是null<br>            构造方法:<br>                    Properties()<br>            特有功能:<br>                    setProperty(String key,String vablue):给properties集合对象中添加映射关系<br>                    String getProperty(String key):根据键获取对象的值</p>
-<pre><code>        Load(inputStream inStream):使用给定的流读取文件中的数据到指定的properties集合中
-        Load(Reader reader):使用给定的字符流将文件中的
-        Void store(Writer witer,String coment):使用给定的流将集合中的数据写入到指定文件中
-        Void store(OutputStream os,String coment):使用字节流将集合中的映射元素写入到指定文件中                    
-使用场景:
-        作为配置文件
-
-        配置文件:将程序中更可能出现变化的数据放到文件中,程序运行的时候直接从文件中读取就可以了
-                 好处:提高程序的扩展性和可维护性                    
-</code></pre><p>4.多线程<br>        1.线程:进程中的一个执行控制单元,执行路径<br>                 进程:当前正在运行的程序,一个应用程序在内存中的执行区域<br>                    一个进程可以有一个线程,也可以有多个线程<br>                单线程:安全性高,效率低<br>                多线程:安全性低,效率高<br>        2.线程的实现<br>                1.继承Thread(线程类)类并且重写run()方法,接下来创建线程并启动线程<br>                        thread类:<br>                                方法:String getName():获取当前线程的名字<br>                                    Void setName(String name):设置当前线程的名字<br>                        CPU执行程序的随机性.<br>                        方式:<br>                            A:定义一个类,继承Thread类(线程类)<br>                                Class A extends Thread{<br>                                    Public void run(){};<br>                                }<br>                            B:重写Thread类中的run方法<br>                            C:创建线程类对象<br>                                A a=new A();<br>                            D:开启了线程<br>                                a.start();<br>                        注意:当调用的是start方法.系统会调用run方法<br>                2.实现Runable接口并且重写run()方法,然后实例化对象,在创建thread是作为一个参数进行传递<br>                        Thread(Runable target)<br>                        Static Thread currentThread():返回当前线程对象<br>                        方式:<br>                            A:定义一个类,实现Runable接口(任务类)<br>                            B:重写Runable中的run方法<br>                                Class A implements Runnable{<br>                                    Public void run(){<br>                                    }<br>                                }<br>                            C:创建任务类对象<br>                                A a=new A():<br>                            D:创建线程对象,并将任务对象作为参数传递<br>                                Thread t=new Thread(a);<br>                            E:启动线程<br>                                t.start():<br>                    方式1和方式2的区别:<br>                            区别1:方式1继承一个类,不能再继承其他的类<br>                                方式2实现接口,豪科技继承其他的类<br>                            区别2:方式2线程和任务分离<br>                                方式1线程类即使任务类<br>                            区别3:方式2中的任务类不能直接使用线程类的方法<br>                                方式1可以直接使用线程类的方法<br>                        注意:以后创建线程推荐使用方式2<br>        3.多线程会出现安全问题<br>            A:发生的原因<br>                多个线程共享数据<br>            B:解决的方法<br>                Synchronized:同步,可以修饰代码块和方法,被修饰的代码块和方法,一旦被某个线程锁访问,则直接被锁住,其他线程无法访问<br>                同步代码块<br>                        Synchronized(锁对象){<br>                            //可能出现问题的代<br>                        }<br>                        注意:锁对象需要被所有的线程所共享,多个线程使用的锁对象必须是同一个对象<br>                        同步:安全性高,效率低<br>                        非同步:效率高,安全性低<br>                同步方法<br>                    使用关键字synchronized修饰的方法,一旦被一个线程访问则整个方法全部锁住,其他对象则无法访问这个方法<br>                    同步方法:<br>                            修饰符 synchronized 返回值类型 方法名(参数列表){<br>                                //可能出现安全问题的代码<br>                            }<br>                    注意:<br>                        同步方法的锁对象是this<br>                                局限性:锁对象是this,当多个线程没有共享同一份this的话,这里就不是同步的了<br>                        静态方法的锁对象是当前类的字节码对象<br>                同步代码块和同步方法的区别:<br>                                    同步代码块的锁对象由开发人员指定<br>                                    同步方法的锁对象已经定死了<br>                                            如果方法是非静态方法则锁对象是this<br>                                            如果方法时静态方法则锁对象是当前类的的字节码对象<br>                死锁:<br>                    线程A需要先后锁住1和2,线程B需要先后锁住2和1,当A锁住了1,B锁住了2的时候就会发生死锁</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">JavaSE</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/05/10/MD/Java语言/JavaSE/JavaSE17/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
     <article id="post-MD/Java语言/JavaSE/JavaSE13" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -525,19 +293,19 @@
 
 
   
-    <article id="post-MD/Java语言/JavaSE/JavaSE18" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-MD/Java语言/JavaSE/JavaSE16" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/10/MD/Java语言/JavaSE/JavaSE18/">网络</a>
+      <a class="article-title" href="/2019/05/10/MD/Java语言/JavaSE/JavaSE16/">IO流(2)</a>
     </h1>
   
 
         
-        <a href="/2019/05/10/MD/Java语言/JavaSE/JavaSE18/" class="archive-article-date">
+        <a href="/2019/05/10/MD/Java语言/JavaSE/JavaSE16/" class="archive-article-date">
   	<time datetime="2019-05-09T23:04:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-10</time>
 </a>
         
@@ -545,10 +313,21 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>1.网络通讯的三要素<br>        IP地址:同一个网络中的计算机唯一标识<br>                InetAdderss类:<br>                        构造方法:<br>                            Static InetAdderss getLocalHost():返回本地主机<br>                            Static InetAdderss getByName(String name):根据主机名或者ip地址返回ip地址<br>                        方法:<br>                            Static InetAdderss getLocalHost():返回本地主机<br>                            String getHostName():返回IP地址的主机名<br>                            String getHostAddress():返回IP地址字符串<br>        端口号:计算机中应用程序的唯一标识<br>        协议<br>2.UDP协议<br>        格式:<br>            1.创建socket对象,采用UDP协议的Socket类是DatagramSocket()<br>                    构造方法:<br>                            DatagramSocket()创建一个数据包的套接字对象,使用的端口是随机可用端口<br>                            DatagramSocket(int import)创建一个数据包的套接字对象,指向指定端口<br>                    方法:<br>                        Send(DatagramPacket ):发送指定数据包<br>                        Receive(DatagramPacket):接收指定数据包<br>            2.创建数据包对象用来发送或者接收DatagramPacket()<br>                    构造方法:<br>                            DatagramPacket(byte[] buf,int length):创建指定长度为length的接收数据包<br>                            DatagramPacket(byte[] buf,int length,InetAdderss adderss,int import):创建指定长度和指定发送地址指定端口的发送数据包<br>                    方法:<br>                        InetAdderss getAdderss():获取发送端电脑IP<br>                        Byte[] getData():获取发送的数据(可以使用String(byte[],sta,length)来构造一个String对象)<br>                        Int getLength():获取发送数据的长度<br>                        Int getPotr():获取端口号<br>            3.调用Socket对象的方法完成数据的发送或者接收<br>                    Recevie(DatagramPacket):<br>                    Send(DatagramPacket):<br>            4.解析数据<br>                    采用DatagramPacket的方法来解析数据<br>                        getAdderss():返回IP地址<br>                        getData():返回数据<br>                        getLength():返回数据长度<br>            5.释放资源<br>                    调用Socket类的close方法,释放资源<br>        注意事项:<br>                1.如果端口错误是不会出现错误的,<br>                2.如果启动了一个接收端在启动第二个接收端就会出错<br>3.TCP/IP协议<br>            格式:<br>                1.创建Socket对象,TCP/IP协议客户端使用的是Socket类,服务器端使用的是ServerSocket()对象<br>                        构造方法:<br>                                Scoket(InetAdderss adderss,int import):创建一个指定ip地址和指定端口的流套接字对象<br>                                ServerSocket(int import):创建一个绑定特定端口的流套接字对象<br>                        方法:<br>                            Socket类的方法:<br>                                getInputStream():返回此套接字的输入流<br>                                getOutputStream():返回此套接字的输出流<br>                                getInetAdderss():返回套接字的连接地址<br>                            ServerSocket类的方法:<br>                                Socket Accept():侦听并接收返回套接字.<br>                2.利用Socket的方法,获取此套接字的输入输出流:<br>                            getInputStream():返回此套接字的输入流<br>                            getOutputStream():返回此套接字的输出流<br>                3.使用输入流和输出流的读和写方法来读取或者发送数据:<br>                            InputStream()方法:read(byte[] b,int off,int len):从输入流中读取一定量的字节数,off起始位置,len长度<br>                            OutputStream()方法:write(byte[] b,int off,int len):将制定byte数组中从偏移量off开始的len个字节写入流中<br>                            OutputStream()方法:flush(0方法:刷新次输出流并强制写出所有缓冲的输出字节<br>                4.释放资源,关流和关套接字</p>
-<pre><code>问题:
-    Java.net.connectException:connection timed out connectip地址有问题
-</code></pre>
+        <ul>
+<li><p>IO流分类:</p>
+<ul>
+<li><p>流向:</p>
+<ul>
+<li></li>
+</ul>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">输入流:</span><br><span class="line">	FileReader  Reader</span><br><span class="line">输出流:</span><br><span class="line">     FileWriter Writer		</span><br><span class="line"> ​		数据类型:		</span><br><span class="line"> ​			字节流:</span><br><span class="line"> ​					字节输入流:</span><br><span class="line"> ​							InputStream()</span><br><span class="line"> ​								方法:read()</span><br><span class="line"> ​									Read(<span class="keyword">byte</span>[])</span><br><span class="line"> ​									|----&gt;FileInputStream()</span><br><span class="line"> ​										构造器:FileInputStream(File)</span><br><span class="line"> ​					字节输出流:</span><br><span class="line"> ​							OutputStream()</span><br><span class="line"> ​								方法:write()</span><br><span class="line"> ​									Write(<span class="keyword">byte</span>[])</span><br><span class="line"> ​									|---&gt;FIleOutputStream()</span><br><span class="line"> ​										构造器:FileOutputStream(File)</span><br><span class="line"> ​			字符流:</span><br><span class="line"> ​					字符输入流:</span><br><span class="line"> ​							Reader</span><br><span class="line"> ​								|---&gt;FileReader()</span><br><span class="line"> ​					字符输出流</span><br><span class="line"> ​							Writer</span><br><span class="line"> ​								|-----&gt;FileWriter()</span><br><span class="line"> ​	开发中到底使用哪种流:</span><br><span class="line"> ​					文件的单纯拷贝的操作,推荐使用字节流</span><br><span class="line"> ​					单纯文本文件的读取操作,推荐使用字符流</span><br><span class="line"> ​						一个中文字符使用gbk编码表,一个中文字符表示<span class="number">2</span>个字节</span><br><span class="line"> ​						一个中文字符使用utf-<span class="number">8</span>编码表,一个中文字符表示<span class="number">3</span>个字节</span><br><span class="line"> ​						英文字符….一个字符表示一个字节</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>其他的流:<br>​        1.标准输入输出流:(指向控制台)<br>​                    System.in:<br>​                            public static final InputStream in:字节输入流,用来从控制台读入信息<br>​                    System.out:<br>​                            Public static final PrintStream out:打印出流,用来给控制台输出信息<br>​        2.转换流:(将字节流转换成字符流)<br>​                    InputStreamRead:<br>​                                输入流:属于字符流<br>​                    OutputStreamWrite:<br>​                                输出流:属于字符流<br>​                    使用场景:<br>​                            A:以指定的码表读取数据或者写出数据<br>​                            B:如果我们在以后的知识中只能获取字节流,操作字符使用字符流更方便,也需要使用转换流<br>​        3.打印流:<br>​                    printStream:字节打印流<br>​                    printWriter:字符打印流<br>​                            特点:可自动换行:使用println就可以自动换行<br>​                                不能输出字节,但是可以输出其他任意类型<br>​                                通过某些配置,可以实现自动刷新功能:通过在构造函数之后添加参数<br>​                                也是包装流,不具备写出功能<br>​                                可以把字节输出流转换成字符输出流<br>​                    注意:只能输出不能输入<br>​        4.对象操作流:(操作的是对象)<br>​                    ObjectOutputStream():<br>​                            构造方法:<br>​                                    writeObject()<br>​                                    objectOutputStream(OutputStream)<br>​                    ObjectInputStream():<br>​                            构造方法:<br>​                                    readObject()<br>​                                    ObjectInputStream(InputStream)<br>​                注意:<br>​                    使用对象输出流写对象,只能使用对象输入流来读取对象<br>​                Serializable:序列号,是一个表示接口,只起表示作用<br>​                序列化:<br>​                        向文件中写数据(持久化)<br>​                反序列化:<br>​                        从文件中读取数据.<br>​                练习题:<br>​                        需求:向对象中写多个学生对象<br>​                            1.找对象,让对象帮我们做<br>​                                ObjectOutputStream oos=new ObjectOutputStream(new FileOutputStream(File file))<br>​                                //将多个学生对象封装到一个集合中<br>​                                通过oos写出对象<br>​                        需求:从文件中读文件<br>​        5.Properties类(集合类)</p>
+</li>
+</ul>
+
       
 
       
@@ -571,7 +350,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/05/10/MD/Java语言/JavaSE/JavaSE18/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/05/10/MD/Java语言/JavaSE/JavaSE16/">展开全文 >></a>
         </p>
       
 
@@ -675,19 +454,19 @@
 
 
   
-    <article id="post-MD/Java语言/JavaSE/JavaSE04" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-MD/Java语言/JavaSE/JavaSE17" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/10/MD/Java语言/JavaSE/JavaSE04/">面向对象思想</a>
+      <a class="article-title" href="/2019/05/10/MD/Java语言/JavaSE/JavaSE17/">多线程</a>
     </h1>
   
 
         
-        <a href="/2019/05/10/MD/Java语言/JavaSE/JavaSE04/" class="archive-article-date">
+        <a href="/2019/05/10/MD/Java语言/JavaSE/JavaSE17/" class="archive-article-date">
   	<time datetime="2019-05-09T23:04:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-10</time>
 </a>
         
@@ -695,69 +474,17 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <ul>
-<li>面向过程,面向着具体的每一个过程和步骤，把每一个步骤和过程完成然后这些功能相互调用，完成需求。</li>
-<li>面向对象的思想就是不断的创建对象，使用对象，指挥对象做事情。</li>
-</ul>
-<h1 id="类与对象及其使用"><a href="#类与对象及其使用" class="headerlink" title="类与对象及其使用"></a>类与对象及其使用</h1><hr>
-<ul>
-<li>概念：<ul>
-<li>类：是一组相关属性和行为的集合。</li>
-<li>对象：是该类事物的具体体现。</li>
-</ul>
-</li>
-<li>内存图：<ul>
-<li>成员变量跟随对象进入堆内存（堆内存中的空间都有初始值）</li>
-<li>成员方法不跟随对象进入堆内存（成员方法会在调用的时候压栈运行）</li>
-</ul>
-</li>
-<li>成员变量和局部变量的区别<ul>
-<li>位置：<ul>
-<li>成员变量：在类中在方法之外</li>
-<li>局部变量：在方法中或着形式参数</li>
-</ul>
-</li>
-<li>在内存中的位置：<ul>
-<li>成员变量：堆内存</li>
-<li>局部变量：栈内存</li>
-</ul>
-</li>
-<li>生命周期不同：<ul>
-<li>成员变量：随着对象的创建而产生</li>
-<li>局部变量：随着方法的调用而存在，随着方法的调用完毕而消失</li>
-</ul>
-</li>
-<li>初始化值问题：<ul>
-<li>成员变量：有默认值</li>
-<li>局部变量：没有默认值，必须先定义，赋值，最后使用</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h1 id="封装与私有关键字"><a href="#封装与私有关键字" class="headerlink" title="封装与私有关键字"></a>封装与私有关键字</h1><hr>
-<ol>
-<li>private:是一个权限修饰符。可以修饰成员（成员变量和成员方法）。<ul>
-<li>被private修饰的成员只在本类中才能访问。</li>
-<li>被private修饰的成员变量，我们会相应的提供getXxx（）和setXxx（）用于获取和设置成员变量的值，方法用public修饰</li>
-</ul>
-</li>
-<li>封装是面向对象语言的三大特征之一，封装的原则：<ul>
-<li>将不需要对外部提供的内容都隐藏起来，并提供公共方法对其访问。通过方法来控制成员变量的操作，提高了代码的安全性，把代码用方法进行封装，提高了代码的复用性。</li>
-</ul>
-</li>
-</ol>
-<h1 id="this关键字"><a href="#this关键字" class="headerlink" title="this关键字"></a>this关键字</h1><hr>
-<ul>
-<li>this代表所在类的对象引用，方法被哪个对象调用，this就代表哪个对象</li>
-<li>使用场景：局部变量和成员变量重名的时候</li>
-</ul>
-<h1 id="面向对象之构造方法"><a href="#面向对象之构造方法" class="headerlink" title="面向对象之构造方法"></a>面向对象之构造方法</h1><hr>
-<ol>
-<li>构造方法：主要用来给对象的数据进行初始化</li>
-<li>构造方法格式：方法名与类名相同，没有返回值类型，没有具体的返回值</li>
-<li>构造方法的注意：如果我们没有给出构造方法，系统会提供一个默认的无参构造方法供我们使用，如果我们给出了构造方法，系统将不在提供默认无参的构造方法，如果此时想要无参的构造方法，我们就要自己提供，构造方法也可以重载</li>
-</ol>
+        <p>1.对象操作流<br>            序列化ID:未明确的时候系统会根据成员变量计算版本号,则当你改变成员变量的时候对应的ID会改变<br>            我们正常的时候会生成固定的ID.<br>2.编码集<br>        把计算机底层的二进制数据转换成我们能看见的字符<br>        ASCII<br>        GB2312—GBK<br>        Unicode 所有的字符都占2个字节<br>        UTF-8:长度可变的码表<br>        ISO-8859-1:不支持中文的编码表<br>        ANSI:本地编码表跟系统的环境语言有关系  中文简体用:GBK<br>        Java中的字符默认使用ANSI编码<br>        乱码:编码保持前后一致即可解决<br>        什么时候使用编码表?<br>                    字符和字节之间转换的时候就要使用编码表<br>                        将字符串转换成字节数组<br>                            .getBytes[]:将字符串转换为字符数组,使用的是ANSI本地编码表,GBK,也可以使用用指定的编码表进行转换<br>                        将字节数组转换成字符串<br>                            String(byte[] ,String charsetName)<br>        字符流=字节流+编码<br>3.Properties<br>            实现了Map&lt;&gt;接口,继承自Hashtable(),每一个键和值都是String类型的<br>            Map&lt;K,V&gt;(接口)<br>                    Hashtable&lt;K,V&gt;:线程安全的,键只能是非null对象<br>                            Properties:键和值都是String<br>                    HashMap&lt;K,V&gt;:线程不安全的,键可以是null<br>            构造方法:<br>                    Properties()<br>            特有功能:<br>                    setProperty(String key,String vablue):给properties集合对象中添加映射关系<br>                    String getProperty(String key):根据键获取对象的值</p>
+<pre><code>        Load(inputStream inStream):使用给定的流读取文件中的数据到指定的properties集合中
+        Load(Reader reader):使用给定的字符流将文件中的
+        Void store(Writer witer,String coment):使用给定的流将集合中的数据写入到指定文件中
+        Void store(OutputStream os,String coment):使用字节流将集合中的映射元素写入到指定文件中                    
+使用场景:
+        作为配置文件
+
+        配置文件:将程序中更可能出现变化的数据放到文件中,程序运行的时候直接从文件中读取就可以了
+                 好处:提高程序的扩展性和可维护性                    
+</code></pre><p>4.多线程<br>        1.线程:进程中的一个执行控制单元,执行路径<br>                 进程:当前正在运行的程序,一个应用程序在内存中的执行区域<br>                    一个进程可以有一个线程,也可以有多个线程<br>                单线程:安全性高,效率低<br>                多线程:安全性低,效率高<br>        2.线程的实现<br>                1.继承Thread(线程类)类并且重写run()方法,接下来创建线程并启动线程<br>                        thread类:<br>                                方法:String getName():获取当前线程的名字<br>                                    Void setName(String name):设置当前线程的名字<br>                        CPU执行程序的随机性.<br>                        方式:<br>                            A:定义一个类,继承Thread类(线程类)<br>                                Class A extends Thread{<br>                                    Public void run(){};<br>                                }<br>                            B:重写Thread类中的run方法<br>                            C:创建线程类对象<br>                                A a=new A();<br>                            D:开启了线程<br>                                a.start();<br>                        注意:当调用的是start方法.系统会调用run方法<br>                2.实现Runable接口并且重写run()方法,然后实例化对象,在创建thread是作为一个参数进行传递<br>                        Thread(Runable target)<br>                        Static Thread currentThread():返回当前线程对象<br>                        方式:<br>                            A:定义一个类,实现Runable接口(任务类)<br>                            B:重写Runable中的run方法<br>                                Class A implements Runnable{<br>                                    Public void run(){<br>                                    }<br>                                }<br>                            C:创建任务类对象<br>                                A a=new A():<br>                            D:创建线程对象,并将任务对象作为参数传递<br>                                Thread t=new Thread(a);<br>                            E:启动线程<br>                                t.start():<br>                    方式1和方式2的区别:<br>                            区别1:方式1继承一个类,不能再继承其他的类<br>                                方式2实现接口,豪科技继承其他的类<br>                            区别2:方式2线程和任务分离<br>                                方式1线程类即使任务类<br>                            区别3:方式2中的任务类不能直接使用线程类的方法<br>                                方式1可以直接使用线程类的方法<br>                        注意:以后创建线程推荐使用方式2<br>        3.多线程会出现安全问题<br>            A:发生的原因<br>                多个线程共享数据<br>            B:解决的方法<br>                Synchronized:同步,可以修饰代码块和方法,被修饰的代码块和方法,一旦被某个线程锁访问,则直接被锁住,其他线程无法访问<br>                同步代码块<br>                        Synchronized(锁对象){<br>                            //可能出现问题的代<br>                        }<br>                        注意:锁对象需要被所有的线程所共享,多个线程使用的锁对象必须是同一个对象<br>                        同步:安全性高,效率低<br>                        非同步:效率高,安全性低<br>                同步方法<br>                    使用关键字synchronized修饰的方法,一旦被一个线程访问则整个方法全部锁住,其他对象则无法访问这个方法<br>                    同步方法:<br>                            修饰符 synchronized 返回值类型 方法名(参数列表){<br>                                //可能出现安全问题的代码<br>                            }<br>                    注意:<br>                        同步方法的锁对象是this<br>                                局限性:锁对象是this,当多个线程没有共享同一份this的话,这里就不是同步的了<br>                        静态方法的锁对象是当前类的字节码对象<br>                同步代码块和同步方法的区别:<br>                                    同步代码块的锁对象由开发人员指定<br>                                    同步方法的锁对象已经定死了<br>                                            如果方法是非静态方法则锁对象是this<br>                                            如果方法时静态方法则锁对象是当前类的的字节码对象<br>                死锁:<br>                    线程A需要先后锁住1和2,线程B需要先后锁住2和1,当A锁住了1,B锁住了2的时候就会发生死锁</p>
 
       
 
@@ -781,7 +508,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/05/10/MD/Java语言/JavaSE/JavaSE04/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/05/10/MD/Java语言/JavaSE/JavaSE17/">展开全文 >></a>
         </p>
       
 
@@ -811,19 +538,95 @@
 
 
   
-    <article id="post-MD/Java语言/JavaSE/JavaSE16" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-MD/Java语言/JavaSE/JavaSE18" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/10/MD/Java语言/JavaSE/JavaSE16/">IO流(2)</a>
+      <a class="article-title" href="/2019/05/10/MD/Java语言/JavaSE/JavaSE18/">网络</a>
     </h1>
   
 
         
-        <a href="/2019/05/10/MD/Java语言/JavaSE/JavaSE16/" class="archive-article-date">
+        <a href="/2019/05/10/MD/Java语言/JavaSE/JavaSE18/" class="archive-article-date">
+  	<time datetime="2019-05-09T23:04:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-10</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>1.网络通讯的三要素<br>        IP地址:同一个网络中的计算机唯一标识<br>                InetAdderss类:<br>                        构造方法:<br>                            Static InetAdderss getLocalHost():返回本地主机<br>                            Static InetAdderss getByName(String name):根据主机名或者ip地址返回ip地址<br>                        方法:<br>                            Static InetAdderss getLocalHost():返回本地主机<br>                            String getHostName():返回IP地址的主机名<br>                            String getHostAddress():返回IP地址字符串<br>        端口号:计算机中应用程序的唯一标识<br>        协议<br>2.UDP协议<br>        格式:<br>            1.创建socket对象,采用UDP协议的Socket类是DatagramSocket()<br>                    构造方法:<br>                            DatagramSocket()创建一个数据包的套接字对象,使用的端口是随机可用端口<br>                            DatagramSocket(int import)创建一个数据包的套接字对象,指向指定端口<br>                    方法:<br>                        Send(DatagramPacket ):发送指定数据包<br>                        Receive(DatagramPacket):接收指定数据包<br>            2.创建数据包对象用来发送或者接收DatagramPacket()<br>                    构造方法:<br>                            DatagramPacket(byte[] buf,int length):创建指定长度为length的接收数据包<br>                            DatagramPacket(byte[] buf,int length,InetAdderss adderss,int import):创建指定长度和指定发送地址指定端口的发送数据包<br>                    方法:<br>                        InetAdderss getAdderss():获取发送端电脑IP<br>                        Byte[] getData():获取发送的数据(可以使用String(byte[],sta,length)来构造一个String对象)<br>                        Int getLength():获取发送数据的长度<br>                        Int getPotr():获取端口号<br>            3.调用Socket对象的方法完成数据的发送或者接收<br>                    Recevie(DatagramPacket):<br>                    Send(DatagramPacket):<br>            4.解析数据<br>                    采用DatagramPacket的方法来解析数据<br>                        getAdderss():返回IP地址<br>                        getData():返回数据<br>                        getLength():返回数据长度<br>            5.释放资源<br>                    调用Socket类的close方法,释放资源<br>        注意事项:<br>                1.如果端口错误是不会出现错误的,<br>                2.如果启动了一个接收端在启动第二个接收端就会出错<br>3.TCP/IP协议<br>            格式:<br>                1.创建Socket对象,TCP/IP协议客户端使用的是Socket类,服务器端使用的是ServerSocket()对象<br>                        构造方法:<br>                                Scoket(InetAdderss adderss,int import):创建一个指定ip地址和指定端口的流套接字对象<br>                                ServerSocket(int import):创建一个绑定特定端口的流套接字对象<br>                        方法:<br>                            Socket类的方法:<br>                                getInputStream():返回此套接字的输入流<br>                                getOutputStream():返回此套接字的输出流<br>                                getInetAdderss():返回套接字的连接地址<br>                            ServerSocket类的方法:<br>                                Socket Accept():侦听并接收返回套接字.<br>                2.利用Socket的方法,获取此套接字的输入输出流:<br>                            getInputStream():返回此套接字的输入流<br>                            getOutputStream():返回此套接字的输出流<br>                3.使用输入流和输出流的读和写方法来读取或者发送数据:<br>                            InputStream()方法:read(byte[] b,int off,int len):从输入流中读取一定量的字节数,off起始位置,len长度<br>                            OutputStream()方法:write(byte[] b,int off,int len):将制定byte数组中从偏移量off开始的len个字节写入流中<br>                            OutputStream()方法:flush(0方法:刷新次输出流并强制写出所有缓冲的输出字节<br>                4.释放资源,关流和关套接字</p>
+<pre><code>问题:
+    Java.net.connectException:connection timed out connectip地址有问题
+</code></pre>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">JavaSE</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/05/10/MD/Java语言/JavaSE/JavaSE18/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-MD/Java语言/JavaSE/JavaSE09" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/05/10/MD/Java语言/JavaSE/JavaSE09/">接口</a>
+    </h1>
+  
+
+        
+        <a href="/2019/05/10/MD/Java语言/JavaSE/JavaSE09/" class="archive-article-date">
   	<time datetime="2019-05-09T23:04:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-10</time>
 </a>
         
@@ -832,19 +635,110 @@
     <div class="article-entry" itemprop="articleBody">
       
         <ul>
-<li><p>IO流分类:</p>
+<li><p>接口的定义</p>
 <ul>
-<li><p>流向:</p>
+<li><p>格式:</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Interface 接口名&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>接口名的命名和类名相同.每一单词的首字母都大写.</p>
+</li>
+<li><p>类和接口是实现关系,一个类实现一个接口要实现这个接口中的所有方法</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Class A implements 接口名&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>接口的成员特点:</p>
 <ul>
-<li></li>
+<li>只能有抽象方法</li>
+<li>默认只能使用public&amp;abstracte修饰方法</li>
+<li>默认使用public&amp;static&amp;final来修饰成员变量</li>
+</ul>
+</li>
+<li><p>注意:接口不能实例化(创建对象)</p>
+</li>
+</ul>
+</li>
+<li>java支持多继承吗?<ul>
+<li>类与类的关系:继承关系,单一继承,多层继承</li>
+<li>类和接口的关系:实现关系,多实现</li>
+<li>接口与接口的关系:继承关系,多继承</li>
+</ul>
+</li>
+<li>接口的思想<ul>
+<li>Collection(接口):集合的顶层接口,定义规则,要求所有的容器类必须具备的功能</li>
+<li>接口的优点:<ol>
+<li>类与接口的关系,实现关系,而且是多实现,一个类可以实现多个接口,<br> 类与类之间是继承关系,java中的继承是单一继承,一个类只能有一个父类<br> 打破了继承的局限性.</li>
+<li>对外提供规则/规范</li>
+<li>接口的出现降低了程序的耦合性(可以实现模块化开发,定义好规则,每个人实现自己的模块,提高了开发效率)</li>
+</ol>
+</li>
+<li>接口和抽象类的区别:<ul>
+<li>共性:不断的抽取,抽取抽象的概念</li>
+<li>区别1:与类的关系<ul>
+<li>类与接口是实现关系,而且是多实现,一个类可以是先多个接口</li>
+<li>类与抽象类时继承关系,Java中的继承是单一继承,一个类智能有一个父类,java中继承是多层继承</li>
+</ul>
+</li>
+<li>区别2:成员<ul>
+<li>成员变量:<ul>
+<li>抽象类可以有成员变量,也可以有常量</li>
+<li>接口只能有常量</li>
+</ul>
+</li>
+<li>成员方法:<ul>
+<li>接口类可以有抽象方法,可以有非抽象方法</li>
+<li>接口只能有抽象方法,而且方法默认修饰符public abstract</li>
+</ul>
+</li>
+<li>构造方法:<ul>
+<li>抽象类时有构造方法的</li>
+<li>接口没有构造方法</li>
 </ul>
 </li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">输入流:</span><br><span class="line">	FileReader  Reader</span><br><span class="line">输出流:</span><br><span class="line">     FileWriter Writer		</span><br><span class="line"> ​		数据类型:		</span><br><span class="line"> ​			字节流:</span><br><span class="line"> ​					字节输入流:</span><br><span class="line"> ​							InputStream()</span><br><span class="line"> ​								方法:read()</span><br><span class="line"> ​									Read(<span class="keyword">byte</span>[])</span><br><span class="line"> ​									|----&gt;FileInputStream()</span><br><span class="line"> ​										构造器:FileInputStream(File)</span><br><span class="line"> ​					字节输出流:</span><br><span class="line"> ​							OutputStream()</span><br><span class="line"> ​								方法:write()</span><br><span class="line"> ​									Write(<span class="keyword">byte</span>[])</span><br><span class="line"> ​									|---&gt;FIleOutputStream()</span><br><span class="line"> ​										构造器:FileOutputStream(File)</span><br><span class="line"> ​			字符流:</span><br><span class="line"> ​					字符输入流:</span><br><span class="line"> ​							Reader</span><br><span class="line"> ​								|---&gt;FileReader()</span><br><span class="line"> ​					字符输出流</span><br><span class="line"> ​							Writer</span><br><span class="line"> ​								|-----&gt;FileWriter()</span><br><span class="line"> ​	开发中到底使用哪种流:</span><br><span class="line"> ​					文件的单纯拷贝的操作,推荐使用字节流</span><br><span class="line"> ​					单纯文本文件的读取操作,推荐使用字符流</span><br><span class="line"> ​						一个中文字符使用gbk编码表,一个中文字符表示<span class="number">2</span>个字节</span><br><span class="line"> ​						一个中文字符使用utf-<span class="number">8</span>编码表,一个中文字符表示<span class="number">3</span>个字节</span><br><span class="line"> ​						英文字符….一个字符表示一个字节</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>其他的流:<br>​        1.标准输入输出流:(指向控制台)<br>​                    System.in:<br>​                            public static final InputStream in:字节输入流,用来从控制台读入信息<br>​                    System.out:<br>​                            Public static final PrintStream out:打印出流,用来给控制台输出信息<br>​        2.转换流:(将字节流转换成字符流)<br>​                    InputStreamRead:<br>​                                输入流:属于字符流<br>​                    OutputStreamWrite:<br>​                                输出流:属于字符流<br>​                    使用场景:<br>​                            A:以指定的码表读取数据或者写出数据<br>​                            B:如果我们在以后的知识中只能获取字节流,操作字符使用字符流更方便,也需要使用转换流<br>​        3.打印流:<br>​                    printStream:字节打印流<br>​                    printWriter:字符打印流<br>​                            特点:可自动换行:使用println就可以自动换行<br>​                                不能输出字节,但是可以输出其他任意类型<br>​                                通过某些配置,可以实现自动刷新功能:通过在构造函数之后添加参数<br>​                                也是包装流,不具备写出功能<br>​                                可以把字节输出流转换成字符输出流<br>​                    注意:只能输出不能输入<br>​        4.对象操作流:(操作的是对象)<br>​                    ObjectOutputStream():<br>​                            构造方法:<br>​                                    writeObject()<br>​                                    objectOutputStream(OutputStream)<br>​                    ObjectInputStream():<br>​                            构造方法:<br>​                                    readObject()<br>​                                    ObjectInputStream(InputStream)<br>​                注意:<br>​                    使用对象输出流写对象,只能使用对象输入流来读取对象<br>​                Serializable:序列号,是一个表示接口,只起表示作用<br>​                序列化:<br>​                        向文件中写数据(持久化)<br>​                反序列化:<br>​                        从文件中读取数据.<br>​                练习题:<br>​                        需求:向对象中写多个学生对象<br>​                            1.找对象,让对象帮我们做<br>​                                ObjectOutputStream oos=new ObjectOutputStream(new FileOutputStream(File file))<br>​                                //将多个学生对象封装到一个集合中<br>​                                通过oos写出对象<br>​                        需求:从文件中读文件<br>​        5.Properties类(集合类)</p>
+<li>什么时候使用抽象类,什么时候使用接口?<ul>
+<li>抽象类:定义的都是共性的东西</li>
+<li>接口:将扩展的东西定义在接口中</li>
+</ul>
 </li>
 </ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h1><hr>
+<ul>
+<li>在Java中的体现:父类引用指向子类对象</li>
+<li>多态的前提:<ol>
+<li>子父类的继承关系</li>
+<li>方法的重写</li>
+<li>父类引用指向子类对象</li>
+</ol>
+</li>
+<li><p>动态绑定:运行期间调用的方法,是根据其具体的类型</p>
+</li>
+<li><p>多态的成员特点:</p>
+<ol>
+<li>成员变量:编译时看到是左边,运行时看左边</li>
+<li>成员方法:编译是看的是左边,运行时看右边</li>
+<li>静态方法:编译时看的是左边,运行时看的也是左边</li>
+</ol>
+</li>
+<li>向上转型:<br>  父类引用指向子类对象</li>
+<li>向下转型:<br>  子类型 变量名=(子类型) 父类型引用(向下转型之前必须先向上转型)</li>
+<li>多态的优缺点:<ul>
+<li>优点:可以提高可维护性(多态前提所保证的),提高代码的可扩展性</li>
+<li>缺点:无法直接访问子类特有的成员</li>
+</ul>
+</li>
+<li>难点:接口名作为形式参数,name实际参数是该接口实现类的对象<ul>
+<li>抽象类名作为形式参数,name实际参数是该抽象类子类的对象</li>
+<li>具体类名作为形式参数,name实际参数是该类的对象/该类子类的对象</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>如何判断一个类时不是某个父类的对象使用instanceof方法</p>
+</blockquote>
 
       
 
@@ -868,7 +762,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/05/10/MD/Java语言/JavaSE/JavaSE16/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/05/10/MD/Java语言/JavaSE/JavaSE09/">展开全文 >></a>
         </p>
       
 
@@ -1101,19 +995,19 @@
 
 
   
-    <article id="post-MD/Java语言/JavaSE/JavaSE01" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-MD/Java语言/JavaSE/JavaSE05" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/10/MD/Java语言/JavaSE/JavaSE01/">Java杂谈</a>
+      <a class="article-title" href="/2019/05/10/MD/Java语言/JavaSE/JavaSE05/">String常用API</a>
     </h1>
   
 
         
-        <a href="/2019/05/10/MD/Java语言/JavaSE/JavaSE01/" class="archive-article-date">
+        <a href="/2019/05/10/MD/Java语言/JavaSE/JavaSE05/" class="archive-article-date">
   	<time datetime="2019-05-09T23:04:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-10</time>
 </a>
         
@@ -1121,111 +1015,73 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <ol>
-<li>Java历史<ul>
-<li>Java1.0在1995年发布</li>
-<li>Java之父 詹姆斯 高斯林</li>
-<li>有sun公司开发，后被Oracle公司收购</li>
+        <ul>
+<li>String的构造方法：<ul>
+<li>String（String）</li>
+<li>String（char[] arr）</li>
+<li>String（char[] arr,int idex,int count）</li>
 </ul>
 </li>
-<li>Java的分类<ul>
-<li>JavaSE：基础知识</li>
-<li>JavaME：嵌入式及移动端</li>
-<li>JavaEE：企业级开发</li>
+<li>String的判断功能：<ul>
+<li>boolean equals（objec obj）：比较内容</li>
+<li>boolean equalsIgnoreCase（String str）：比较内容忽略大小写</li>
+<li>boolean startWith（String str）：判断是否以str为开头    - 使用场景：在删除某个姓的所有人</li>
+<li>boolean endWith（String str）：判断是否以strWie结尾                 使用场景：获取某个盘符的某种类型的文件</li>
 </ul>
 </li>
-<li>Java开发环境<ul>
-<li>JVM：Java虚拟机，运行Java代码</li>
-<li>JRE：Java运行环境，包含了JVM和核心类库</li>
-<li>JDK：Java开发工具包，包含了JRE</li>
+<li>String的获取功能：<ul>
+<li>int length():获取字符串的长度，其实也就是字符的个数   可以遍历字符串</li>
+<li>char charAt(int index):获取指定索引处的字符</li>
+<li>int indexof(String str):获取str在字符串中第一次出现时的索引</li>
+<li>String substring(int start):从start处开始截取字符串</li>
+<li>String substring(int start,int end):从start处开始截取，到end处结束   （含头不含尾）</li>
 </ul>
 </li>
-<li>Java语言的优势<ul>
-<li>跨平台：一次编译到处运行<ul>
-<li>原理：通过不同平台的JVM虚拟机来实现</li>
+<li>String的转换功能：<ul>
+<li>char[] toCharArray():</li>
+<li>String toLowerCase():</li>
+<li>String toUpperCase():</li>
 </ul>
 </li>
-<li>优秀的垃圾回收机制</li>
+<li><p>String的其他功能：</p>
+<ul>
+<li>String trim(): 去掉字符串两端的空格</li>
+<li>String[] split(String str):按照指定符号分割字符串  ‘.’  ‘+’不能用来当做切割标识</li>
 </ul>
-</li>
+<ul>
+<li>使用环境：<ol>
+<li>搜索文件夹内的指定类型的文件，使用endsWith（String str）来进行判断</li>
+<li>通过一个字符串来判断某姓的人数，使用String[] split（String str）来对字符串进行切割</li>
+<li>在生成的字符数组中遍历使用boolean startWith(String str)</li>
 </ol>
-<h1 id="Java安装"><a href="#Java安装" class="headerlink" title="Java安装"></a>Java安装</h1><hr>
-<ol>
-<li>下载安装包<ul>
-<li><a href="https://www.java.com/" target="_blank" rel="noopener">https://www.java.com/</a></li>
-</ul>
 </li>
-<li>确定安装路径进行安装<ul>
-<li>安装路径中不能出现中文路径</li>
-</ul>
-</li>
-<li>配置环境变量<ul>
-<li>目的：<ul>
-<li>能在其他盘符运行Java Javac</li>
-</ul>
-</li>
-<li>配置：<ul>
-<li>新建JAVA_HOME =jdk的安装目录</li>
-<li>编辑Path 增加%JAVA_HOME%\bin</li>
+<li>小知识<ul>
+<li>==：<ul>
+<li>基本数据类型：比较的是基本数据类型的值</li>
+<li>引用数据类型：比较的是引用数据类型的地址值是否相等<br>字符串的内容存储在方法区的常量池里面的，目的是为了方便字符串的重复使用</li>
 </ul>
 </li>
 </ul>
 </li>
-</ol>
-<h1 id="Java基础语法"><a href="#Java基础语法" class="headerlink" title="Java基础语法"></a>Java基础语法</h1><hr>
-<ol>
-<li>注释：<ul>
-<li>单行注释：//</li>
-<li>多行注释：/<em> </em>/ </li>
-<li>文档注释：/*<em>    </em>/  生成API文档</li>
-</ul>
-</li>
-<li>关键字：<ul>
-<li>被Java赋予特定含义的单词</li>
-<li>关键字不能作为标识符</li>
-</ul>
-</li>
-<li>常量：不可变化的量</li>
-<li>变量：内存中一块存储数据的区域<ul>
-<li>变量的格式：<ul>
-<li>数据类型  变量名 = 初始化值；</li>
 </ul>
 </li>
 </ul>
-</li>
-<li>数据类型<ul>
-<li>基础数据类型(4类8种)<ul>
-<li>整数型：byte(1)  short(2)   int(4)   long(8)</li>
-<li>浮点型：float(4)  double(8)</li>
-<li>字符型：char(2)</li>
-<li>布尔型：boolean(1)</li>
+<h1 id="StringBuilder的常用API"><a href="#StringBuilder的常用API" class="headerlink" title="StringBuilder的常用API"></a>StringBuilder的常用API</h1><hr>
+<ul>
+<li>StringBuilder的构造方法：<ul>
+<li>StringBuilder();</li>
+<li>StringBuilder(String str);</li>
 </ul>
 </li>
-<li>引用数据类型(3种)<ul>
-<li>接口</li>
-<li>数组</li>
-<li>类</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>标识符<ul>
-<li>组成：字母,数字,_,$组成</li>
-<li>不能以数字开头</li>
-<li>不能是关键字</li>
-<li>严格区分大小写</li>
-<li>见名知意</li>
-</ul>
-</li>
-<li>数据类型的转换<ul>
-<li>隐形转换   小======&gt;大</li>
-<li>强制转换   大======&gt;小<ul>
-<li>格式：目标数据类型  标识符 =（数据类型）（被转换值）；</li>
+<li>StringBuilderde 方法：<ul>
+<li>public int capacity():返回当前容量   理论值</li>
+<li>public int length()：返回长度        实际值</li>
+<li>public StringBuilder append(任意类型)：添加功能</li>
+<li>public StringBuilder revers（）： 反转功能</li>
+<li>public String toString();</li>
 </ul>
 </li>
 </ul>
-</li>
-</ol>
 
       
 
@@ -1249,7 +1105,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/05/10/MD/Java语言/JavaSE/JavaSE01/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/05/10/MD/Java语言/JavaSE/JavaSE05/">展开全文 >></a>
         </p>
       
 
@@ -1448,6 +1304,184 @@
 
 
   
+    <article id="post-MD/Java语言/JavaSE/JavaSE01" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/05/10/MD/Java语言/JavaSE/JavaSE01/">Java杂谈</a>
+    </h1>
+  
+
+        
+        <a href="/2019/05/10/MD/Java语言/JavaSE/JavaSE01/" class="archive-article-date">
+  	<time datetime="2019-05-09T23:04:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-10</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol>
+<li>Java历史<ul>
+<li>Java1.0在1995年发布</li>
+<li>Java之父 詹姆斯 高斯林</li>
+<li>有sun公司开发，后被Oracle公司收购</li>
+</ul>
+</li>
+<li>Java的分类<ul>
+<li>JavaSE：基础知识</li>
+<li>JavaME：嵌入式及移动端</li>
+<li>JavaEE：企业级开发</li>
+</ul>
+</li>
+<li>Java开发环境<ul>
+<li>JVM：Java虚拟机，运行Java代码</li>
+<li>JRE：Java运行环境，包含了JVM和核心类库</li>
+<li>JDK：Java开发工具包，包含了JRE</li>
+</ul>
+</li>
+<li>Java语言的优势<ul>
+<li>跨平台：一次编译到处运行<ul>
+<li>原理：通过不同平台的JVM虚拟机来实现</li>
+</ul>
+</li>
+<li>优秀的垃圾回收机制</li>
+</ul>
+</li>
+</ol>
+<h1 id="Java安装"><a href="#Java安装" class="headerlink" title="Java安装"></a>Java安装</h1><hr>
+<ol>
+<li>下载安装包<ul>
+<li><a href="https://www.java.com/" target="_blank" rel="noopener">https://www.java.com/</a></li>
+</ul>
+</li>
+<li>确定安装路径进行安装<ul>
+<li>安装路径中不能出现中文路径</li>
+</ul>
+</li>
+<li>配置环境变量<ul>
+<li>目的：<ul>
+<li>能在其他盘符运行Java Javac</li>
+</ul>
+</li>
+<li>配置：<ul>
+<li>新建JAVA_HOME =jdk的安装目录</li>
+<li>编辑Path 增加%JAVA_HOME%\bin</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h1 id="Java基础语法"><a href="#Java基础语法" class="headerlink" title="Java基础语法"></a>Java基础语法</h1><hr>
+<ol>
+<li>注释：<ul>
+<li>单行注释：//</li>
+<li>多行注释：/<em> </em>/ </li>
+<li>文档注释：/*<em>    </em>/  生成API文档</li>
+</ul>
+</li>
+<li>关键字：<ul>
+<li>被Java赋予特定含义的单词</li>
+<li>关键字不能作为标识符</li>
+</ul>
+</li>
+<li>常量：不可变化的量</li>
+<li>变量：内存中一块存储数据的区域<ul>
+<li>变量的格式：<ul>
+<li>数据类型  变量名 = 初始化值；</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>数据类型<ul>
+<li>基础数据类型(4类8种)<ul>
+<li>整数型：byte(1)  short(2)   int(4)   long(8)</li>
+<li>浮点型：float(4)  double(8)</li>
+<li>字符型：char(2)</li>
+<li>布尔型：boolean(1)</li>
+</ul>
+</li>
+<li>引用数据类型(3种)<ul>
+<li>接口</li>
+<li>数组</li>
+<li>类</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>标识符<ul>
+<li>组成：字母,数字,_,$组成</li>
+<li>不能以数字开头</li>
+<li>不能是关键字</li>
+<li>严格区分大小写</li>
+<li>见名知意</li>
+</ul>
+</li>
+<li>数据类型的转换<ul>
+<li>隐形转换   小======&gt;大</li>
+<li>强制转换   大======&gt;小<ul>
+<li>格式：目标数据类型  标识符 =（数据类型）（被转换值）；</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">JavaSE</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/05/10/MD/Java语言/JavaSE/JavaSE01/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
@@ -1462,7 +1496,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2019 Linton
+    		&copy; 2019 恰克与飞鸟
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
@@ -1549,19 +1583,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JVM</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
+                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1569,7 +1595,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">IDEA</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
               </li>
              
               <li class="article-tag-list-item">

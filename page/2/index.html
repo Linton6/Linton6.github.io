@@ -46,10 +46,10 @@
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="/linton.github.io/" class="profilepic">
-			<img src="https://img-blog.csdnimg.cn/20190512162525636.png" class="js-avatar">
+			<img src="/sl.jpg" class="js-avatar">
 		</a>
 		<hgroup>
-		  <h1 class="header-author"><a href="/linton.github.io/">Linton</a></h1>
+		  <h1 class="header-author"><a href="/linton.github.io/">恰克与飞鸟</a></h1>
 		</hgroup>
 		
 		<p class="header-subtitle">技术易学，刚毅难学</p>
@@ -108,10 +108,10 @@
 	<div class="intrude-less">
 		<header id="header" class="inner">
 			<div class="profilepic">
-				<img src="https://img-blog.csdnimg.cn/20190512162525636.png" class="js-avatar">
+				<img src="/sl.jpg" class="js-avatar">
 			</div>
 			<hgroup>
-			  <h1 class="header-author js-header-author">Linton</h1>
+			  <h1 class="header-author js-header-author">恰克与飞鸟</h1>
 			</hgroup>
 			
 			<p class="header-subtitle"><i class="icon icon-quo-left"></i>技术易学，刚毅难学<i class="icon icon-quo-right"></i></p>
@@ -163,19 +163,19 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-MD/框架使用/全文搜索引擎/ElasticSearch" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-MD/框架使用/web层框架/springMVC" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/12/MD/框架使用/全文搜索引擎/ElasticSearch/">ElasticSearch</a>
+      <a class="article-title" href="/2019/05/12/MD/框架使用/web层框架/springMVC/">springMVC框架</a>
     </h1>
   
 
         
-        <a href="/2019/05/12/MD/框架使用/全文搜索引擎/ElasticSearch/" class="archive-article-date">
+        <a href="/2019/05/12/MD/框架使用/web层框架/springMVC/" class="archive-article-date">
   	<time datetime="2019-05-11T23:04:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-12</time>
 </a>
         
@@ -183,75 +183,94 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="什么是ElasticSearch"><a href="#什么是ElasticSearch" class="headerlink" title="什么是ElasticSearch"></a>什么是ElasticSearch</h2><ul>
-<li>elasticsearch是一个开源的全文搜索分析引擎，它允许您快速，近实时地存储，搜索和分析大量数据。它通常用作底层引擎/技术，为具有复杂搜索功能和要求的应用程序提供支持。</li>
-</ul>
-<h2 id="为什么使用ElasticSearch"><a href="#为什么使用ElasticSearch" class="headerlink" title="为什么使用ElasticSearch"></a>为什么使用ElasticSearch</h2><ul>
-<li>elasticsearch在数据源不断增加的情况下，性能依旧非常好。另外其本身也支持分布式集群部署。</li>
-</ul>
-<h2 id="如何使用ElasticSearch"><a href="#如何使用ElasticSearch" class="headerlink" title="如何使用ElasticSearch"></a>如何使用ElasticSearch</h2><ul>
-<li><p>安装</p>
-<ol>
-<li><p><a href="https://www.elastic.co/downloads/elasticsearch" target="_blank" rel="noopener">下载</a></p>
+        <h2 id="什么是springMVC框架"><a href="#什么是springMVC框架" class="headerlink" title="什么是springMVC框架"></a>什么是springMVC框架</h2><p>​    springMVC是sun公司提出的三层架构中的web层框架。同时springMVC框架本身也是一个MVC的框架，所谓的MVC框架就是将model(模型)，View(视图)，Controller(控制器)区分开来。之所以这样进行区分是因为在早期的JavaEE开发中，使用jsp的时候将视图，控制器，模型混合在一起导致代码逻辑混乱，后期维护性差等缺点。为了避免这些问题，所以提出了MVC分层的思想，将每个部分的代码进行分离。其中springMVC就是其中的一个实践，同时springMVC通过一个前段控制器将所有的请求拦截，再根据URI进行再分发来方便后台开发。</p>
+<h2 id="为什么使用springMVC框架"><a href="#为什么使用springMVC框架" class="headerlink" title="为什么使用springMVC框架"></a>为什么使用springMVC框架</h2><p>​    springMVC作为SpringFrameWork框架web部分的一块，不仅依旧有着spring的轻量，低侵入的特点。并且还因为采用单例的controller在存在并发访问的时候不会出现数据安全问题。因此也带来了高性能的用户体验。在对于开发者而言，使用springMVC进行开发，可以避免频繁的修改web.xml，同时也可以更加简洁的对请求的参数进行封装和处理。在将请求处理完成之后，springMVC还提供了丰富的视图处理工具，以及灵活的数据相应方式供开发者使用。这样可以极大的提高开发者的开发效率。</p>
+<h2 id="怎么使用springMVC框架"><a href="#怎么使用springMVC框架" class="headerlink" title="怎么使用springMVC框架"></a>怎么使用springMVC框架</h2><ul>
+<li><p>创建一个普通的Maven-Web工程，在src目录下创建java和resources目录</p>
 </li>
-<li><p>将下载好的压缩包进行解压</p>
-</li>
-<li><p>运行/bin/elasticsearch</p>
-<p>问题：</p>
-<ol>
-<li><p>不能以root用户运行：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">useradd test   //添加用户</span><br><span class="line">passwd test   //设置密码</span><br><span class="line">su - test     //切换用户</span><br></pre></td></tr></table></figure>
-<ol start="2">
-<li>io异常：</li>
-</ol>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chown test /xx/xx/elasticsearch -R</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-</li>
-<li><p>不能外网访问</p>
-<p>修改/config/elasticsearch.yml</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">network.host:0.0.0.0</span>   <span class="string">//</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>访问ip：9200即可看到节点信息</p>
-</li>
-</ol>
-</li>
-<li><p>使用rest API</p>
-<ol>
-<li><p>restfull风格</p>
-<p>| 请求方式 | 含义 |<br>| :——: | :–: |<br>|   GET    | 查询 |<br>|   POST   | 修改 |<br>|  DELETE  | 删除 |<br>|   PUT    | 增加 |</p>
-</li>
-<li><p>请求规则</p>
-<p>localhost:9200/索引名/文档类型/id</p>
-<p>创建索</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">localhost:9200/索引名    PUT</span><br><span class="line">&#123;</span><br><span class="line">	<span class="attr">"settings"</span>:&#123;</span><br><span class="line">      "number_of_shards":5,   //设置5个分片</span><br><span class="line">      "number_of_replicas":0    //设置0个副本</span><br><span class="line">	&#125;,</span><br><span class="line">    "mappings":&#123;</span><br><span class="line">        "文档类型":&#123;</span><br><span class="line">            "properties":&#123;</span><br><span class="line">                "name":&#123;      //设置字段   </span><br><span class="line">                    "type":"text"   //设置字段类型</span><br><span class="line">                &#125;,</span><br><span class="line">                "age":&#123;    //还有很多字段的公共属性（index/store/boost/analyzer）</span><br><span class="line">                    "type":"integer"</span><br><span class="line">                &#125;,</span><br><span class="line">                "currentDate":&#123;</span><br><span class="line">                    "type":"date",</span><br><span class="line">                    "format":"yyyy-MM-dd"</span><br><span class="line">                &#125;   </span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>添加数据</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">localhost:9200/索引名/文档名    POST</span><br><span class="line">&#123;</span><br><span class="line">    <span class="attr">"name"</span>:<span class="string">"tom"</span>,</span><br><span class="line">    <span class="attr">"age"</span>:<span class="number">14</span>,</span><br><span class="line">    <span class="attr">"currentDate"</span>:<span class="string">"2018-09-01"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>查询数据</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">localhost:9200/索引名/文档名/_search   GET</span><br></pre></td></tr></table></figure>
-<p>删除索引</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">localhost:9200/索引名     DELETE</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-</li>
-<li><p>使用java操作</p>
+<li><p>在工程的依赖中添加spring的核心依赖，以及springMVC的依赖</p>
 <ul>
-<li><p>方法1：因为elasticsearch提供了restful风格的调用接口因此可以直接使用httpclient进行操作</p>
+<li><p>spring依赖部分</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-context<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>5.1.1.RELEASE<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
 </li>
-<li><p>方法2：使用elasticsearch提供的jar包进行开发</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">TransportClient client = <span class="keyword">new</span> PreBuiltTransportClient(Settings.EMPTY).</span><br><span class="line">    addTransportAddress(</span><br><span class="line">    <span class="keyword">new</span> TransportAddress(</span><br><span class="line">        InetAddress.getByName(<span class="string">"localhost"</span>), <span class="number">9300</span>));</span><br><span class="line"></span><br><span class="line"><span class="comment">//创建索引和添加数据（setSource()可以传递多种数据）</span></span><br><span class="line">client.prepareIndex(<span class="string">"myindex3"</span>, <span class="string">"test"</span>).setSource(<span class="string">"&#123;\"name\":\"zs\",\"age\":19&#125;"</span>, XContentType.JSON).get();</span><br><span class="line"><span class="comment">//查询指定数据</span></span><br><span class="line">client.prepareGet(<span class="string">"myindex"</span>,<span class="string">"test"</span>,<span class="string">"1"</span>).get();</span><br><span class="line"><span class="comment">//删除指定数据</span></span><br><span class="line">client.prepareDelete().setIndex(<span class="string">"myindex3"</span>).setType(<span class="string">"test"</span>).setId(<span class="string">"1"</span>).get();</span><br><span class="line"><span class="comment">//查询</span></span><br><span class="line">client.prepareSearch(<span class="string">"myindex"</span>).get();</span><br></pre></td></tr></table></figure>
+<li><p>springMVC依赖部分</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-web<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>5.1.1.RELEASE<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-webmvc<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>5.1.1.RELEASE<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 </li>
-</ul>
-<h2 id="ElasticSearch进阶"><a href="#ElasticSearch进阶" class="headerlink" title="ElasticSearch进阶"></a>ElasticSearch进阶</h2><ul>
-<li>使用spring-data-es开发<ul>
-<li>配置好对应的信息在配置文件中</li>
-<li>在使用的时候创建接口继承ElasticsearchRepository即可</li>
-<li>使用方法同spring-data-jpa</li>
+<li><p>在resources目录下创建applcation.xml进行对应的配置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;context:component-scan base-package=&quot;com.mhc&quot;&gt;&lt;/context:component-scan&gt;</span><br><span class="line">&lt;mvc:annotation-driven /&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在web.xml中配置spring的核心监听器和springMVC的前端控制器</p>
+<ul>
+<li><p>spring的核心监听器</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">context-param</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">param-name</span>&gt;</span>contextConfigLocation<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">param-value</span>&gt;</span>classpath:spring.xml<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">context-param</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">listener</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">listener-class</span>&gt;</span>org.springframework.web.context.ContextLoaderListener<span class="tag">&lt;/<span class="name">listener-class</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">listener</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>springMVC的前端控制器</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">servlet</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>dispatcherServlet<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">servlet-class</span>&gt;</span>org.springframework.web.servlet.DispatcherServlet<span class="tag">&lt;/<span class="name">servlet-class</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">init-param</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">param-name</span>&gt;</span>contextClass<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">param-value</span>&gt;</span>org.springframework.web.context.support.AnnotationConfigWebApplicationContext<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">init-param</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">load-on-startup</span>&gt;</span>5<span class="tag">&lt;/<span class="name">load-on-startup</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">servlet</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">servlet-mapping</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>dispatcherServlet<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>*.do<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">servlet-mapping</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
 </ul>
 </li>
-<li>高级查询规则</li>
+<li><p>编写对应类并添加@Controller，@RequestMapping，@RequestParm，@ResponseBody等注解进行控制</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserController</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@RequestMapping</span>(<span class="string">"/user/login"</span>)</span><br><span class="line">    <span class="meta">@ResponseBody</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">login</span><span class="params">(User user)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> user;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="springMVC进阶"><a href="#springMVC进阶" class="headerlink" title="springMVC进阶"></a>springMVC进阶</h2><ul>
+<li><p>异常处理</p>
+<ul>
+<li><p>编写一个类，添加对应的@ControllerAdvice或者@RestControllerAdvice</p>
+</li>
+<li><p>在类中编写对应方法，并在方法上添加@ExeceptioHandler注解</p>
+</li>
+<li><p>在方法内部进行对应的逻辑处理</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@ControllerAdvice</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ExeceptionHandler</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@ExeceptionHandler</span>(value = Throwable.class)</span><br><span class="line">    <span class="meta">@ResponseBody</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">handler</span><span class="params">(Throwable throwable)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> throwable;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>参数校验</p>
+<ul>
+<li><p>使用hibernate-validate框架来进行参数校验</p>
+</li>
+<li><p>添加pom依赖</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.hibernate<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>hibernate-validator<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>5.2.2.Final<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在applicationContext.xml中添加</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"validator"</span> <span class="attr">class</span>=<span class="string">"org.springframework.validation.beanvalidation.LocalValidatorFactoryBean"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在实体类以及对应的形参上添加注解</p>
+</li>
+</ul>
+</li>
+<li><p>全局异常处理</p>
+<ul>
+<li><p>在web.xml的前段控制器中，添加以下配置</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">init-param</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">param-name</span>&gt;</span>throwExceptionIfNoHandlerFound<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">param-value</span>&gt;</span>true<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">init-param</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>这样在编写的异常处理中就可以把捕获这个异常进行处理</p>
+</li>
+</ul>
+</li>
+<li><p>模板引擎</p>
+</li>
+<li><p>文件上传</p>
+<ul>
+<li><p>在pom依赖中添加fileupload</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>commons-fileupload<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>commons-fileupload<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.3.1<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在applicationContext.xml中配置</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--文件上传的解析器--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"multipartResolver"</span></span></span><br><span class="line"><span class="tag">      <span class="attr">class</span>=<span class="string">"org.springframework.web.multipart.commons.CommonsMultipartResolver"</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 上传文件大小上限，单位为字节（10MB） --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"maxUploadSize"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">value</span>&gt;</span>10485760<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 请求的编码格式，必须和jSP的pageEncoding属性一致，以便正确读取表单的内容，默认为ISO-8859-1 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"defaultEncoding"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">value</span>&gt;</span>UTF-8<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在方法形参中添加MutilpartFile即可接收参数</p>
+</li>
+</ul>
+</li>
+<li><p>中文乱码</p>
+<ul>
+<li><p>可以在web.xml中添加</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--解决POST乱码问题--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">filter</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">filter-name</span>&gt;</span>encodingFilter<span class="tag">&lt;/<span class="name">filter-name</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">filter-class</span>&gt;</span>org.springframework.web.filter.CharacterEncodingFilter<span class="tag">&lt;/<span class="name">filter-class</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">init-param</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">param-name</span>&gt;</span>encoding<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">param-value</span>&gt;</span>UTF-8<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">init-param</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">filter</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">filter-mapping</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">filter-name</span>&gt;</span>encodingFilter<span class="tag">&lt;/<span class="name">filter-name</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/*<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">filter-mapping</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
 </ul>
 
       
@@ -276,7 +295,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/05/12/MD/框架使用/全文搜索引擎/ElasticSearch/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/05/12/MD/框架使用/web层框架/springMVC/">展开全文 >></a>
         </p>
       
 
@@ -467,19 +486,19 @@
 
 
   
-    <article id="post-MD/框架使用/持久层框架/mybatis" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-MD/框架使用/全文搜索引擎/ElasticSearch" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/12/MD/框架使用/持久层框架/mybatis/">Mybatis</a>
+      <a class="article-title" href="/2019/05/12/MD/框架使用/全文搜索引擎/ElasticSearch/">ElasticSearch</a>
     </h1>
   
 
         
-        <a href="/2019/05/12/MD/框架使用/持久层框架/mybatis/" class="archive-article-date">
+        <a href="/2019/05/12/MD/框架使用/全文搜索引擎/ElasticSearch/" class="archive-article-date">
   	<time datetime="2019-05-11T23:04:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-12</time>
 </a>
         
@@ -487,147 +506,75 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="什么是mybatis"><a href="#什么是mybatis" class="headerlink" title="什么是mybatis"></a>什么是mybatis</h2><ul>
-<li>它支持定制化 SQL、存储过程以及高级映射。MyBatis 避免了几乎所有的 JDBC 代码和手动设置参数以及获取结果集。MyBatis 可以使用简单的 XML 或注解来配置和映射原生信息，将接口和 Java 的 POJOs(Plain Old Java Objects,普通的 Java对象)映射成数据库中的记录。</li>
+        <h2 id="什么是ElasticSearch"><a href="#什么是ElasticSearch" class="headerlink" title="什么是ElasticSearch"></a>什么是ElasticSearch</h2><ul>
+<li>elasticsearch是一个开源的全文搜索分析引擎，它允许您快速，近实时地存储，搜索和分析大量数据。它通常用作底层引擎/技术，为具有复杂搜索功能和要求的应用程序提供支持。</li>
 </ul>
-<h2 id="为什么使用mybatis"><a href="#为什么使用mybatis" class="headerlink" title="为什么使用mybatis"></a>为什么使用mybatis</h2><ul>
-<li>相对于原生JDBC而言使用mybatis可以简化大部分的重复编码，相对于hibernate（ORM）框架而言mybatis更加轻量，更加容易进行调整，也拥有更加快的速度。在出现问题的时候也更容易排查。总而言之在追求效率和快速变化的业务场景下，选择mybatis可以给你带来更好的开发体验。</li>
+<h2 id="为什么使用ElasticSearch"><a href="#为什么使用ElasticSearch" class="headerlink" title="为什么使用ElasticSearch"></a>为什么使用ElasticSearch</h2><ul>
+<li>elasticsearch在数据源不断增加的情况下，性能依旧非常好。另外其本身也支持分布式集群部署。</li>
 </ul>
-<h2 id="怎么使用mybatis"><a href="#怎么使用mybatis" class="headerlink" title="怎么使用mybatis"></a>怎么使用mybatis</h2><ul>
-<li><p>单独使用mybatis</p>
+<h2 id="如何使用ElasticSearch"><a href="#如何使用ElasticSearch" class="headerlink" title="如何使用ElasticSearch"></a>如何使用ElasticSearch</h2><ul>
+<li><p>安装</p>
 <ol>
-<li><p>创建一个普通的java工程</p>
+<li><p><a href="https://www.elastic.co/downloads/elasticsearch" target="_blank" rel="noopener">下载</a></p>
 </li>
-<li><p>添加mybatis的依赖，和对应的数据库连接驱动</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.mybatis<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mybatis<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.4.6<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>mysql<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mysql-connector-java<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>5.1.38<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<li><p>将下载好的压缩包进行解压</p>
 </li>
-<li><p>创建对应的实体和表，并且保持字段名一致</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Integer userId;</span><br><span class="line">    <span class="keyword">private</span> String userName;</span><br><span class="line">    <span class="keyword">private</span> String password;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>编写基本的mybatis-config.xml</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">environments</span> <span class="attr">default</span>=<span class="string">"development"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">environment</span> <span class="attr">id</span>=<span class="string">"development"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">transactionManager</span> <span class="attr">type</span>=<span class="string">"JDBC"</span>&gt;</span><span class="tag">&lt;/<span class="name">transactionManager</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">dataSource</span> <span class="attr">type</span>=<span class="string">"POOLED"</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"driver"</span> <span class="attr">value</span>=<span class="string">"com.mysql.jdbc.Driver"</span> /&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"url"</span> <span class="attr">value</span>=<span class="string">"jdbc:mysql://localhost:3306/mybatis"</span> /&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"username"</span> <span class="attr">value</span>=<span class="string">"root"</span> /&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"password"</span> <span class="attr">value</span>=<span class="string">"123456"</span> /&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">dataSource</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">environment</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">environments</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">mappers</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">mapper</span> <span class="attr">class</span>=<span class="string">"com.mhc.mapper.UserMapper"</span>&gt;</span><span class="tag">&lt;/<span class="name">mapper</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">mappers</span>&gt;</span></span><br><span class="line">   </span><br><span class="line"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>根据对应的实体编写XXXMapping.xml和XXXMapping接口</p>
-<ul>
-<li><p>XXXMapping接口</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">UserMapper</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(User user)</span></span>;</span><br><span class="line"></span><br><span class="line">        <span class="function">Integer <span class="title">deleteById</span><span class="params">(Integer userId)</span></span>;</span><br><span class="line"></span><br><span class="line">        <span class="function">Integer <span class="title">update</span><span class="params">(User user)</span></span>;</span><br><span class="line"></span><br><span class="line">        <span class="function">List&lt;User&gt; <span class="title">findAll</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>XXXMapping.xml</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">mapper</span> <span class="attr">namespace</span>=<span class="string">"com.mhc.mapper.UserMapper"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">insert</span> <span class="attr">id</span>=<span class="string">"add"</span> <span class="attr">parameterType</span>=<span class="string">"com.mhc.domain.User"</span>&gt;</span></span><br><span class="line">        insert into 'user' values (null ,#&#123;userName&#125;,#&#123;password&#125;)</span><br><span class="line">    <span class="tag">&lt;/<span class="name">insert</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">delete</span> <span class="attr">id</span>=<span class="string">"deleteById"</span> <span class="attr">parameterType</span>=<span class="string">"Integer"</span>&gt;</span></span><br><span class="line">        delete from 'user' where userId = #&#123;userId&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">delete</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">update</span> <span class="attr">id</span>=<span class="string">"update"</span> <span class="attr">parameterType</span>=<span class="string">"com.mhc.domain.User"</span>&gt;</span></span><br><span class="line">        update 'user' set userName = #&#123;userName&#125; and password = #&#123;password&#125; where userId = #&#123;userId&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">update</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"findAll"</span> <span class="attr">resultType</span>=<span class="string">"com.mhc.domain.User"</span>&gt;</span></span><br><span class="line">        select * from  'user';</span><br><span class="line">    <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">mapper</span>&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-<li><p>在程序中使用SqlSessionFactoryBuilder来构造一个SqlSessionFactory对象</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">FileInputStream inputStream = <span class="keyword">new</span> FileInputStream(<span class="keyword">new</span> File(<span class="string">"mybatis-conf.xml"</span>))；</span><br><span class="line">    </span><br><span class="line">SqlSessionFactory sqlSessionFactory = <span class="keyword">new</span> SqlSessionFactoryBuilder().Build(inputStram)；</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>使用SqlSessionFactory构造对应的SqlSession来获得对应的Mapper</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SqlSession sqlSession = sqlSessionFactory.openSession()；</span><br><span class="line"></span><br><span class="line">UserMapper mapper = sqlSession.getMapper(UserMapper.class);</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>使用Mapper进行对应的操作</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">mapper.add(user);</span><br><span class="line"></span><br><span class="line">Integer result = mapper.deleteById(<span class="number">1</span>)；</span><br><span class="line"></span><br><span class="line">result = mapper.update(user);</span><br><span class="line"></span><br><span class="line">List&lt;User&gt; list = mapper.findAll()；</span><br><span class="line"></span><br><span class="line">sqlSession.commit()；</span><br></pre></td></tr></table></figure>
+<li><p>运行/bin/elasticsearch</p>
+<p>问题：</p>
+<ol>
+<li><p>不能以root用户运行：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">useradd test   //添加用户</span><br><span class="line">passwd test   //设置密码</span><br><span class="line">su - test     //切换用户</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>io异常：</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chown test /xx/xx/elasticsearch -R</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
 </li>
-<li><p>使用spring整合mybatis</p>
-<ol>
-<li><p>创建一个Maven工程</p>
+<li><p>不能外网访问</p>
+<p>修改/config/elasticsearch.yml</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">network.host:0.0.0.0</span>   <span class="string">//</span></span><br></pre></td></tr></table></figure>
 </li>
-<li><p>添加spring和mybatis的相关依赖</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-context<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;spring.version&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-jdbc<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;spring.version&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.mybatis<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mybatis<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.4.6<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.mybatis<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mybatis-spring<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.3.1<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>mysql<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mysql-connector-java<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>5.1.38<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.mchange<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>c3p0<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>0.9.5.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>编写spring的配置文件</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 配置数据源 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"dataSource"</span> <span class="attr">class</span>=<span class="string">"com.mchange.v2.c3p0.ComboPooledDataSource"</span> <span class="attr">destroy-method</span>=<span class="string">"close"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"driverClass"</span> <span class="attr">value</span>=<span class="string">"com.mysql.jdbc.Driver"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"jdbcUrl"</span> <span class="attr">value</span>= <span class="string">"jdbc:mysql://localhost:3306/mybatis?characterEncoding=UTF-8"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"user"</span> <span class="attr">value</span>=<span class="string">"root"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"password"</span> <span class="attr">value</span>=<span class="string">"354710644"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"maxPoolSize"</span> <span class="attr">value</span>=<span class="string">"10"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"maxIdleTime"</span> <span class="attr">value</span>=<span class="string">"5"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 配置sqlSessionFactory，SqlSessionFactoryBean是用来产生sqlSessionFactory的 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"sqlSessionFactory"</span> <span class="attr">class</span>=<span class="string">"org.mybatis.spring.SqlSessionFactoryBean"</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 加载mybatis的全局配置文件，放在classpath下的mybatis文件夹中了 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"configLocation"</span> <span class="attr">value</span>=<span class="string">"classpath:SqlMapConfig.xml"</span> /&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 加载数据源，使用上面配置好的数据源 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"dataSource"</span> <span class="attr">ref</span>=<span class="string">"dataSource"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">tx:annotation-driven</span>&gt;</span><span class="tag">&lt;/<span class="name">tx:annotation-driven</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"transactionManager"</span></span></span><br><span class="line"><span class="tag">      <span class="attr">class</span>=<span class="string">"org.springframework.jdbc.datasource.DataSourceTransactionManager"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"dataSource"</span> <span class="attr">ref</span>=<span class="string">"dataSource"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!--mapper代理开发--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">"org.mybatis.spring.mapper.MapperScannerConfigurer"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"basePackage"</span> <span class="attr">value</span>=<span class="string">"com.huawei.mapper"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"sqlSessionFactory"</span>  <span class="attr">ref</span>=<span class="string">"sqlSessionFactory"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>通过注入mapper对象进行操作</p>
+<li><p>访问ip：9200即可看到节点信息</p>
 </li>
 </ol>
 </li>
-</ul>
-<h2 id="mybatis进阶"><a href="#mybatis进阶" class="headerlink" title="mybatis进阶"></a>mybatis进阶</h2><ul>
-<li><p>mybatis反编译插件</p>
+<li><p>使用rest API</p>
 <ol>
-<li><p>在pom中添加mybatis-generator插件</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--generator插件--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.mybatis.generator<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mybatis-generator-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.3.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">verbose</span>&gt;</span>true<span class="tag">&lt;/<span class="name">verbose</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">overwrite</span>&gt;</span>true<span class="tag">&lt;/<span class="name">overwrite</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<li><p>restfull风格</p>
+<p>| 请求方式 | 含义 |<br>| :——: | :–: |<br>|   GET    | 查询 |<br>|   POST   | 修改 |<br>|  DELETE  | 删除 |<br>|   PUT    | 增加 |</p>
 </li>
-<li><p>编写generatorConfig.xml</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--数据库驱动--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">classPathEntry</span>    <span class="attr">location</span>=<span class="string">"D:\AppData\Respository\mysql\mysql-connector-java\5.1.2\mysql-connector-java-5.1.2.jar"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">context</span> <span class="attr">id</span>=<span class="string">"MySqlDB"</span>    <span class="attr">targetRuntime</span>=<span class="string">"MyBatis3"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">commentGenerator</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"suppressDate"</span> <span class="attr">value</span>=<span class="string">"true"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"suppressAllComments"</span> <span class="attr">value</span>=<span class="string">"true"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">commentGenerator</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--数据库链接地址账号密码--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">jdbcConnection</span> <span class="attr">driverClass</span>=<span class="string">"com.mysql.jdbc.Driver"</span></span></span><br><span class="line"><span class="tag">                    <span class="attr">connectionURL</span>=<span class="string">"jdbc:mysql://localhost:3306/mybatis"</span></span></span><br><span class="line"><span class="tag">                    <span class="attr">userId</span>=<span class="string">"root"</span></span></span><br><span class="line"><span class="tag">                    <span class="attr">password</span>=<span class="string">"354710644"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">jdbcConnection</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">javaTypeResolver</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"forceBigDecimals"</span> <span class="attr">value</span>=<span class="string">"false"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">javaTypeResolver</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--生成Model类存放位置--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">javaModelGenerator</span> <span class="attr">targetPackage</span>=<span class="string">"com.mhc.domain"</span> <span class="attr">targetProject</span>=<span class="string">"src/main/java"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"enableSubPackages"</span> <span class="attr">value</span>=<span class="string">"true"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"trimStrings"</span> <span class="attr">value</span>=<span class="string">"true"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">javaModelGenerator</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--生成映射文件存放位置--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">sqlMapGenerator</span> <span class="attr">targetPackage</span>=<span class="string">"com.mhc.mapper"</span> <span class="attr">targetProject</span>=<span class="string">"src/main/resources"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"enableSubPackages"</span> <span class="attr">value</span>=<span class="string">"true"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">sqlMapGenerator</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--生成mapper类存放位置--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">javaClientGenerator</span> <span class="attr">type</span>=<span class="string">"XMLMAPPER"</span> <span class="attr">targetPackage</span>=<span class="string">"com.mhc.mapper"</span> <span class="attr">targetProject</span>=<span class="string">"src/main/java"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"enableSubPackages"</span> <span class="attr">value</span>=<span class="string">"true"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">javaClientGenerator</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--生成对应表及类名--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">table</span> <span class="attr">tableName</span>=<span class="string">"user"</span>&gt;</span><span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">context</span>&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>运行插件即可反编译生成实体类和对应的mapper文件</p>
+<li><p>请求规则</p>
+<p>localhost:9200/索引名/文档类型/id</p>
+<p>创建索</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">localhost:9200/索引名    PUT</span><br><span class="line">&#123;</span><br><span class="line">	<span class="attr">"settings"</span>:&#123;</span><br><span class="line">      "number_of_shards":5,   //设置5个分片</span><br><span class="line">      "number_of_replicas":0    //设置0个副本</span><br><span class="line">	&#125;,</span><br><span class="line">    "mappings":&#123;</span><br><span class="line">        "文档类型":&#123;</span><br><span class="line">            "properties":&#123;</span><br><span class="line">                "name":&#123;      //设置字段   </span><br><span class="line">                    "type":"text"   //设置字段类型</span><br><span class="line">                &#125;,</span><br><span class="line">                "age":&#123;    //还有很多字段的公共属性（index/store/boost/analyzer）</span><br><span class="line">                    "type":"integer"</span><br><span class="line">                &#125;,</span><br><span class="line">                "currentDate":&#123;</span><br><span class="line">                    "type":"date",</span><br><span class="line">                    "format":"yyyy-MM-dd"</span><br><span class="line">                &#125;   </span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>添加数据</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">localhost:9200/索引名/文档名    POST</span><br><span class="line">&#123;</span><br><span class="line">    <span class="attr">"name"</span>:<span class="string">"tom"</span>,</span><br><span class="line">    <span class="attr">"age"</span>:<span class="number">14</span>,</span><br><span class="line">    <span class="attr">"currentDate"</span>:<span class="string">"2018-09-01"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>查询数据</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">localhost:9200/索引名/文档名/_search   GET</span><br></pre></td></tr></table></figure>
+<p>删除索引</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">localhost:9200/索引名     DELETE</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
 </li>
-<li><p>mybatis数据传递</p>
+<li><p>使用java操作</p>
 <ul>
-<li><p>有两种方式进行数据的传递</p>
-<ol>
-<li><p>#{attribute}这个方式传递的数据是通过预编译的（传递的参数会被‘’进行标注，同时会被转换成字符串）</p>
-<ul>
-<li>在传递基本数据类型以及基本数据类型包装类的时候attribute可以任意填写</li>
-<li>在传递POJO类型数据的时候attribute应该为属性名</li>
-<li>在传递map集合的时候attribute应该为key的值</li>
-</ul>
+<li><p>方法1：因为elasticsearch提供了restful风格的调用接口因此可以直接使用httpclient进行操作</p>
 </li>
-<li><p>${attribute}这个方式传递的数据是直接传递的（传递的时候不会被转换，在order By和like的时候会用到）</p>
-<ul>
-<li>在传递基本数据类型以及基本数据类型包装类的时候attribute只能为value</li>
-<li><p>在传递POJO类型数据的时候attribute应该为属性名</p>
-</li>
-<li><p>在传递map集合的时候attribute应该为key的值</p>
+<li><p>方法2：使用elasticsearch提供的jar包进行开发</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">TransportClient client = <span class="keyword">new</span> PreBuiltTransportClient(Settings.EMPTY).</span><br><span class="line">    addTransportAddress(</span><br><span class="line">    <span class="keyword">new</span> TransportAddress(</span><br><span class="line">        InetAddress.getByName(<span class="string">"localhost"</span>), <span class="number">9300</span>));</span><br><span class="line"></span><br><span class="line"><span class="comment">//创建索引和添加数据（setSource()可以传递多种数据）</span></span><br><span class="line">client.prepareIndex(<span class="string">"myindex3"</span>, <span class="string">"test"</span>).setSource(<span class="string">"&#123;\"name\":\"zs\",\"age\":19&#125;"</span>, XContentType.JSON).get();</span><br><span class="line"><span class="comment">//查询指定数据</span></span><br><span class="line">client.prepareGet(<span class="string">"myindex"</span>,<span class="string">"test"</span>,<span class="string">"1"</span>).get();</span><br><span class="line"><span class="comment">//删除指定数据</span></span><br><span class="line">client.prepareDelete().setIndex(<span class="string">"myindex3"</span>).setType(<span class="string">"test"</span>).setId(<span class="string">"1"</span>).get();</span><br><span class="line"><span class="comment">//查询</span></span><br><span class="line">client.prepareSearch(<span class="string">"myindex"</span>).get();</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 </li>
-</ol>
-</li>
+</ul>
+<h2 id="ElasticSearch进阶"><a href="#ElasticSearch进阶" class="headerlink" title="ElasticSearch进阶"></a>ElasticSearch进阶</h2><ul>
+<li>使用spring-data-es开发<ul>
+<li>配置好对应的信息在配置文件中</li>
+<li>在使用的时候创建接口继承ElasticsearchRepository即可</li>
+<li>使用方法同spring-data-jpa</li>
 </ul>
 </li>
-<li><p>springboot整合mybatis</p>
-<ul>
-<li><p>在项目的依赖中添加mybatis</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- Spring Boot Mybatis 依赖 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.mybatis.spring.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mybatis-spring-boot-starter<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;mybatis-spring-boot&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>在启动类上添加注解</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@MapperScan</span>(<span class="string">"com.mhc.mapper"</span>)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>这样就可以使用spring注入对应mapper进行使用</p>
-</li>
-</ul>
-</li>
-<li><p>手动编写动态sql</p>
-<ul>
-<li><p>mybatis在映射的配置文件中提供了对应的几种标签供开发者使用</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"selectPerson"</span> <span class="attr">parameterType</span>=<span class="string">"int"</span> <span class="attr">resultType</span>=<span class="string">"hashmap"</span>&gt;</span></span><br><span class="line">  SELECT * FROM PERSON WHERE ID = #&#123;id&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">insert</span> <span class="attr">id</span>=<span class="string">"insertAuthor"</span> <span class="attr">parameterType</span>=<span class="string">"domain.blog.Author"</span>&gt;</span></span><br><span class="line">	INSERT INTO 'user' VALUES (null,'zs','123')</span><br><span class="line"><span class="tag">&lt;/<span class="name">insert</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">update</span> <span class="attr">id</span> =<span class="string">"update"</span> <span class="attr">parameterType</span>=<span class="string">"domain.user"</span>&gt;</span></span><br><span class="line">	UPDATE 'user' SET userName = #&#123;userName&#125; where userId = #&#123;userId&#125; </span><br><span class="line"><span class="tag">&lt;/<span class="name">update</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">delete</span> <span class="attr">id</span> = <span class="string">"deleteById"</span> <span class="attr">parameterType</span> = <span class="string">"Integer"</span>&gt;</span></span><br><span class="line">    Delete from 'user' where userId = #&#123;userId&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">delete</span>&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>在这些基础的标签之上，mybatis还提供了其他的标签</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">！-</span> <span class="attr">if</span>语句会根据表达式的内容，判断是否添加标签内<span class="attr">sql</span> <span class="attr">--</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">"表达式"</span>&gt;</span></span><br><span class="line">	语句</span><br><span class="line"><span class="tag">&lt;/<span class="name">if</span>&gt;</span>  </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">！-</span> <span class="attr">where</span>会自动去掉语句开头的<span class="attr">AND</span>和<span class="attr">OR</span>并且还能保证至少有一个条件的时候才拼接 <span class="attr">--</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">where</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">if</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">if</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">if</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">where</span>&gt;</span></span><br><span class="line">    </span><br><span class="line"><span class="tag">&lt;<span class="name">！-</span> <span class="attr">foreach</span>用来循环集合数据，并且可以指定开头和结尾，以及分隔符，并提供索引和<span class="attr">key</span>来使用<span class="attr">--</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">foreach</span> <span class="attr">item</span>=<span class="string">"item"</span> <span class="attr">index</span>=<span class="string">"index"</span> <span class="attr">collection</span>=<span class="string">"list"</span></span></span><br><span class="line"><span class="tag">              <span class="attr">open</span>=<span class="string">"("</span> <span class="attr">separator</span>=<span class="string">","</span> <span class="attr">close</span>=<span class="string">")"</span>&gt;</span></span><br><span class="line">         #&#123;item&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">foreach</span>&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-<li><p>自定义sql的注解方式</p>
-<ul>
-<li>用户可以直接在mapper接口的方法上添加@Insert(sql),@Update(sql),@Delete(sql),@Select(sql)</li>
-</ul>
-</li>
-<li><p>主键返回</p>
-<ul>
-<li><p>可以在insert的标签中添加</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">selectKey</span> <span class="attr">keyProperty</span>=<span class="string">"userId"</span> <span class="attr">resultType</span>=<span class="string">"Integer"</span> <span class="attr">order</span>"<span class="attr">AFTER</span>"&gt;</span></span><br><span class="line">	select last_insert_id()</span><br><span class="line"><span class="tag">&lt;/<span class="name">selectKey</span>&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>返回的主键会直接赋值给保存的数据</p>
-</li>
-</ul>
-</li>
-<li><p>复杂条件查询</p>
-<ul>
-<li>and关系<ul>
-<li>使用Exemple.createCriteria()</li>
-</ul>
-</li>
-<li>or关系<ul>
-<li>使用Exemple.or()</li>
-</ul>
-</li>
-</ul>
-</li>
+<li>高级查询规则</li>
 </ul>
 
       
@@ -652,7 +599,121 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/05/12/MD/框架使用/持久层框架/mybatis/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/05/12/MD/框架使用/全文搜索引擎/ElasticSearch/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-MD/Tools/Nginx" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/05/11/MD/Tools/Nginx/">Nginx</a>
+    </h1>
+  
+
+        
+        <a href="/2019/05/11/MD/Tools/Nginx/" class="archive-article-date">
+  	<time datetime="2019-05-10T23:04:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-11</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Nginx-简介"><a href="#Nginx-简介" class="headerlink" title="Nginx 简介"></a>Nginx 简介</h2><ul>
+<li>nginx是一个静态服务器，同时也是一个反向代理服务器。其支持对服务器的负载均衡。在前后分离部署的时候，也可以通过代理来解决跨域问题。</li>
+</ul>
+<h2 id="Nginx-使用"><a href="#Nginx-使用" class="headerlink" title="Nginx 使用"></a>Nginx 使用</h2><ul>
+<li><p>安装</p>
+<ul>
+<li><p><a href="http://nginx.org/en/download.html" target="_blank" rel="noopener">下载</a></p>
+</li>
+<li><p>解压 tar -xzvf nginx-1.x.x.tar.gz</p>
+</li>
+<li><p>配置安装路径 ./configuration  –prefix = /install /dir</p>
+</li>
+<li><p>编译安装 make &amp; make install</p>
+</li>
+<li><p>启动关闭服务  </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sh nginx -c /config/nginx.conf   //启动</span><br><span class="line">sh nginx -s stop   //停止作业</span><br><span class="line">sh nginx -s reload //重启作业</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>常见缺少的库</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">yum install pcre-devel</span><br><span class="line">yum install openssl-devel</span><br><span class="line">yum install zlib-devel</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>基本配置</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">worker_processes  <span class="number">1</span>;  <span class="comment">//配置工作的线程数</span></span><br><span class="line"></span><br><span class="line">events &#123;</span><br><span class="line">    use epoll  <span class="comment">//事件驱动模型</span></span><br><span class="line">    worker_connections  <span class="number">1024</span>;   <span class="comment">//允许链接的数量</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">http &#123;</span><br><span class="line">    include       mime.types;  <span class="comment">//文件扩展名与文件类型映射表</span></span><br><span class="line">    default_type  application/octet-stream;   <span class="comment">//默认文件类型</span></span><br><span class="line">    access_log off   <span class="comment">//日志服务开关</span></span><br><span class="line">    log_format myFormat <span class="string">'$remote_addr'</span>  <span class="comment">//自定义日志文件格式</span></span><br><span class="line">    access_log log/access.log.myFormat   <span class="comment">//设置日志格式</span></span><br><span class="line">    sendfile        on;</span><br><span class="line">    keepalive_timeout  <span class="number">65</span>;   <span class="comment">//连接超时时间</span></span><br><span class="line"></span><br><span class="line">    upstream mysvr&#123;</span><br><span class="line">        server <span class="number">192.168</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">8080</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    server &#123;</span><br><span class="line">        listen       <span class="number">8090</span>;  <span class="comment">//监听端口</span></span><br><span class="line">        server_name  localhost;    <span class="comment">//监听地址</span></span><br><span class="line">        location / &#123;    <span class="comment">//请求的url</span></span><br><span class="line">            root   html/dist;   <span class="comment">//根目录</span></span><br><span class="line">            index  index.html index.htm;   <span class="comment">//默认页面配置</span></span><br><span class="line">            proxy_pass  http:<span class="comment">//mysvr;      //请求转向定义的地址</span></span><br><span class="line">            deny <span class="number">192.168</span><span class="number">.0</span><span class="number">.2</span>；   <span class="comment">//拒绝的ip</span></span><br><span class="line">            allow <span class="number">192.168</span><span class="number">.0</span><span class="number">.3</span>;   <span class="comment">//允许的ip</span></span><br><span class="line">        &#125;</span><br><span class="line">        error_page   <span class="number">500</span> <span class="number">502</span> <span class="number">503</span> <span class="number">504</span>  /<span class="number">50</span>x.html;  <span class="comment">//错误页面</span></span><br><span class="line">        location = <span class="regexp">/50x.html &#123;</span></span><br><span class="line"><span class="regexp">            root   html;</span></span><br><span class="line"><span class="regexp">        &#125;</span></span><br><span class="line"><span class="regexp">	&#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>负载均衡配置</p>
+<ul>
+<li>负载策略<ul>
+<li>默认为轮询机制，还可以选择权重，iphash，urlhash等方式</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">worker_processes  <span class="number">1</span>;  <span class="comment">//配置工作的线程数</span></span><br><span class="line">events &#123;   </span><br><span class="line">    use epoll  <span class="comment">//事件驱动模型   </span></span><br><span class="line">    worker_connections  <span class="number">1024</span>;   <span class="comment">//允许链接的数量</span></span><br><span class="line">&#125;</span><br><span class="line">http &#123;</span><br><span class="line">    include       mime.types;</span><br><span class="line">    default_type  application/octet-stream;</span><br><span class="line">    sendfile        on;</span><br><span class="line">    keepalive_timeout  <span class="number">65</span>;</span><br><span class="line"></span><br><span class="line">    upstream mysvr&#123;</span><br><span class="line">        ip_hash   <span class="comment">//iphash模式</span></span><br><span class="line">        server <span class="number">192.168</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">8080</span> weight=<span class="number">10</span>;  <span class="comment">//权重策略</span></span><br><span class="line">        server <span class="number">192.168</span><span class="number">.0</span><span class="number">.2</span>:<span class="number">8080</span>;</span><br><span class="line">        server <span class="number">192.168</span><span class="number">.0</span><span class="number">.3</span>:<span class="number">8090</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    server &#123;</span><br><span class="line">        listen       <span class="number">8090</span>;</span><br><span class="line">        server_name  localhost;</span><br><span class="line">        location / &#123;</span><br><span class="line">            proxy_pass  http:<span class="comment">//mysvr;</span></span><br><span class="line">            root   html/dist;</span><br><span class="line">            index  index.html index.htm;</span><br><span class="line">        &#125;</span><br><span class="line">        error_page   <span class="number">500</span> <span class="number">502</span> <span class="number">503</span> <span class="number">504</span>  /<span class="number">50</span>x.html;</span><br><span class="line">        location = <span class="regexp">/50x.html &#123;</span></span><br><span class="line"><span class="regexp">            root   html;</span></span><br><span class="line"><span class="regexp">        &#125;</span></span><br><span class="line"><span class="regexp">	&#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>前后台分离部署解决跨域配置</p>
+<ul>
+<li><p>核心思想：通过nginx拦截所有发送给后台的请求。将这些请求的url获得到之后再进行代理转发给对应的后台。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//前台代码部署在locahost:80端口,代码放在html/dist里</span></span><br><span class="line"><span class="comment">//后台代码部署在remote:port，请求统一以api开头</span></span><br><span class="line">worker_processes  <span class="number">1</span>;  <span class="comment">//配置工作的线程数</span></span><br><span class="line">events &#123;   </span><br><span class="line">    use epoll  <span class="comment">//事件驱动模型   </span></span><br><span class="line">    worker_connections  <span class="number">1024</span>;   <span class="comment">//允许链接的数量</span></span><br><span class="line">&#125;</span><br><span class="line">http &#123;</span><br><span class="line">    include       mime.types;</span><br><span class="line">    default_type  application/octet-stream;</span><br><span class="line">    sendfile        on;</span><br><span class="line">    keepalive_timeout  <span class="number">65</span>;</span><br><span class="line"></span><br><span class="line">    upstream mysvr&#123;</span><br><span class="line">        server remote:port;  </span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    server &#123;</span><br><span class="line">        listen       <span class="number">80</span>;</span><br><span class="line">        server_name  localhost;</span><br><span class="line">        location / &#123;</span><br><span class="line">            root   html/dist;</span><br><span class="line">            index  index.html index.htm;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        location /api&#123;</span><br><span class="line">            rewrite ^<span class="regexp">/api/</span>(.*)$/$<span class="number">1</span> <span class="keyword">break</span>;</span><br><span class="line">            proxy_pass http:<span class="comment">//mysvr</span></span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        error_page   <span class="number">500</span> <span class="number">502</span> <span class="number">503</span> <span class="number">504</span>  /<span class="number">50</span>x.html;</span><br><span class="line">        location = <span class="regexp">/50x.html &#123;</span></span><br><span class="line"><span class="regexp">            root   html;</span></span><br><span class="line"><span class="regexp">        &#125;</span></span><br><span class="line"><span class="regexp">	&#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Nginx</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/05/11/MD/Tools/Nginx/">展开全文 >></a>
         </p>
       
 
@@ -867,219 +928,6 @@
 
 
   
-    <article id="post-MD/Tools/Maven" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/11/MD/Tools/Maven/">Maven</a>
-    </h1>
-  
-
-        
-        <a href="/2019/05/11/MD/Tools/Maven/" class="archive-article-date">
-  	<time datetime="2019-05-10T23:04:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-11</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><ul>
-<li><p>下载</p>
-<blockquote>
-<p><a href="http://maven.apache.org/download.cgi" target="_blank" rel="noopener">http://maven.apache.org/download.cgi</a></p>
-</blockquote>
-</li>
-<li><p>解压</p>
-</li>
-</ul>
-<h2 id="常用配置"><a href="#常用配置" class="headerlink" title="常用配置"></a>常用配置</h2><ul>
-<li><p>配置国内镜像</p>
-<ul>
-<li>更换conf/setting.xml为对应配置</li>
-</ul>
-</li>
-<li><p>更改本地仓库位置</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">localRepository</span>&gt;</span>D:\java\rep<span class="tag">&lt;/<span class="name">localRepository</span>&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><ul>
-<li><p>构建maven工程，配置对应的pom文件来管理项目依赖</p>
-</li>
-<li><p>常用命令：</p>
-<p>| 序号 |    命令     |    功能    |<br>| :–: | :———: | :——–: |<br>|  1   |    clean    |    清除    |<br>|  2   |    test     |  运行测试  |<br>|  3   |   package   |    打包    |<br>|  4   |   install   | 在本地安装 |<br>|  5   | source：jar |  源码打包  |</p>
-</li>
-</ul>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Maven</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/05/11/MD/Tools/Maven/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-MD/Tools/Nginx" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/11/MD/Tools/Nginx/">Nginx</a>
-    </h1>
-  
-
-        
-        <a href="/2019/05/11/MD/Tools/Nginx/" class="archive-article-date">
-  	<time datetime="2019-05-10T23:04:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-11</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Nginx-简介"><a href="#Nginx-简介" class="headerlink" title="Nginx 简介"></a>Nginx 简介</h2><ul>
-<li>nginx是一个静态服务器，同时也是一个反向代理服务器。其支持对服务器的负载均衡。在前后分离部署的时候，也可以通过代理来解决跨域问题。</li>
-</ul>
-<h2 id="Nginx-使用"><a href="#Nginx-使用" class="headerlink" title="Nginx 使用"></a>Nginx 使用</h2><ul>
-<li><p>安装</p>
-<ul>
-<li><p><a href="http://nginx.org/en/download.html" target="_blank" rel="noopener">下载</a></p>
-</li>
-<li><p>解压 tar -xzvf nginx-1.x.x.tar.gz</p>
-</li>
-<li><p>配置安装路径 ./configuration  –prefix = /install /dir</p>
-</li>
-<li><p>编译安装 make &amp; make install</p>
-</li>
-<li><p>启动关闭服务  </p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sh nginx -c /config/nginx.conf   //启动</span><br><span class="line">sh nginx -s stop   //停止作业</span><br><span class="line">sh nginx -s reload //重启作业</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>常见缺少的库</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">yum install pcre-devel</span><br><span class="line">yum install openssl-devel</span><br><span class="line">yum install zlib-devel</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-<li><p>基本配置</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">worker_processes  <span class="number">1</span>;  <span class="comment">//配置工作的线程数</span></span><br><span class="line"></span><br><span class="line">events &#123;</span><br><span class="line">    use epoll  <span class="comment">//事件驱动模型</span></span><br><span class="line">    worker_connections  <span class="number">1024</span>;   <span class="comment">//允许链接的数量</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">http &#123;</span><br><span class="line">    include       mime.types;  <span class="comment">//文件扩展名与文件类型映射表</span></span><br><span class="line">    default_type  application/octet-stream;   <span class="comment">//默认文件类型</span></span><br><span class="line">    access_log off   <span class="comment">//日志服务开关</span></span><br><span class="line">    log_format myFormat <span class="string">'$remote_addr'</span>  <span class="comment">//自定义日志文件格式</span></span><br><span class="line">    access_log log/access.log.myFormat   <span class="comment">//设置日志格式</span></span><br><span class="line">    sendfile        on;</span><br><span class="line">    keepalive_timeout  <span class="number">65</span>;   <span class="comment">//连接超时时间</span></span><br><span class="line"></span><br><span class="line">    upstream mysvr&#123;</span><br><span class="line">        server <span class="number">192.168</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">8080</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    server &#123;</span><br><span class="line">        listen       <span class="number">8090</span>;  <span class="comment">//监听端口</span></span><br><span class="line">        server_name  localhost;    <span class="comment">//监听地址</span></span><br><span class="line">        location / &#123;    <span class="comment">//请求的url</span></span><br><span class="line">            root   html/dist;   <span class="comment">//根目录</span></span><br><span class="line">            index  index.html index.htm;   <span class="comment">//默认页面配置</span></span><br><span class="line">            proxy_pass  http:<span class="comment">//mysvr;      //请求转向定义的地址</span></span><br><span class="line">            deny <span class="number">192.168</span><span class="number">.0</span><span class="number">.2</span>；   <span class="comment">//拒绝的ip</span></span><br><span class="line">            allow <span class="number">192.168</span><span class="number">.0</span><span class="number">.3</span>;   <span class="comment">//允许的ip</span></span><br><span class="line">        &#125;</span><br><span class="line">        error_page   <span class="number">500</span> <span class="number">502</span> <span class="number">503</span> <span class="number">504</span>  /<span class="number">50</span>x.html;  <span class="comment">//错误页面</span></span><br><span class="line">        location = <span class="regexp">/50x.html &#123;</span></span><br><span class="line"><span class="regexp">            root   html;</span></span><br><span class="line"><span class="regexp">        &#125;</span></span><br><span class="line"><span class="regexp">	&#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>负载均衡配置</p>
-<ul>
-<li>负载策略<ul>
-<li>默认为轮询机制，还可以选择权重，iphash，urlhash等方式</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">worker_processes  <span class="number">1</span>;  <span class="comment">//配置工作的线程数</span></span><br><span class="line">events &#123;   </span><br><span class="line">    use epoll  <span class="comment">//事件驱动模型   </span></span><br><span class="line">    worker_connections  <span class="number">1024</span>;   <span class="comment">//允许链接的数量</span></span><br><span class="line">&#125;</span><br><span class="line">http &#123;</span><br><span class="line">    include       mime.types;</span><br><span class="line">    default_type  application/octet-stream;</span><br><span class="line">    sendfile        on;</span><br><span class="line">    keepalive_timeout  <span class="number">65</span>;</span><br><span class="line"></span><br><span class="line">    upstream mysvr&#123;</span><br><span class="line">        ip_hash   <span class="comment">//iphash模式</span></span><br><span class="line">        server <span class="number">192.168</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">8080</span> weight=<span class="number">10</span>;  <span class="comment">//权重策略</span></span><br><span class="line">        server <span class="number">192.168</span><span class="number">.0</span><span class="number">.2</span>:<span class="number">8080</span>;</span><br><span class="line">        server <span class="number">192.168</span><span class="number">.0</span><span class="number">.3</span>:<span class="number">8090</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    server &#123;</span><br><span class="line">        listen       <span class="number">8090</span>;</span><br><span class="line">        server_name  localhost;</span><br><span class="line">        location / &#123;</span><br><span class="line">            proxy_pass  http:<span class="comment">//mysvr;</span></span><br><span class="line">            root   html/dist;</span><br><span class="line">            index  index.html index.htm;</span><br><span class="line">        &#125;</span><br><span class="line">        error_page   <span class="number">500</span> <span class="number">502</span> <span class="number">503</span> <span class="number">504</span>  /<span class="number">50</span>x.html;</span><br><span class="line">        location = <span class="regexp">/50x.html &#123;</span></span><br><span class="line"><span class="regexp">            root   html;</span></span><br><span class="line"><span class="regexp">        &#125;</span></span><br><span class="line"><span class="regexp">	&#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>前后台分离部署解决跨域配置</p>
-<ul>
-<li><p>核心思想：通过nginx拦截所有发送给后台的请求。将这些请求的url获得到之后再进行代理转发给对应的后台。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//前台代码部署在locahost:80端口,代码放在html/dist里</span></span><br><span class="line"><span class="comment">//后台代码部署在remote:port，请求统一以api开头</span></span><br><span class="line">worker_processes  <span class="number">1</span>;  <span class="comment">//配置工作的线程数</span></span><br><span class="line">events &#123;   </span><br><span class="line">    use epoll  <span class="comment">//事件驱动模型   </span></span><br><span class="line">    worker_connections  <span class="number">1024</span>;   <span class="comment">//允许链接的数量</span></span><br><span class="line">&#125;</span><br><span class="line">http &#123;</span><br><span class="line">    include       mime.types;</span><br><span class="line">    default_type  application/octet-stream;</span><br><span class="line">    sendfile        on;</span><br><span class="line">    keepalive_timeout  <span class="number">65</span>;</span><br><span class="line"></span><br><span class="line">    upstream mysvr&#123;</span><br><span class="line">        server remote:port;  </span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    server &#123;</span><br><span class="line">        listen       <span class="number">80</span>;</span><br><span class="line">        server_name  localhost;</span><br><span class="line">        location / &#123;</span><br><span class="line">            root   html/dist;</span><br><span class="line">            index  index.html index.htm;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        location /api&#123;</span><br><span class="line">            rewrite ^<span class="regexp">/api/</span>(.*)$/$<span class="number">1</span> <span class="keyword">break</span>;</span><br><span class="line">            proxy_pass http:<span class="comment">//mysvr</span></span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        error_page   <span class="number">500</span> <span class="number">502</span> <span class="number">503</span> <span class="number">504</span>  /<span class="number">50</span>x.html;</span><br><span class="line">        location = <span class="regexp">/50x.html &#123;</span></span><br><span class="line"><span class="regexp">            root   html;</span></span><br><span class="line"><span class="regexp">        &#125;</span></span><br><span class="line"><span class="regexp">	&#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-</ul>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Nginx</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/05/11/MD/Tools/Nginx/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-MD/Tools/Git" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1178,6 +1026,105 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2019/05/11/MD/Tools/Git/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-MD/Tools/Maven" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/05/11/MD/Tools/Maven/">Maven</a>
+    </h1>
+  
+
+        
+        <a href="/2019/05/11/MD/Tools/Maven/" class="archive-article-date">
+  	<time datetime="2019-05-10T23:04:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-11</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><ul>
+<li><p>下载</p>
+<blockquote>
+<p><a href="http://maven.apache.org/download.cgi" target="_blank" rel="noopener">http://maven.apache.org/download.cgi</a></p>
+</blockquote>
+</li>
+<li><p>解压</p>
+</li>
+</ul>
+<h2 id="常用配置"><a href="#常用配置" class="headerlink" title="常用配置"></a>常用配置</h2><ul>
+<li><p>配置国内镜像</p>
+<ul>
+<li>更换conf/setting.xml为对应配置</li>
+</ul>
+</li>
+<li><p>更改本地仓库位置</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">localRepository</span>&gt;</span>D:\java\rep<span class="tag">&lt;/<span class="name">localRepository</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><ul>
+<li><p>构建maven工程，配置对应的pom文件来管理项目依赖</p>
+</li>
+<li><p>常用命令：</p>
+<p>| 序号 |    命令     |    功能    |<br>| :–: | :———: | :——–: |<br>|  1   |    clean    |    清除    |<br>|  2   |    test     |  运行测试  |<br>|  3   |   package   |    打包    |<br>|  4   |   install   | 在本地安装 |<br>|  5   | source：jar |  源码打包  |</p>
+</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Maven</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/05/11/MD/Tools/Maven/">展开全文 >></a>
         </p>
       
 
@@ -1350,91 +1297,14 @@
 <li><a href="./MD/设计模式/策略模式.md">策略模式</a></li>
 <li><a href="./MD/设计模式/观察者模式.md">观察者模式</a></li>
 <li><a href="./MD/设计模式/责任链模式.md">责任链模式</a></li>
-<li><a href="./MD/设计模式/委派模式.md">委派模式</a></li>
-</ol>
-<h1 id="源码分析"><a href="#源码分析" class="headerlink" title="源码分析"></a>源码分析</h1><ol>
-<li><a href="./MD/源码分析/JDK集合源码.md">JDK 集合源码</a></li>
-<li><a href="./MD/源码分析/Spring框架源码.md">Spring 框架源码</a></li>
-<li><a href="./MD/源码分析/SpringMVC框架源码.md">SpringMVC 源码分析</a></li>
-<li><a href="./MD/源码分析/Mybatis框架源码.md">MyBatis 源码分析</a></li>
-<li><a href="./MD/源码分析/JDK线程相关源码.md">JDK 线程相关源码</a></li>
-</ol>
-<h1 id="框架使用"><a href="#框架使用" class="headerlink" title="框架使用"></a>框架使用</h1><ol>
-<li><p><a href="./MD/框架使用/web层框架">web 层框架</a></p>
-<ul>
-<li><a href="./MD/框架使用/web层框架/springMVC.md">Spring MVC</a></li>
-<li>Webflux</li>
-</ul>
-</li>
-<li><p><a href="./MD/框架使用/持久层框架">持久层框架</a></p>
-<ul>
-<li><a href="./MD/框架使用/持久层框架/hibernate.md">Hibernate</a></li>
-<li><a href="./MD/框架使用/持久层框架/mybatis.md">Mybits</a></li>
-</ul>
-</li>
-<li><p><a href="./MD/框架使用/消息中间件框架">消息中间件框架</a></p>
-<ul>
-<li><a href="./MD/框架使用/消息中间件框架/ActiveMQ.md">ActiveMQ</a></li>
-<li><a href="./MD/框架使用/消息中间件框架/Kafka.md">kafka</a></li>
-</ul>
-</li>
-<li><p><a href="./MD/框架使用/全文搜索引擎">全文搜索引擎</a></p>
-<ul>
-<li><a href="./MD/框架使用/全文搜索引擎/ElasticSearch.md">ElasticSearch</a></li>
-</ul>
-</li>
-<li><p><a href="./MD/框架使用/微服务架构">微服务架构</a></p>
-<ul>
-<li><a href="./MD/框架使用/微服务架构/Springboot.md">Spring Boot</a></li>
-<li>Spring Cloud</li>
-</ul>
-</li>
-</ol>
-<h1 id="开发语言"><a href="#开发语言" class="headerlink" title="开发语言"></a>开发语言</h1><ol>
-<li><a href="./MD/Java语言">Java</a><ul>
-<li><a href="./MD/Java语言/JavaSE">JavaSE</a>    </li>
-<li>JavaEE</li>
-</ul>
-</li>
-<li><a href="./MD/Java语言/SQL/SQL.md">SQL</a></li>
-<li>Go</li>
-</ol>
-<h1 id="数据库相关"><a href="#数据库相关" class="headerlink" title="数据库相关"></a>数据库相关</h1><ul>
-<li><a href="./MD/数据库相关/关系型数据库">关系型数据库</a><ol>
-<li><a href="./MD/数据库相关/关系型数据库/MySql.md">MySql</a></li>
-</ol>
-</li>
-<li><a href="./MD/数据库相关/非关系型数据库">非关系型数据库</a><ol>
-<li><a href="./MD/数据库相关/非关系型数据库/Redis.md">Redis</a></li>
-<li><a href="./MD/数据库相关/非关系型数据库/Mongodb.md">Mongodb</a></li>
-</ol>
-</li>
-</ul>
-<h1 id="计算机基础"><a href="#计算机基础" class="headerlink" title="计算机基础"></a>计算机基础</h1><ol>
-<li><a href="./MD/计算机基础/计算机网络.md">计算机网络</a> </li>
-<li>数据结构及算法</li>
-<li>计算机组成  </li>
-<li>计算机操作系统  </li>
-</ol>
-<h1 id="Tools"><a href="#Tools" class="headerlink" title="Tools"></a>Tools</h1><ul>
-<li><a href="./MD/Tools/IDEA.md">IDEA</a></li>
-<li><a href="./MD/Tools/Maven.md">Maven</a></li>
-<li><a href="./MD/Tools/Git.md">Git</a></li>
-<li><a href="./MD/Tools/Nginx.md">Nginx</a></li>
-</ul>
-<h1 id="杂谈"><a href="#杂谈" class="headerlink" title="杂谈"></a>杂谈</h1><ol>
-<li><a href="./MD/杂谈/从架构演变到展望未来.md">从架构演变到展望未来</a></li>
-<li><a href="./MD/杂谈/从Synchronized到cas.md">从Synchronized 到 cas </a></li>
-<li><a href="./MD/杂谈/从数据一致性到zab协议.md">从数据一致性到zab协议</a></li>
-<li>从 Spring 自动组装到 SpringBoot</li>
-<li><a href="./MD/杂谈/从Jvm内存模型到调优.md">从 Jvm 内存模型到调优</a></li>
-<li><a href="./MD/杂谈/从索引到MySql调优.md">从索引到 MySql 调优</a></li>
-</ol>
-
+<li><p><a href="./MD/设计模式/委派模式.md">委派模式</a></p>
+        
+          <a class="article-more-a" href="/2019/05/10/README/#more">more >></a>
+        
       
 
       
-    </div>
+    </li></ol></div>
     <div class="article-info article-info-index">
       
       
@@ -1654,7 +1524,7 @@ set的特有功能:
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2019 Linton
+    		&copy; 2019 恰克与飞鸟
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
@@ -1741,19 +1611,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JVM</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
+                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1761,7 +1623,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">IDEA</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
               </li>
              
               <li class="article-tag-list-item">
