@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Linton&#39;s Blog">
 <meta property="og:description" content="1.网络通讯的三要素        IP地址:同一个网络中的计算机唯一标识                InetAdderss类:                        构造方法:                            Static InetAdderss getLocalHost():返回本地主机                            Static In">
 <meta property="og:locale" content="zh">
-<meta property="og:updated_time" content="2019-05-26T05:29:26.287Z">
+<meta property="og:updated_time" content="2019-06-01T13:19:28.553Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="网络">
 <meta name="twitter:description" content="1.网络通讯的三要素        IP地址:同一个网络中的计算机唯一标识                InetAdderss类:                        构造方法:                            Static InetAdderss getLocalHost():返回本地主机                            Static In">
@@ -183,7 +183,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>1.网络通讯的三要素<br>        IP地址:同一个网络中的计算机唯一标识<br>                InetAdderss类:<br>                        构造方法:<br>                            Static InetAdderss getLocalHost():返回本地主机<br>                            Static InetAdderss getByName(String name):根据主机名或者ip地址返回ip地址<br>                        方法:<br>                            Static InetAdderss getLocalHost():返回本地主机<br>                            String getHostName():返回IP地址的主机名<br>                            String getHostAddress():返回IP地址字符串<br>        端口号:计算机中应用程序的唯一标识<br>        协议<br>2.UDP协议<br>        格式:<br>            1.创建socket对象,采用UDP协议的Socket类是DatagramSocket()<br>                    构造方法:<br>                            DatagramSocket()创建一个数据包的套接字对象,使用的端口是随机可用端口<br>                            DatagramSocket(int import)创建一个数据包的套接字对象,指向指定端口<br>                    方法:<br>                        Send(DatagramPacket ):发送指定数据包<br>                        Receive(DatagramPacket):接收指定数据包<br>            2.创建数据包对象用来发送或者接收DatagramPacket()<br>                    构造方法:<br>                            DatagramPacket(byte[] buf,int length):创建指定长度为length的接收数据包<br>                            DatagramPacket(byte[] buf,int length,InetAdderss adderss,int import):创建指定长度和指定发送地址指定端口的发送数据包<br>                    方法:<br>                        InetAdderss getAdderss():获取发送端电脑IP<br>                        Byte[] getData():获取发送的数据(可以使用String(byte[],sta,length)来构造一个String对象)<br>                        Int getLength():获取发送数据的长度<br>                        Int getPotr():获取端口号<br>            3.调用Socket对象的方法完成数据的发送或者接收<br>                    Recevie(DatagramPacket):<br>                    Send(DatagramPacket):<br>            4.解析数据<br>                    采用DatagramPacket的方法来解析数据<br>                        getAdderss():返回IP地址<br>                        getData():返回数据<br>                        getLength():返回数据长度<br>            5.释放资源<br>                    调用Socket类的close方法,释放资源<br>        注意事项:<br>                1.如果端口错误是不会出现错误的,<br>                2.如果启动了一个接收端在启动第二个接收端就会出错<br>3.TCP/IP协议<br>            格式:<br>                1.创建Socket对象,TCP/IP协议客户端使用的是Socket类,服务器端使用的是ServerSocket()对象<br>                        构造方法:<br>                                Scoket(InetAdderss adderss,int import):创建一个指定ip地址和指定端口的流套接字对象<br>                                ServerSocket(int import):创建一个绑定特定端口的流套接字对象<br>                        方法:<br>                            Socket类的方法:<br>                                getInputStream():返回此套接字的输入流<br>                                getOutputStream():返回此套接字的输出流<br>                                getInetAdderss():返回套接字的连接地址<br>                            ServerSocket类的方法:<br>                                Socket Accept():侦听并接收返回套接字.<br>                2.利用Socket的方法,获取此套接字的输入输出流:<br>                            getInputStream():返回此套接字的输入流<br>                            getOutputStream():返回此套接字的输出流<br>                3.使用输入流和输出流的读和写方法来读取或者发送数据:<br>                            InputStream()方法:read(byte[] b,int off,int len):从输入流中读取一定量的字节数,off起始位置,len长度<br>                            OutputStream()方法:write(byte[] b,int off,int len):将制定byte数组中从偏移量off开始的len个字节写入流中<br>                            OutputStream()方法:flush(0方法:刷新次输出流并强制写出所有缓冲的输出字节<br>                4.释放资源,关流和关套接字</p>
+        <p>1.网络通讯的三要素<br>        IP地址:同一个网络中的计算机唯一标识<br>                InetAdderss类:<br>                        构造方法:<br>                            Static InetAdderss getLocalHost():返回本地主机<br>                            Static InetAdderss getByName(String name):根据主机名或者ip地址返回ip地址<br>                        方法:<br>                            Static InetAdderss getLocalHost():返回本地主机<br>                            String getHostName():返回IP地址的主机名<br>                            String getHostAddress():返回IP地址字符串<br>        端口号:计算机中应用程序的唯一标识<br>        协议<br>2.UDP协议<a id="more"></a><br>        格式:<br>            1.创建socket对象,采用UDP协议的Socket类是DatagramSocket()<br>                    构造方法:<br>                            DatagramSocket()创建一个数据包的套接字对象,使用的端口是随机可用端口<br>                            DatagramSocket(int import)创建一个数据包的套接字对象,指向指定端口<br>                    方法:<br>                        Send(DatagramPacket ):发送指定数据包<br>                        Receive(DatagramPacket):接收指定数据包<br>            2.创建数据包对象用来发送或者接收DatagramPacket()<br>                    构造方法:<br>                            DatagramPacket(byte[] buf,int length):创建指定长度为length的接收数据包<br>                            DatagramPacket(byte[] buf,int length,InetAdderss adderss,int import):创建指定长度和指定发送地址指定端口的发送数据包<br>                    方法:<br>                        InetAdderss getAdderss():获取发送端电脑IP<br>                        Byte[] getData():获取发送的数据(可以使用String(byte[],sta,length)来构造一个String对象)<br>                        Int getLength():获取发送数据的长度<br>                        Int getPotr():获取端口号<br>            3.调用Socket对象的方法完成数据的发送或者接收<br>                    Recevie(DatagramPacket):<br>                    Send(DatagramPacket):<br>            4.解析数据<br>                    采用DatagramPacket的方法来解析数据<br>                        getAdderss():返回IP地址<br>                        getData():返回数据<br>                        getLength():返回数据长度<br>            5.释放资源<br>                    调用Socket类的close方法,释放资源<br>        注意事项:<br>                1.如果端口错误是不会出现错误的,<br>                2.如果启动了一个接收端在启动第二个接收端就会出错<br>3.TCP/IP协议<br>            格式:<br>                1.创建Socket对象,TCP/IP协议客户端使用的是Socket类,服务器端使用的是ServerSocket()对象<br>                        构造方法:<br>                                Scoket(InetAdderss adderss,int import):创建一个指定ip地址和指定端口的流套接字对象<br>                                ServerSocket(int import):创建一个绑定特定端口的流套接字对象<br>                        方法:<br>                            Socket类的方法:<br>                                getInputStream():返回此套接字的输入流<br>                                getOutputStream():返回此套接字的输出流<br>                                getInetAdderss():返回套接字的连接地址<br>                            ServerSocket类的方法:<br>                                Socket Accept():侦听并接收返回套接字.<br>                2.利用Socket的方法,获取此套接字的输入输出流:<br>                            getInputStream():返回此套接字的输入流<br>                            getOutputStream():返回此套接字的输出流<br>                3.使用输入流和输出流的读和写方法来读取或者发送数据:<br>                            InputStream()方法:read(byte[] b,int off,int len):从输入流中读取一定量的字节数,off起始位置,len长度<br>                            OutputStream()方法:write(byte[] b,int off,int len):将制定byte数组中从偏移量off开始的len个字节写入流中<br>                            OutputStream()方法:flush(0方法:刷新次输出流并强制写出所有缓冲的输出字节<br>                4.释放资源,关流和关套接字</p>
 <pre><code>问题:
     Java.net.connectException:connection timed out connectip地址有问题
 </code></pre>
@@ -290,18 +290,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/05/10/MD/Java语言/JavaSE/JavaSE17/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/05/10/README/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          多线程
+          Java 知识点
         
       </div>
     </a>
   
   
-    <a href="/2019/05/10/MD/Java语言/JavaSE/JavaSE09/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">接口</div>
+    <a href="/2019/05/10/MD/Java语言/JavaSE/JavaSE15/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">递归</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -431,11 +431,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JVM</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
+                <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">IDEA</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -447,19 +455,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">IDEA</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">JavaSE</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">SQL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -467,7 +463,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">SQL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">框架</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
               </li>
             
             <div class="clearfix"></div>

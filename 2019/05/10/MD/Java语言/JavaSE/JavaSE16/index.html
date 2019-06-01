@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="https://linton6.github.io">
   <title>IO流(2) | Linton&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="IO流分类:  流向:      12345678910111213141516171819202122232425262728293031输入流:	FileReader  Reader输出流:     FileWriter Writer		 ​		数据类型:		 ​			字节流: ​					字节输入流: ​							InputStream() ​								方法:read() ​">
+  <meta name="description" content="IO流分类:  流向:      12345678910111213141516171819202122232425262728293031输入流:	FileReader  Reader输出流:     FileWriter Writer		 ​		数据类型:		 ​			字节流:&amp;lt;!-- more --&amp;gt; ​					字节输入流: ​							InputStream() ​">
 <meta name="keywords" content="JavaSE">
 <meta property="og:type" content="article">
 <meta property="og:title" content="IO流(2)">
 <meta property="og:url" content="https://linton6.github.io/2019/05/10/MD/Java语言/JavaSE/JavaSE16/index.html">
 <meta property="og:site_name" content="Linton&#39;s Blog">
-<meta property="og:description" content="IO流分类:  流向:      12345678910111213141516171819202122232425262728293031输入流:	FileReader  Reader输出流:     FileWriter Writer		 ​		数据类型:		 ​			字节流: ​					字节输入流: ​							InputStream() ​								方法:read() ​">
+<meta property="og:description" content="IO流分类:  流向:      12345678910111213141516171819202122232425262728293031输入流:	FileReader  Reader输出流:     FileWriter Writer		 ​		数据类型:		 ​			字节流:&amp;lt;!-- more --&amp;gt; ​					字节输入流: ​							InputStream() ​">
 <meta property="og:locale" content="zh">
-<meta property="og:updated_time" content="2019-05-26T05:28:39.362Z">
+<meta property="og:updated_time" content="2019-06-01T13:19:12.538Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="IO流(2)">
-<meta name="twitter:description" content="IO流分类:  流向:      12345678910111213141516171819202122232425262728293031输入流:	FileReader  Reader输出流:     FileWriter Writer		 ​		数据类型:		 ​			字节流: ​					字节输入流: ​							InputStream() ​								方法:read() ​">
+<meta name="twitter:description" content="IO流分类:  流向:      12345678910111213141516171819202122232425262728293031输入流:	FileReader  Reader输出流:     FileWriter Writer		 ​		数据类型:		 ​			字节流:&amp;lt;!-- more --&amp;gt; ​					字节输入流: ​							InputStream() ​">
   
     <link rel="alternative" href="/atom.xml" title="Linton&#39;s Blog" type="application/atom+xml">
   
@@ -192,7 +192,7 @@
 </ul>
 </li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">输入流:</span><br><span class="line">	FileReader  Reader</span><br><span class="line">输出流:</span><br><span class="line">     FileWriter Writer		</span><br><span class="line"> ​		数据类型:		</span><br><span class="line"> ​			字节流:</span><br><span class="line"> ​					字节输入流:</span><br><span class="line"> ​							InputStream()</span><br><span class="line"> ​								方法:read()</span><br><span class="line"> ​									Read(<span class="keyword">byte</span>[])</span><br><span class="line"> ​									|----&gt;FileInputStream()</span><br><span class="line"> ​										构造器:FileInputStream(File)</span><br><span class="line"> ​					字节输出流:</span><br><span class="line"> ​							OutputStream()</span><br><span class="line"> ​								方法:write()</span><br><span class="line"> ​									Write(<span class="keyword">byte</span>[])</span><br><span class="line"> ​									|---&gt;FIleOutputStream()</span><br><span class="line"> ​										构造器:FileOutputStream(File)</span><br><span class="line"> ​			字符流:</span><br><span class="line"> ​					字符输入流:</span><br><span class="line"> ​							Reader</span><br><span class="line"> ​								|---&gt;FileReader()</span><br><span class="line"> ​					字符输出流</span><br><span class="line"> ​							Writer</span><br><span class="line"> ​								|-----&gt;FileWriter()</span><br><span class="line"> ​	开发中到底使用哪种流:</span><br><span class="line"> ​					文件的单纯拷贝的操作,推荐使用字节流</span><br><span class="line"> ​					单纯文本文件的读取操作,推荐使用字符流</span><br><span class="line"> ​						一个中文字符使用gbk编码表,一个中文字符表示<span class="number">2</span>个字节</span><br><span class="line"> ​						一个中文字符使用utf-<span class="number">8</span>编码表,一个中文字符表示<span class="number">3</span>个字节</span><br><span class="line"> ​						英文字符….一个字符表示一个字节</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">输入流:</span><br><span class="line">	FileReader  Reader</span><br><span class="line">输出流:</span><br><span class="line">     FileWriter Writer		</span><br><span class="line"> ​		数据类型:		</span><br><span class="line"> ​			字节流:&lt;!-- more --&gt;</span><br><span class="line"> ​					字节输入流:</span><br><span class="line"> ​							InputStream()</span><br><span class="line"> ​								方法:read()</span><br><span class="line"> ​									Read(<span class="keyword">byte</span>[])</span><br><span class="line"> ​									|----&gt;FileInputStream()</span><br><span class="line"> ​										构造器:FileInputStream(File)</span><br><span class="line"> ​					字节输出流:</span><br><span class="line"> ​							OutputStream()</span><br><span class="line"> ​								方法:write()</span><br><span class="line"> ​									Write(<span class="keyword">byte</span>[])</span><br><span class="line"> ​									|---&gt;FIleOutputStream()</span><br><span class="line"> ​										构造器:FileOutputStream(File)</span><br><span class="line"> ​			字符流:</span><br><span class="line"> ​					字符输入流:</span><br><span class="line"> ​							Reader</span><br><span class="line"> ​								|---&gt;FileReader()</span><br><span class="line"> ​					字符输出流</span><br><span class="line"> ​							Writer</span><br><span class="line"> ​								|-----&gt;FileWriter()</span><br><span class="line"> ​	开发中到底使用哪种流:</span><br><span class="line"> ​					文件的单纯拷贝的操作,推荐使用字节流</span><br><span class="line"> ​					单纯文本文件的读取操作,推荐使用字符流</span><br><span class="line"> ​						一个中文字符使用gbk编码表,一个中文字符表示<span class="number">2</span>个字节</span><br><span class="line"> ​						一个中文字符使用utf-<span class="number">8</span>编码表,一个中文字符表示<span class="number">3</span>个字节</span><br><span class="line"> ​						英文字符….一个字符表示一个字节</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>其他的流:<br>​        1.标准输入输出流:(指向控制台)<br>​                    System.in:<br>​                            public static final InputStream in:字节输入流,用来从控制台读入信息<br>​                    System.out:<br>​                            Public static final PrintStream out:打印出流,用来给控制台输出信息<br>​        2.转换流:(将字节流转换成字符流)<br>​                    InputStreamRead:<br>​                                输入流:属于字符流<br>​                    OutputStreamWrite:<br>​                                输出流:属于字符流<br>​                    使用场景:<br>​                            A:以指定的码表读取数据或者写出数据<br>​                            B:如果我们在以后的知识中只能获取字节流,操作字符使用字符流更方便,也需要使用转换流<br>​        3.打印流:<br>​                    printStream:字节打印流<br>​                    printWriter:字符打印流<br>​                            特点:可自动换行:使用println就可以自动换行<br>​                                不能输出字节,但是可以输出其他任意类型<br>​                                通过某些配置,可以实现自动刷新功能:通过在构造函数之后添加参数<br>​                                也是包装流,不具备写出功能<br>​                                可以把字节输出流转换成字符输出流<br>​                    注意:只能输出不能输入<br>​        4.对象操作流:(操作的是对象)<br>​                    ObjectOutputStream():<br>​                            构造方法:<br>​                                    writeObject()<br>​                                    objectOutputStream(OutputStream)<br>​                    ObjectInputStream():<br>​                            构造方法:<br>​                                    readObject()<br>​                                    ObjectInputStream(InputStream)<br>​                注意:<br>​                    使用对象输出流写对象,只能使用对象输入流来读取对象<br>​                Serializable:序列号,是一个表示接口,只起表示作用<br>​                序列化:<br>​                        向文件中写数据(持久化)<br>​                反序列化:<br>​                        从文件中读取数据.<br>​                练习题:<br>​                        需求:向对象中写多个学生对象<br>​                            1.找对象,让对象帮我们做<br>​                                ObjectOutputStream oos=new ObjectOutputStream(new FileOutputStream(File file))<br>​                                //将多个学生对象封装到一个集合中<br>​                                通过oos写出对象<br>​                        需求:从文件中读文件<br>​        5.Properties类(集合类)</p>
 </li>
@@ -301,18 +301,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/05/10/MD/Java语言/JavaSE/JavaSE13/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/05/10/MD/Java语言/JavaSE/JavaSE19/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          集合2
+          反射
         
       </div>
     </a>
   
   
-    <a href="/2019/05/10/MD/Java语言/JavaSE/JavaSE19/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">反射</div>
+    <a href="/2019/05/10/MD/Java语言/JavaSE/JavaSE01/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Java杂谈</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -442,11 +442,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JVM</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
+                <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">IDEA</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -458,19 +466,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">IDEA</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">JavaSE</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">SQL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -478,7 +474,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">SQL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">框架</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
               </li>
             
             <div class="clearfix"></div>

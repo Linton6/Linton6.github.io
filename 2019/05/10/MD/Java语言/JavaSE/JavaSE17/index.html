@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Linton&#39;s Blog">
 <meta property="og:description" content="1.对象操作流            序列化ID:未明确的时候系统会根据成员变量计算版本号,则当你改变成员变量的时候对应的ID会改变            我们正常的时候会生成固定的ID.2.编码集        把计算机底层的二进制数据转换成我们能看见的字符        ASCII        GB2312—GBK        Unicode 所有的字符都占2个字节        UTF-">
 <meta property="og:locale" content="zh">
-<meta property="og:updated_time" content="2019-05-26T05:29:07.267Z">
+<meta property="og:updated_time" content="2019-06-01T13:19:20.739Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="多线程">
 <meta name="twitter:description" content="1.对象操作流            序列化ID:未明确的时候系统会根据成员变量计算版本号,则当你改变成员变量的时候对应的ID会改变            我们正常的时候会生成固定的ID.2.编码集        把计算机底层的二进制数据转换成我们能看见的字符        ASCII        GB2312—GBK        Unicode 所有的字符都占2个字节        UTF-">
@@ -183,7 +183,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>1.对象操作流<br>            序列化ID:未明确的时候系统会根据成员变量计算版本号,则当你改变成员变量的时候对应的ID会改变<br>            我们正常的时候会生成固定的ID.<br>2.编码集<br>        把计算机底层的二进制数据转换成我们能看见的字符<br>        ASCII<br>        GB2312—GBK<br>        Unicode 所有的字符都占2个字节<br>        UTF-8:长度可变的码表<br>        ISO-8859-1:不支持中文的编码表<br>        ANSI:本地编码表跟系统的环境语言有关系  中文简体用:GBK<br>        Java中的字符默认使用ANSI编码<br>        乱码:编码保持前后一致即可解决<br>        什么时候使用编码表?<br>                    字符和字节之间转换的时候就要使用编码表<br>                        将字符串转换成字节数组<br>                            .getBytes[]:将字符串转换为字符数组,使用的是ANSI本地编码表,GBK,也可以使用用指定的编码表进行转换<br>                        将字节数组转换成字符串<br>                            String(byte[] ,String charsetName)<br>        字符流=字节流+编码<br>3.Properties<br>            实现了Map&lt;&gt;接口,继承自Hashtable(),每一个键和值都是String类型的<br>            Map&lt;K,V&gt;(接口)<br>                    Hashtable&lt;K,V&gt;:线程安全的,键只能是非null对象<br>                            Properties:键和值都是String<br>                    HashMap&lt;K,V&gt;:线程不安全的,键可以是null<br>            构造方法:<br>                    Properties()<br>            特有功能:<br>                    setProperty(String key,String vablue):给properties集合对象中添加映射关系<br>                    String getProperty(String key):根据键获取对象的值</p>
+        <p>1.对象操作流<br>            序列化ID:未明确的时候系统会根据成员变量计算版本号,则当你改变成员变量的时候对应的ID会改变<br>            我们正常的时候会生成固定的ID.<br>2.编码集<br>        把计算机底层的二进制数据转换成我们能看见的字符<br>        ASCII<br>        GB2312—GBK<br>        Unicode 所有的字符都占2个字节<br>        UTF-8:长度可变的码表<br>        ISO-8859-1:不支持中文的编码表<br>        ANSI:本地编码表跟系统的环境语言有关系  中文简体用:GBK<br>        Java中的字符默认使用ANSI编码<br>        乱码:编码保持前后一致即可解决<br>        什么时候使用编码表?<br>                    字符和字节之间转换的时候就要使用编码表<br>                        将字符串转换成字节数组<br>                            .getBytes[]:将字符串转换为字符数组,使用的是ANSI本地编码表,GBK,也可以使用用指定的编码表进行转换<br>                        将字节数组转换成字符串<br>                            String(byte[] ,String charsetName)<br>        字符流=字节流+编码<br>3.Properties<a id="more"></a><br>            实现了Map&lt;&gt;接口,继承自Hashtable(),每一个键和值都是String类型的<br>            Map&lt;K,V&gt;(接口)<br>                    Hashtable&lt;K,V&gt;:线程安全的,键只能是非null对象<br>                            Properties:键和值都是String<br>                    HashMap&lt;K,V&gt;:线程不安全的,键可以是null<br>            构造方法:<br>                    Properties()<br>            特有功能:<br>                    setProperty(String key,String vablue):给properties集合对象中添加映射关系<br>                    String getProperty(String key):根据键获取对象的值</p>
 <pre><code>        Load(inputStream inStream):使用给定的流读取文件中的数据到指定的properties集合中
         Load(Reader reader):使用给定的字符流将文件中的
         Void store(Writer witer,String coment):使用给定的流将集合中的数据写入到指定文件中
@@ -298,18 +298,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/05/10/MD/Java语言/JavaSE/JavaSE19/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/05/10/MD/Java语言/JavaSE/JavaSE15/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          反射
+          递归
         
       </div>
     </a>
   
   
-    <a href="/2019/05/10/MD/Java语言/JavaSE/JavaSE18/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">网络</div>
+    <a href="/2019/05/10/MD/Java语言/JavaSE/JavaSE19/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">反射</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -439,11 +439,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JVM</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
+                <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">IDEA</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -455,19 +463,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">IDEA</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">JavaSE</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">SQL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -475,7 +471,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">SQL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">框架</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
               </li>
             
             <div class="clearfix"></div>

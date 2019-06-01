@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Linton&#39;s Blog">
 <meta property="og:description" content="1.反射:    1.什么是反射?可以做什么?        反射:在运行时,我们可以获取任意一个类的所有方法和属性            在运行时,我们可以调用一个对象的所有方法和属性        反射的前提:要获取类的对象(class对象)(获取class对象的三种方法,1.通过object类的getclass方法2.通过类名直接获取.class属性3.通过Class.forNmae(包含包">
 <meta property="og:locale" content="zh">
-<meta property="og:updated_time" content="2019-05-26T05:29:46.495Z">
+<meta property="og:updated_time" content="2019-06-01T13:19:45.291Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="反射">
 <meta name="twitter:description" content="1.反射:    1.什么是反射?可以做什么?        反射:在运行时,我们可以获取任意一个类的所有方法和属性            在运行时,我们可以调用一个对象的所有方法和属性        反射的前提:要获取类的对象(class对象)(获取class对象的三种方法,1.通过object类的getclass方法2.通过类名直接获取.class属性3.通过Class.forNmae(包含包">
@@ -183,7 +183,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>1.反射:<br>    1.什么是反射?可以做什么?<br>        反射:在运行时,我们可以获取任意一个类的所有方法和属性<br>            在运行时,我们可以调用一个对象的所有方法和属性<br>        反射的前提:要获取类的对象(class对象)(获取class对象的三种方法,1.通过object类的getclass方法2.通过类名直接获取.class属性3.通过Class.forNmae(包含包名的类名)来获取)<br>    2.通过反射操作构造方法<br>        获取构造方法 getConstructors():返回所有的构造方法<br>                  getConstructor(参数列表):返回指定参数列表的构造方法<br>            只能获取public 的构造方法<br>            通过构造方法类的对象使用newInstance()可以创建一个对象<br>        创建对象的时候使用构造方法<br>    3.通过反射操作成员变量<br>        获取成员变量的方法:<br>                        getFields()<br>                        getField()<br>                        getDeclaredField()<br>        给成员变量赋值,获取成员变量的值<br>                    Field类的方法:<br>                        Get(对象)<br>                        Set(对象,值)<br>                        setAccessible():设置或者取消Java的访问检查,暴力访问<br>    4.通过反射操作成员方法<br>        获取成员方法的方法:<br>                        getMethod(“方法名”,参数列表)<br>                获取无参无返回值的成员方法:<br>                        c.getMethod(“成员方法名”)<br>                获取无参有返回值的方法;<br>                        c.getMethod(“成员方法”)<br>                获取有参有返回值的方法:<br>                        c.getMethod(成员方法”,String.class,int.class..)<br>        调用<br>            使用method类中的invoke方法<br>            m.invoke(对象名,参数列表)<br>    5.步骤:<br>        1.获取字节码对象:Class p=Class.forName(String path)<br>        2.通过字节码对象获取构造方法:Constructor c=p.getConstructor(参数列表)<br>        3.通过构造器构造成员对象:Object person=c.newInstance(参数列表)<br>        4.通过字节码对象获取类的成员变量:Field f=p.getField(String 参数名)<br>        5.通过field对象来操作成员变量,get()获得set()修改<br>        6.通过字节码对象获取成员方法:Method m=p.getMethod(参数列表)<br>        7.通过Method对象操作成员方法:m.invoke(对象,参数列表)<br>2.JavaBean<br>    JavaBean标准类;用于封装数据<br>    要求:<br>        类被public修饰<br>        成员变量被private修饰并且提供对应的getter和setter方法<br>        有一个公共的无参构造,有参构造不强求<br>        实现序列号接口<br>3.BeanUtils工具包<br>    方法:<br>        setProperty(对象名,成员变量名,成员变量值)<br>        getProperty(对象名,成员变量名)<br>        Property(对象名,Map集合&lt;变量名,变量值&gt;)</p>
+        <p>1.反射:<br>    1.什么是反射?可以做什么?<br>        反射:在运行时,我们可以获取任意一个类的所有方法和属性<br>            在运行时,我们可以调用一个对象的所有方法和属性<br>        反射的前提:要获取类的对象(class对象)(获取class对象的三种方法,1.通过object类的getclass方法2.通过类名直接获取.class属性3.通过Class.forNmae(包含包名的类名)来获取)<br>    2.通过反射操作构造方法<br>        获取构造方法 getConstructors():返回所有的构造方法<br>                  getConstructor(参数列表):返回指定参数列表的构造方法<br>            只能获取public 的构造方法<br>            通过构造方法类的对象使用newInstance()可以创建一个对象<br>        创建对象的时候使用构造方法<br>    3.通过反射操作成员变量<a id="more"></a><br>        获取成员变量的方法:<br>                        getFields()<br>                        getField()<br>                        getDeclaredField()<br>        给成员变量赋值,获取成员变量的值<br>                    Field类的方法:<br>                        Get(对象)<br>                        Set(对象,值)<br>                        setAccessible():设置或者取消Java的访问检查,暴力访问<br>    4.通过反射操作成员方法<br>        获取成员方法的方法:<br>                        getMethod(“方法名”,参数列表)<br>                获取无参无返回值的成员方法:<br>                        c.getMethod(“成员方法名”)<br>                获取无参有返回值的方法;<br>                        c.getMethod(“成员方法”)<br>                获取有参有返回值的方法:<br>                        c.getMethod(成员方法”,String.class,int.class..)<br>        调用<br>            使用method类中的invoke方法<br>            m.invoke(对象名,参数列表)<br>    5.步骤:<br>        1.获取字节码对象:Class p=Class.forName(String path)<br>        2.通过字节码对象获取构造方法:Constructor c=p.getConstructor(参数列表)<br>        3.通过构造器构造成员对象:Object person=c.newInstance(参数列表)<br>        4.通过字节码对象获取类的成员变量:Field f=p.getField(String 参数名)<br>        5.通过field对象来操作成员变量,get()获得set()修改<br>        6.通过字节码对象获取成员方法:Method m=p.getMethod(参数列表)<br>        7.通过Method对象操作成员方法:m.invoke(对象,参数列表)<br>2.JavaBean<br>    JavaBean标准类;用于封装数据<br>    要求:<br>        类被public修饰<br>        成员变量被private修饰并且提供对应的getter和setter方法<br>        有一个公共的无参构造,有参构造不强求<br>        实现序列号接口<br>3.BeanUtils工具包<br>    方法:<br>        setProperty(对象名,成员变量名,成员变量值)<br>        getProperty(对象名,成员变量名)<br>        Property(对象名,Map集合&lt;变量名,变量值&gt;)</p>
 
       
 
@@ -288,18 +288,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/05/10/MD/Java语言/JavaSE/JavaSE16/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/05/10/MD/Java语言/JavaSE/JavaSE17/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          IO流(2)
+          多线程
         
       </div>
     </a>
   
   
-    <a href="/2019/05/10/MD/Java语言/JavaSE/JavaSE17/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">多线程</div>
+    <a href="/2019/05/10/MD/Java语言/JavaSE/JavaSE16/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">IO流(2)</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -429,11 +429,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JVM</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
+                <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">IDEA</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -445,19 +453,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">IDEA</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">JavaSE</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">SQL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -465,7 +461,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">SQL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">框架</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
               </li>
             
             <div class="clearfix"></div>
