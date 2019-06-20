@@ -236,19 +236,95 @@
 
 
   
-    <article id="post-MD/Java语言/JavaSE/JavaSE11" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-MD/Java语言/JavaSE/JavaSE17" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/09/MD/Java语言/JavaSE/JavaSE11/">常用类</a>
+      <a class="article-title" href="/2019/05/10/MD/Java语言/JavaSE/JavaSE17/">多线程</a>
     </h1>
   
 
         
-        <a href="/2019/05/09/MD/Java语言/JavaSE/JavaSE11/" class="archive-article-date">
+        <a href="/2019/05/10/MD/Java语言/JavaSE/JavaSE17/" class="archive-article-date">
+  	<time datetime="2019-05-09T23:04:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-10</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>1.对象操作流<br>            序列化ID:未明确的时候系统会根据成员变量计算版本号,则当你改变成员变量的时候对应的ID会改变<br>            我们正常的时候会生成固定的ID.<br>2.编码集<br>        把计算机底层的二进制数据转换成我们能看见的字符<br>        ASCII<br>        GB2312—GBK<br>        Unicode 所有的字符都占2个字节<br>        UTF-8:长度可变的码表<br>        ISO-8859-1:不支持中文的编码表<br>        ANSI:本地编码表跟系统的环境语言有关系  中文简体用:GBK<br>        Java中的字符默认使用ANSI编码<br>        乱码:编码保持前后一致即可解决<br>        什么时候使用编码表?<br>                    字符和字节之间转换的时候就要使用编码表<br>                        将字符串转换成字节数组<br>                            .getBytes[]:将字符串转换为字符数组,使用的是ANSI本地编码表,GBK,也可以使用用指定的编码表进行转换<br>                        将字节数组转换成字符串<br>                            String(byte[] ,String charsetName)<br>        字符流=字节流+编码<br>3.Properties
+        
+          <a class="article-more-a" href="/2019/05/10/MD/Java语言/JavaSE/JavaSE17/#more">more >></a>
+        
+      
+
+      
+    </p></div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">JavaSE</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/05/10/MD/Java语言/JavaSE/JavaSE17/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-MD/Java语言/JavaSE/JavaSE12" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/05/09/MD/Java语言/JavaSE/JavaSE12/">集合1</a>
+    </h1>
+  
+
+        
+        <a href="/2019/05/09/MD/Java语言/JavaSE/JavaSE12/" class="archive-article-date">
   	<time datetime="2019-05-08T23:04:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-09</time>
 </a>
         
@@ -257,13 +333,16 @@
     <div class="article-entry" itemprop="articleBody">
       
         <ol>
-<li>object类:<ul>
-<li>常用方法:<br> String toString()<br> Class getClass()<br> ​        获取字节码对象的三种方式<br> ​                    在运行的时候,字节码对象在类加载的时候,由jvm创建的对象,;类加载一次,字节码对象也就只有一个.<br> ​                    通过object的getClass()方法<br> ​                    通过调用类的属性.class<br> ​                    通过Class类的静态方法forName()获取<br> ​                    Class clazz=Class.forName(“全类名”)<br> ​        什么是字节码对象?<br> ​                    根据.class文件创建一个字节码对象<br> ​        什么时候类进内存?<br> ​                    1.创建对象的时候<br> ​                    2.通过类名调用静态成员的时候<br> ​                    3.创建子类对象的时候,会加载父类的字节码文件<br> ​                    4.通过类名调用子类的静态成员的时候会加载父类再加载子类<br> ​                    5.反射操作<br> Boolean equals(Object obj)<br> ​        Stringle可中的equals方法和Object中的equals方法不同</li>
+<li>自动装箱和自动拆箱<br> • 自动装箱:自动将基本上数据类型转换成基本数据类型的包装类<br> • 自动拆箱:自动将基本数据类型的包装类转换成基本数据类型</li>
+<li>正则表达式<ul>
+<li>概念:<br>  就是一套规则,可以用于匹配字符串</li>
+<li>调用方法:<br>  Boolea matches(String reges):判断当前字符串是否匹配正则表达式规则,符合返回true不符合返回false</li>
+<li>规则:<br>  1.[]:表示匹配单个字符<br>  2.{}:表示的是数量  [a-z]*表示a-z中的任意字符出现0次 或者多次<br>  注意:第一个字符和后面的分开不能算在一起比如要取5个要去掉前面的</li>
 </ul>
 </li>
-<li>System类
+<li>集合<br> 1.体系
         
-          <a class="article-more-a" href="/2019/05/09/MD/Java语言/JavaSE/JavaSE11/#more">more >></a>
+          <a class="article-more-a" href="/2019/05/09/MD/Java语言/JavaSE/JavaSE12/#more">more >></a>
         
       
 
@@ -287,7 +366,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/05/09/MD/Java语言/JavaSE/JavaSE11/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/05/09/MD/Java语言/JavaSE/JavaSE12/">展开全文 >></a>
         </p>
       
 
@@ -403,19 +482,19 @@
 
 
   
-    <article id="post-MD/Java语言/JavaSE/JavaSE12" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-MD/Java语言/JavaSE/JavaSE11" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/09/MD/Java语言/JavaSE/JavaSE12/">集合1</a>
+      <a class="article-title" href="/2019/05/09/MD/Java语言/JavaSE/JavaSE11/">常用类</a>
     </h1>
   
 
         
-        <a href="/2019/05/09/MD/Java语言/JavaSE/JavaSE12/" class="archive-article-date">
+        <a href="/2019/05/09/MD/Java语言/JavaSE/JavaSE11/" class="archive-article-date">
   	<time datetime="2019-05-08T23:04:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-09</time>
 </a>
         
@@ -424,16 +503,13 @@
     <div class="article-entry" itemprop="articleBody">
       
         <ol>
-<li>自动装箱和自动拆箱<br> • 自动装箱:自动将基本上数据类型转换成基本数据类型的包装类<br> • 自动拆箱:自动将基本数据类型的包装类转换成基本数据类型</li>
-<li>正则表达式<ul>
-<li>概念:<br>  就是一套规则,可以用于匹配字符串</li>
-<li>调用方法:<br>  Boolea matches(String reges):判断当前字符串是否匹配正则表达式规则,符合返回true不符合返回false</li>
-<li>规则:<br>  1.[]:表示匹配单个字符<br>  2.{}:表示的是数量  [a-z]*表示a-z中的任意字符出现0次 或者多次<br>  注意:第一个字符和后面的分开不能算在一起比如要取5个要去掉前面的</li>
+<li>object类:<ul>
+<li>常用方法:<br> String toString()<br> Class getClass()<br> ​        获取字节码对象的三种方式<br> ​                    在运行的时候,字节码对象在类加载的时候,由jvm创建的对象,;类加载一次,字节码对象也就只有一个.<br> ​                    通过object的getClass()方法<br> ​                    通过调用类的属性.class<br> ​                    通过Class类的静态方法forName()获取<br> ​                    Class clazz=Class.forName(“全类名”)<br> ​        什么是字节码对象?<br> ​                    根据.class文件创建一个字节码对象<br> ​        什么时候类进内存?<br> ​                    1.创建对象的时候<br> ​                    2.通过类名调用静态成员的时候<br> ​                    3.创建子类对象的时候,会加载父类的字节码文件<br> ​                    4.通过类名调用子类的静态成员的时候会加载父类再加载子类<br> ​                    5.反射操作<br> Boolean equals(Object obj)<br> ​        Stringle可中的equals方法和Object中的equals方法不同</li>
 </ul>
 </li>
-<li>集合<br> 1.体系
+<li>System类
         
-          <a class="article-more-a" href="/2019/05/09/MD/Java语言/JavaSE/JavaSE12/#more">more >></a>
+          <a class="article-more-a" href="/2019/05/09/MD/Java语言/JavaSE/JavaSE11/#more">more >></a>
         
       
 
@@ -457,7 +533,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/05/09/MD/Java语言/JavaSE/JavaSE12/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/05/09/MD/Java语言/JavaSE/JavaSE11/">展开全文 >></a>
         </p>
       
 
@@ -652,97 +728,6 @@
 
 
   
-    <article id="post-MD/Java语言/JavaSE/JavaSE07" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/07/MD/Java语言/JavaSE/JavaSE07/">final关键字</a>
-    </h1>
-  
-
-        
-        <a href="/2019/05/07/MD/Java语言/JavaSE/JavaSE07/" class="archive-article-date">
-  	<time datetime="2019-05-06T23:04:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-07</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <ul>
-<li><p>修饰符:可以修饰类,方法,变量</p>
-<ul>
-<li><p>final修饰的类:不能被继承,不能有子类</p>
-</li>
-<li><p>final修饰的方法:不能被子类重写</p>
-</li>
-<li><p>final修饰的变量:不能被更改,是常量,</p>
-</li>
-<li><p>常量:</p>
-<ul>
-<li>字面值常量:123</li>
-<li>自定义常量:被final所修饰的成员变量,一单被初始化不能被改变</li>
-</ul>
-</li>
-<li><p>注意:自定义常量必须初始化,可以选择显示初始化,也可以再构造方法结束之前.</p>
-        
-          <a class="article-more-a" href="/2019/05/07/MD/Java语言/JavaSE/JavaSE07/#more">more >></a>
-        
-      
-
-      
-    </li></ul></li></ul></div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">JavaSE</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/05/07/MD/Java语言/JavaSE/JavaSE07/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-MD/Java语言/JavaSE/JavaSE08" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -843,6 +828,97 @@
 
 
   
+    <article id="post-MD/Java语言/JavaSE/JavaSE07" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/05/07/MD/Java语言/JavaSE/JavaSE07/">final关键字</a>
+    </h1>
+  
+
+        
+        <a href="/2019/05/07/MD/Java语言/JavaSE/JavaSE07/" class="archive-article-date">
+  	<time datetime="2019-05-06T23:04:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-07</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ul>
+<li><p>修饰符:可以修饰类,方法,变量</p>
+<ul>
+<li><p>final修饰的类:不能被继承,不能有子类</p>
+</li>
+<li><p>final修饰的方法:不能被子类重写</p>
+</li>
+<li><p>final修饰的变量:不能被更改,是常量,</p>
+</li>
+<li><p>常量:</p>
+<ul>
+<li>字面值常量:123</li>
+<li>自定义常量:被final所修饰的成员变量,一单被初始化不能被改变</li>
+</ul>
+</li>
+<li><p>注意:自定义常量必须初始化,可以选择显示初始化,也可以再构造方法结束之前.</p>
+        
+          <a class="article-more-a" href="/2019/05/07/MD/Java语言/JavaSE/JavaSE07/#more">more >></a>
+        
+      
+
+      
+    </li></ul></li></ul></div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">JavaSE</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/05/07/MD/Java语言/JavaSE/JavaSE07/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-MD/Java语言/JavaSE/JavaSE06" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -904,96 +980,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2019/05/06/MD/Java语言/JavaSE/JavaSE06/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-MD/Java语言/JavaSE/JavaSE05" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/06/MD/Java语言/JavaSE/JavaSE05/">String常用API</a>
-    </h1>
-  
-
-        
-        <a href="/2019/05/06/MD/Java语言/JavaSE/JavaSE05/" class="archive-article-date">
-  	<time datetime="2019-05-05T23:04:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <ul>
-<li>String的构造方法：<ul>
-<li>String（String）</li>
-<li>String（char[] arr）</li>
-<li>String（char[] arr,int idex,int count）</li>
-</ul>
-</li>
-<li>String的判断功能：<ul>
-<li>boolean equals（objec obj）：比较内容</li>
-<li>boolean equalsIgnoreCase（String str）：比较内容忽略大小写</li>
-<li>boolean startWith（String str）：判断是否以str为开头    - 使用场景：在删除某个姓的所有人</li>
-<li>boolean endWith（String str）：判断是否以strWie结尾                 使用场景：获取某个盘符的某种类型的文件</li>
-</ul>
-</li>
-<li>String的获取功能：
-        
-          <a class="article-more-a" href="/2019/05/06/MD/Java语言/JavaSE/JavaSE05/#more">more >></a>
-        
-      
-
-      
-    </li></ul></div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">JavaSE</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/05/06/MD/Java语言/JavaSE/JavaSE05/">展开全文 >></a>
         </p>
       
 
@@ -1115,23 +1101,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Spring</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JVM</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Java</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Maven</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Git</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1143,11 +1121,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Maven</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">JavaSE</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">框架</a>
+                <a href="javascript:void(0)" class="js-tag color4">SQL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1155,7 +1141,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">SQL</a>
+                <a href="javascript:void(0)" class="js-tag color3">框架</a>
               </li>
             
             <div class="clearfix"></div>
