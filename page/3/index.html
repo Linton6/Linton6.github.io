@@ -149,19 +149,19 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-MD/Java语言/JavaSE/JavaSE16" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-MD/Java语言/JavaSE/JavaSE18" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/10/MD/Java语言/JavaSE/JavaSE16/">IO流(2)</a>
+      <a class="article-title" href="/2019/05/10/MD/Java语言/JavaSE/JavaSE18/">网络</a>
     </h1>
   
 
         
-        <a href="/2019/05/10/MD/Java语言/JavaSE/JavaSE16/" class="archive-article-date">
+        <a href="/2019/05/10/MD/Java语言/JavaSE/JavaSE18/" class="archive-article-date">
   	<time datetime="2019-05-09T23:04:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-10</time>
 </a>
         
@@ -169,25 +169,14 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <ul>
-<li><p>IO流分类:</p>
-<ul>
-<li><p>流向:</p>
-<ul>
-<li></li>
-</ul>
-</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">输入流:</span><br><span class="line">	FileReader  Reader</span><br><span class="line">输出流:</span><br><span class="line">     FileWriter Writer		</span><br><span class="line"> ​		数据类型:		</span><br><span class="line"> ​			字节流:&lt;!-- more --&gt;</span><br><span class="line"> ​					字节输入流:</span><br><span class="line"> ​							InputStream()</span><br><span class="line"> ​								方法:read()</span><br><span class="line"> ​									Read(<span class="keyword">byte</span>[])</span><br><span class="line"> ​									|----&gt;FileInputStream()</span><br><span class="line"> ​										构造器:FileInputStream(File)</span><br><span class="line"> ​					字节输出流:</span><br><span class="line"> ​							OutputStream()</span><br><span class="line"> ​								方法:write()</span><br><span class="line"> ​									Write(<span class="keyword">byte</span>[])</span><br><span class="line"> ​									|---&gt;FIleOutputStream()</span><br><span class="line"> ​										构造器:FileOutputStream(File)</span><br><span class="line"> ​			字符流:</span><br><span class="line"> ​					字符输入流:</span><br><span class="line"> ​							Reader</span><br><span class="line"> ​								|---&gt;FileReader()</span><br><span class="line"> ​					字符输出流</span><br><span class="line"> ​							Writer</span><br><span class="line"> ​								|-----&gt;FileWriter()</span><br><span class="line"> ​	开发中到底使用哪种流:</span><br><span class="line"> ​					文件的单纯拷贝的操作,推荐使用字节流</span><br><span class="line"> ​					单纯文本文件的读取操作,推荐使用字符流</span><br><span class="line"> ​						一个中文字符使用gbk编码表,一个中文字符表示<span class="number">2</span>个字节</span><br><span class="line"> ​						一个中文字符使用utf-<span class="number">8</span>编码表,一个中文字符表示<span class="number">3</span>个字节</span><br><span class="line"> ​						英文字符….一个字符表示一个字节</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>其他的流:<br>​        1.标准输入输出流:(指向控制台)<br>​                    System.in:<br>​                            public static final InputStream in:字节输入流,用来从控制台读入信息<br>​                    System.out:<br>​                            Public static final PrintStream out:打印出流,用来给控制台输出信息<br>​        2.转换流:(将字节流转换成字符流)<br>​                    InputStreamRead:<br>​                                输入流:属于字符流<br>​                    OutputStreamWrite:<br>​                                输出流:属于字符流<br>​                    使用场景:<br>​                            A:以指定的码表读取数据或者写出数据<br>​                            B:如果我们在以后的知识中只能获取字节流,操作字符使用字符流更方便,也需要使用转换流<br>​        3.打印流:<br>​                    printStream:字节打印流<br>​                    printWriter:字符打印流<br>​                            特点:可自动换行:使用println就可以自动换行<br>​                                不能输出字节,但是可以输出其他任意类型<br>​                                通过某些配置,可以实现自动刷新功能:通过在构造函数之后添加参数<br>​                                也是包装流,不具备写出功能<br>​                                可以把字节输出流转换成字符输出流<br>​                    注意:只能输出不能输入<br>​        4.对象操作流:(操作的是对象)<br>​                    ObjectOutputStream():<br>​                            构造方法:<br>​                                    writeObject()<br>​                                    objectOutputStream(OutputStream)<br>​                    ObjectInputStream():<br>​                            构造方法:<br>​                                    readObject()<br>​                                    ObjectInputStream(InputStream)<br>​                注意:<br>​                    使用对象输出流写对象,只能使用对象输入流来读取对象<br>​                Serializable:序列号,是一个表示接口,只起表示作用<br>​                序列化:<br>​                        向文件中写数据(持久化)<br>​                反序列化:<br>​                        从文件中读取数据.<br>​                练习题:<br>​                        需求:向对象中写多个学生对象<br>​                            1.找对象,让对象帮我们做<br>​                                ObjectOutputStream oos=new ObjectOutputStream(new FileOutputStream(File file))<br>​                                //将多个学生对象封装到一个集合中<br>​                                通过oos写出对象<br>​                        需求:从文件中读文件<br>​        5.Properties类(集合类)</p>
-</li>
-</ul>
-
+        <p>1.网络通讯的三要素<br>        IP地址:同一个网络中的计算机唯一标识<br>                InetAdderss类:<br>                        构造方法:<br>                            Static InetAdderss getLocalHost():返回本地主机<br>                            Static InetAdderss getByName(String name):根据主机名或者ip地址返回ip地址<br>                        方法:<br>                            Static InetAdderss getLocalHost():返回本地主机<br>                            String getHostName():返回IP地址的主机名<br>                            String getHostAddress():返回IP地址字符串<br>        端口号:计算机中应用程序的唯一标识<br>        协议<br>2.UDP协议
+        
+          <a class="article-more-a" href="/2019/05/10/MD/Java语言/JavaSE/JavaSE18/#more">more >></a>
+        
       
 
       
-    </div>
+    </p></div>
     <div class="article-info article-info-index">
       
       
@@ -206,7 +195,83 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/05/10/MD/Java语言/JavaSE/JavaSE16/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/05/10/MD/Java语言/JavaSE/JavaSE18/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-MD/Java语言/JavaSE/JavaSE19" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/05/10/MD/Java语言/JavaSE/JavaSE19/">反射</a>
+    </h1>
+  
+
+        
+        <a href="/2019/05/10/MD/Java语言/JavaSE/JavaSE19/" class="archive-article-date">
+  	<time datetime="2019-05-09T23:04:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-10</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>1.反射:<br>    1.什么是反射?可以做什么?<br>        反射:在运行时,我们可以获取任意一个类的所有方法和属性<br>            在运行时,我们可以调用一个对象的所有方法和属性<br>        反射的前提:要获取类的对象(class对象)(获取class对象的三种方法,1.通过object类的getclass方法2.通过类名直接获取.class属性3.通过Class.forNmae(包含包名的类名)来获取)<br>    2.通过反射操作构造方法<br>        获取构造方法 getConstructors():返回所有的构造方法<br>                  getConstructor(参数列表):返回指定参数列表的构造方法<br>            只能获取public 的构造方法<br>            通过构造方法类的对象使用newInstance()可以创建一个对象<br>        创建对象的时候使用构造方法<br>    3.通过反射操作成员变量
+        
+          <a class="article-more-a" href="/2019/05/10/MD/Java语言/JavaSE/JavaSE19/#more">more >></a>
+        
+      
+
+      
+    </p></div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">JavaSE</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/05/10/MD/Java语言/JavaSE/JavaSE19/">展开全文 >></a>
         </p>
       
 
@@ -326,39 +391,45 @@
 
 
   
-    <article id="post-MD/Java语言/JavaSE/JavaSE11" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-MD/Java语言/JavaSE/JavaSE16" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/09/MD/Java语言/JavaSE/JavaSE11/">常用类</a>
+      <a class="article-title" href="/2019/05/10/MD/Java语言/JavaSE/JavaSE16/">IO流(2)</a>
     </h1>
   
 
         
-        <a href="/2019/05/09/MD/Java语言/JavaSE/JavaSE11/" class="archive-article-date">
-  	<time datetime="2019-05-08T23:04:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-09</time>
+        <a href="/2019/05/10/MD/Java语言/JavaSE/JavaSE16/" class="archive-article-date">
+  	<time datetime="2019-05-09T23:04:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-10</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <ol>
-<li>object类:<ul>
-<li>常用方法:<br> String toString()<br> Class getClass()<br> ​        获取字节码对象的三种方式<br> ​                    在运行的时候,字节码对象在类加载的时候,由jvm创建的对象,;类加载一次,字节码对象也就只有一个.<br> ​                    通过object的getClass()方法<br> ​                    通过调用类的属性.class<br> ​                    通过Class类的静态方法forName()获取<br> ​                    Class clazz=Class.forName(“全类名”)<br> ​        什么是字节码对象?<br> ​                    根据.class文件创建一个字节码对象<br> ​        什么时候类进内存?<br> ​                    1.创建对象的时候<br> ​                    2.通过类名调用静态成员的时候<br> ​                    3.创建子类对象的时候,会加载父类的字节码文件<br> ​                    4.通过类名调用子类的静态成员的时候会加载父类再加载子类<br> ​                    5.反射操作<br> Boolean equals(Object obj)<br> ​        Stringle可中的equals方法和Object中的equals方法不同</li>
+        <ul>
+<li><p>IO流分类:</p>
+<ul>
+<li><p>流向:</p>
+<ul>
+<li></li>
 </ul>
 </li>
-<li>System类
-        
-          <a class="article-more-a" href="/2019/05/09/MD/Java语言/JavaSE/JavaSE11/#more">more >></a>
-        
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">输入流:</span><br><span class="line">	FileReader  Reader</span><br><span class="line">输出流:</span><br><span class="line">     FileWriter Writer		</span><br><span class="line"> ​		数据类型:		</span><br><span class="line"> ​			字节流:&lt;!-- more --&gt;</span><br><span class="line"> ​					字节输入流:</span><br><span class="line"> ​							InputStream()</span><br><span class="line"> ​								方法:read()</span><br><span class="line"> ​									Read(<span class="keyword">byte</span>[])</span><br><span class="line"> ​									|----&gt;FileInputStream()</span><br><span class="line"> ​										构造器:FileInputStream(File)</span><br><span class="line"> ​					字节输出流:</span><br><span class="line"> ​							OutputStream()</span><br><span class="line"> ​								方法:write()</span><br><span class="line"> ​									Write(<span class="keyword">byte</span>[])</span><br><span class="line"> ​									|---&gt;FIleOutputStream()</span><br><span class="line"> ​										构造器:FileOutputStream(File)</span><br><span class="line"> ​			字符流:</span><br><span class="line"> ​					字符输入流:</span><br><span class="line"> ​							Reader</span><br><span class="line"> ​								|---&gt;FileReader()</span><br><span class="line"> ​					字符输出流</span><br><span class="line"> ​							Writer</span><br><span class="line"> ​								|-----&gt;FileWriter()</span><br><span class="line"> ​	开发中到底使用哪种流:</span><br><span class="line"> ​					文件的单纯拷贝的操作,推荐使用字节流</span><br><span class="line"> ​					单纯文本文件的读取操作,推荐使用字符流</span><br><span class="line"> ​						一个中文字符使用gbk编码表,一个中文字符表示<span class="number">2</span>个字节</span><br><span class="line"> ​						一个中文字符使用utf-<span class="number">8</span>编码表,一个中文字符表示<span class="number">3</span>个字节</span><br><span class="line"> ​						英文字符….一个字符表示一个字节</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>其他的流:<br>​        1.标准输入输出流:(指向控制台)<br>​                    System.in:<br>​                            public static final InputStream in:字节输入流,用来从控制台读入信息<br>​                    System.out:<br>​                            Public static final PrintStream out:打印出流,用来给控制台输出信息<br>​        2.转换流:(将字节流转换成字符流)<br>​                    InputStreamRead:<br>​                                输入流:属于字符流<br>​                    OutputStreamWrite:<br>​                                输出流:属于字符流<br>​                    使用场景:<br>​                            A:以指定的码表读取数据或者写出数据<br>​                            B:如果我们在以后的知识中只能获取字节流,操作字符使用字符流更方便,也需要使用转换流<br>​        3.打印流:<br>​                    printStream:字节打印流<br>​                    printWriter:字符打印流<br>​                            特点:可自动换行:使用println就可以自动换行<br>​                                不能输出字节,但是可以输出其他任意类型<br>​                                通过某些配置,可以实现自动刷新功能:通过在构造函数之后添加参数<br>​                                也是包装流,不具备写出功能<br>​                                可以把字节输出流转换成字符输出流<br>​                    注意:只能输出不能输入<br>​        4.对象操作流:(操作的是对象)<br>​                    ObjectOutputStream():<br>​                            构造方法:<br>​                                    writeObject()<br>​                                    objectOutputStream(OutputStream)<br>​                    ObjectInputStream():<br>​                            构造方法:<br>​                                    readObject()<br>​                                    ObjectInputStream(InputStream)<br>​                注意:<br>​                    使用对象输出流写对象,只能使用对象输入流来读取对象<br>​                Serializable:序列号,是一个表示接口,只起表示作用<br>​                序列化:<br>​                        向文件中写数据(持久化)<br>​                反序列化:<br>​                        从文件中读取数据.<br>​                练习题:<br>​                        需求:向对象中写多个学生对象<br>​                            1.找对象,让对象帮我们做<br>​                                ObjectOutputStream oos=new ObjectOutputStream(new FileOutputStream(File file))<br>​                                //将多个学生对象封装到一个集合中<br>​                                通过oos写出对象<br>​                        需求:从文件中读文件<br>​        5.Properties类(集合类)</p>
+</li>
+</ul>
+
       
 
       
-    </li></ol></div>
+    </div>
     <div class="article-info article-info-index">
       
       
@@ -377,7 +448,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/05/09/MD/Java语言/JavaSE/JavaSE11/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/05/10/MD/Java语言/JavaSE/JavaSE16/">展开全文 >></a>
         </p>
       
 
@@ -491,19 +562,19 @@
 
 
   
-    <article id="post-MD/Java语言/JavaSE/JavaSE13" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-MD/Java语言/JavaSE/JavaSE11" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/09/MD/Java语言/JavaSE/JavaSE13/">集合2</a>
+      <a class="article-title" href="/2019/05/09/MD/Java语言/JavaSE/JavaSE11/">常用类</a>
     </h1>
   
 
         
-        <a href="/2019/05/09/MD/Java语言/JavaSE/JavaSE13/" class="archive-article-date">
+        <a href="/2019/05/09/MD/Java语言/JavaSE/JavaSE11/" class="archive-article-date">
   	<time datetime="2019-05-08T23:04:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-09</time>
 </a>
         
@@ -511,22 +582,19 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <ul>
-<li><p>体系:</p>
-<ul>
-<li><p>Collection(接口)</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">|---List(接口)特点:有序,可存储重复值,有索引</span><br><span class="line">	|---ArrayLIst(实现类)</span><br><span class="line">		底层是数组:查询快,增删慢,		</span><br><span class="line">	|--LinkedList(实现类)</span><br><span class="line">		底层是链表:查询慢,增删快</span><br><span class="line">|----Set(接口)特点:无序,不可存储重复值,无索引</span><br><span class="line">	|---HashSet(实现类)</span><br></pre></td></tr></table></figure>
-</li>
+        <ol>
+<li>object类:<ul>
+<li>常用方法:<br> String toString()<br> Class getClass()<br> ​        获取字节码对象的三种方式<br> ​                    在运行的时候,字节码对象在类加载的时候,由jvm创建的对象,;类加载一次,字节码对象也就只有一个.<br> ​                    通过object的getClass()方法<br> ​                    通过调用类的属性.class<br> ​                    通过Class类的静态方法forName()获取<br> ​                    Class clazz=Class.forName(“全类名”)<br> ​        什么是字节码对象?<br> ​                    根据.class文件创建一个字节码对象<br> ​        什么时候类进内存?<br> ​                    1.创建对象的时候<br> ​                    2.通过类名调用静态成员的时候<br> ​                    3.创建子类对象的时候,会加载父类的字节码文件<br> ​                    4.通过类名调用子类的静态成员的时候会加载父类再加载子类<br> ​                    5.反射操作<br> Boolean equals(Object obj)<br> ​        Stringle可中的equals方法和Object中的equals方法不同</li>
 </ul>
 </li>
-</ul>
+<li>System类
         
-          <a class="article-more-a" href="/2019/05/09/MD/Java语言/JavaSE/JavaSE13/#more">more >></a>
+          <a class="article-more-a" href="/2019/05/09/MD/Java语言/JavaSE/JavaSE11/#more">more >></a>
         
       
 
       
-    </div>
+    </li></ol></div>
     <div class="article-info article-info-index">
       
       
@@ -545,7 +613,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/05/09/MD/Java语言/JavaSE/JavaSE13/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/05/09/MD/Java语言/JavaSE/JavaSE11/">展开全文 >></a>
         </p>
       
 
@@ -661,6 +729,90 @@
 
 
   
+    <article id="post-MD/Java语言/JavaSE/JavaSE13" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/05/09/MD/Java语言/JavaSE/JavaSE13/">集合2</a>
+    </h1>
+  
+
+        
+        <a href="/2019/05/09/MD/Java语言/JavaSE/JavaSE13/" class="archive-article-date">
+  	<time datetime="2019-05-08T23:04:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-09</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ul>
+<li><p>体系:</p>
+<ul>
+<li><p>Collection(接口)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">|---List(接口)特点:有序,可存储重复值,有索引</span><br><span class="line">	|---ArrayLIst(实现类)</span><br><span class="line">		底层是数组:查询快,增删慢,		</span><br><span class="line">	|--LinkedList(实现类)</span><br><span class="line">		底层是链表:查询慢,增删快</span><br><span class="line">|----Set(接口)特点:无序,不可存储重复值,无索引</span><br><span class="line">	|---HashSet(实现类)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+        
+          <a class="article-more-a" href="/2019/05/09/MD/Java语言/JavaSE/JavaSE13/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">JavaSE</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/05/09/MD/Java语言/JavaSE/JavaSE13/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-MD/Java语言/JavaSE/JavaSE10" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -713,97 +865,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2019/05/08/MD/Java语言/JavaSE/JavaSE10/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-MD/Java语言/JavaSE/JavaSE07" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/07/MD/Java语言/JavaSE/JavaSE07/">final关键字</a>
-    </h1>
-  
-
-        
-        <a href="/2019/05/07/MD/Java语言/JavaSE/JavaSE07/" class="archive-article-date">
-  	<time datetime="2019-05-06T23:04:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-07</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <ul>
-<li><p>修饰符:可以修饰类,方法,变量</p>
-<ul>
-<li><p>final修饰的类:不能被继承,不能有子类</p>
-</li>
-<li><p>final修饰的方法:不能被子类重写</p>
-</li>
-<li><p>final修饰的变量:不能被更改,是常量,</p>
-</li>
-<li><p>常量:</p>
-<ul>
-<li>字面值常量:123</li>
-<li>自定义常量:被final所修饰的成员变量,一单被初始化不能被改变</li>
-</ul>
-</li>
-<li><p>注意:自定义常量必须初始化,可以选择显示初始化,也可以再构造方法结束之前.</p>
-        
-          <a class="article-more-a" href="/2019/05/07/MD/Java语言/JavaSE/JavaSE07/#more">more >></a>
-        
-      
-
-      
-    </li></ul></li></ul></div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">JavaSE</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/05/07/MD/Java语言/JavaSE/JavaSE07/">展开全文 >></a>
         </p>
       
 
@@ -933,96 +994,6 @@
 
 
   
-    <article id="post-MD/Java语言/JavaSE/JavaSE06" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/06/MD/Java语言/JavaSE/JavaSE06/">IO流</a>
-    </h1>
-  
-
-        
-        <a href="/2019/05/06/MD/Java语言/JavaSE/JavaSE06/" class="archive-article-date">
-  	<time datetime="2019-05-05T23:04:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <hr>
-<ol>
-<li>分类：<ul>
-<li>输入流，输出流（以数据流向分类）</li>
-<li>字符流，字节流（以数据格式分类）</li>
-</ul>
-</li>
-<li>作用：<ul>
-<li>可以把数据存储到文件中，也可以从文件中读取数据</li>
-<li>使用场景：文件复制， 上传文件，下载文件</li>
-</ul>
-</li>
-<li><p>输出流FileWriter</p>
-<ul>
-<li>构造方法：
-        
-          <a class="article-more-a" href="/2019/05/06/MD/Java语言/JavaSE/JavaSE06/#more">more >></a>
-        
-      
-
-      
-    </li></ul></li></ol></div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">JavaSE</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/05/06/MD/Java语言/JavaSE/JavaSE06/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
@@ -1119,11 +1090,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JVM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Maven</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1135,11 +1114,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Maven</a>
+                <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
+                <a href="javascript:void(0)" class="js-tag color3">框架</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1148,14 +1131,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">SQL</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">框架</a>
               </li>
             
             <div class="clearfix"></div>

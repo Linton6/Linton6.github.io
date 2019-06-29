@@ -149,6 +149,616 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Linux小结" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/06/27/Linux小结/">Linux小结</a>
+    </h1>
+  
+
+        
+        <a href="/2019/06/27/Linux小结/" class="archive-article-date">
+  	<time datetime="2019-06-26T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-27</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="一、Linux目录结构"><a href="#一、Linux目录结构" class="headerlink" title="一、Linux目录结构"></a>一、Linux目录结构</h2><table>
+<thead>
+<tr>
+<th>目录</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bin</td>
+<td>存放二进制可执行文件</td>
+</tr>
+<tr>
+<td>sbin</td>
+<td>存放二进制可执行文件，需要root权限</td>
+</tr>
+<tr>
+<td>etc</td>
+<td>存放系统配置文件</td>
+</tr>
+<tr>
+<td>usr</td>
+<td>存放系统配置文件</td>
+</tr>
+<tr>
+<td>home</td>
+<td>存放用户文件的根目录</td>
+</tr>
+<tr>
+<td>root</td>
+<td>超级用户目录</td>
+</tr>
+<tr>
+<td>dev</td>
+<td>用于存放设备文件</td>
+</tr>
+<tr>
+<td>boot</td>
+<td>存放用于系统引导时的各种文件</td>
+</tr>
+<tr>
+<td>var</td>
+<td>用于存放运行时需要改变数据的文件</td>
+</tr>
+<tr>
+<td>mnt</td>
+<td>系统管理员安装临时文件系统的安装点</td>
+</tr>
+</tbody>
+</table>
+<h2 id="二、Linux常用命令"><a href="#二、Linux常用命令" class="headerlink" title="二、Linux常用命令"></a>二、Linux常用命令</h2><h3 id="2-1-操作文件及目录"><a href="#2-1-操作文件及目录" class="headerlink" title="2.1 操作文件及目录"></a>2.1 操作文件及目录</h3><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>参数</th>
+<th>示例</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>cd</td>
+<td></td>
+<td>cd /home</td>
+<td>切换目录</td>
+</tr>
+<tr>
+<td>pwd</td>
+<td></td>
+<td>pwd</td>
+<td>显示当前工作目录</td>
+</tr>
+<tr>
+<td>touch</td>
+<td></td>
+<td>touch 1.txt</td>
+<td>创建空文件</td>
+</tr>
+<tr>
+<td>cp</td>
+<td></td>
+<td>cp 1.txt</td>
+<td>复制文件或目录</td>
+</tr>
+<tr>
+<td>mv</td>
+<td></td>
+<td>mv dir dir2</td>
+<td>移动文件或目录、文件或目录改名</td>
+</tr>
+<tr>
+<td>cat</td>
+<td></td>
+<td>cat 1.txt</td>
+<td>显示（打印）文本文件内容</td>
+</tr>
+<tr>
+<td>more/less</td>
+<td></td>
+<td></td>
+<td>分页显示文本文件内容</td>
+</tr>
+<tr>
+<td>head</td>
+<td>-{num}</td>
+<td>head -20 1.txt</td>
+<td>查看文本开头部分，默认10行</td>
+</tr>
+<tr>
+<td>tail</td>
+<td>-{num}</td>
+<td>tail -20 1.txt</td>
+<td>查看文本结尾部分，默认10行</td>
+</tr>
+<tr>
+<td></td>
+<td>-f</td>
+<td></td>
+<td>循环滚动读取结尾部分</td>
+</tr>
+<tr>
+<td>wc</td>
+<td></td>
+<td>wc 1.txt</td>
+<td>统计文本的行数，字数，字符数</td>
+</tr>
+<tr>
+<td>find</td>
+<td>-name</td>
+<td>find /-name 1.txt</td>
+<td>在指定文件目录下查找指定文件</td>
+</tr>
+<tr>
+<td><strong>grep</strong></td>
+<td></td>
+<td>grep aaa 1.txt</td>
+<td>在指定文件中查找包含指定内容的行</td>
+</tr>
+<tr>
+<td>mkdir</td>
+<td></td>
+<td>mkdir test</td>
+<td>创建空目录</td>
+</tr>
+</tbody>
+</table>
+<h3 id="2-2-系统常用命令"><a href="#2-2-系统常用命令" class="headerlink" title="2.2 系统常用命令"></a>2.2 系统常用命令</h3><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>示例</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>top</td>
+<td>top</td>
+<td>显示当前系统中耗费资源最多的进程</td>
+</tr>
+<tr>
+<td>date</td>
+<td>date</td>
+<td>显示系统当前时间</td>
+</tr>
+<tr>
+<td><strong>ps</strong></td>
+<td>ps -e</td>
+<td>显示所有进程，环境变量</td>
+</tr>
+<tr>
+<td></td>
+<td>ps -ef</td>
+<td>全格式显示</td>
+</tr>
+<tr>
+<td></td>
+<td>ps -a</td>
+<td>显示所有用户的所用进程</td>
+</tr>
+<tr>
+<td></td>
+<td>ps -au</td>
+<td>按用户名和启动时间显示进程</td>
+</tr>
+<tr>
+<td>kill</td>
+<td>kill -9 pid</td>
+<td>强制杀死一个进程</td>
+</tr>
+<tr>
+<td>df</td>
+<td>df -h</td>
+<td>以人类可读方式显示文件系统磁盘空间的使用情况</td>
+</tr>
+<tr>
+<td>free</td>
+<td>free</td>
+<td>显示当前内存和交换空间的使用情况</td>
+</tr>
+<tr>
+<td>ipconfig</td>
+<td>ipconfig</td>
+<td>网卡网络配置，查看当前IP地址</td>
+</tr>
+<tr>
+<td></td>
+<td>ipconfig eth0 192.168.11.11</td>
+<td>临时修改系统IP，重启失效</td>
+</tr>
+<tr>
+<td>ping</td>
+<td>ping baidu.com</td>
+<td>测试网网络的连通性</td>
+</tr>
+<tr>
+<td>hostname</td>
+<td>hostname</td>
+<td>查看主机名</td>
+</tr>
+<tr>
+<td>shutdown</td>
+<td>shutdown -r</td>
+<td>关机，重启（等价于 reboot）</td>
+</tr>
+<tr>
+<td></td>
+<td>shutdown -h</td>
+<td>关机，不重启 （等价于halt）</td>
+</tr>
+</tbody>
+</table>
+<h3 id="2-3-压缩解压缩"><a href="#2-3-压缩解压缩" class="headerlink" title="2.3 压缩解压缩"></a>2.3 压缩解压缩</h3><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>参数</th>
+<th>示例</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>gzip</td>
+<td></td>
+<td><strong>gzip [-9] 1.txt</strong></td>
+<td>压缩后面的文件/文件夹，数字9表示压缩的速度（选填）</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><strong>gzip -d 1.txt.gz</strong></td>
+<td>解压缩后面的压缩文件</td>
+</tr>
+<tr>
+<td>tar</td>
+<td>-c</td>
+<td>tar -cvf 1.tar 1.txt</td>
+<td>建立一个压缩文件的参数指令，将1.txt压缩为1.tar</td>
+</tr>
+<tr>
+<td></td>
+<td>-x</td>
+<td>tar -xvf 1.tar 1.txt</td>
+<td>解压缩</td>
+</tr>
+<tr>
+<td></td>
+<td>-z</td>
+<td></td>
+<td>使用gzip压缩或解压缩</td>
+</tr>
+<tr>
+<td></td>
+<td>-v</td>
+<td></td>
+<td>压缩过程显示文件名</td>
+</tr>
+<tr>
+<td></td>
+<td>-f</td>
+<td></td>
+<td>在f之后要立即接档名</td>
+</tr>
+</tbody>
+</table>
+<h3 id="2-4-文件权限操作"><a href="#2-4-文件权限操作" class="headerlink" title="2.4 文件权限操作"></a>2.4 文件权限操作</h3><p><img src="en-resource://database/512:1" alt="82af60c3365a818a254fe25b3b0fcd2d.png"><br>Linux文件权限的格式描述  - <strong>rwx</strong>rw-<em>r–</em> </p>
+<ul>
+<li>第1位：文档类型（d 目录， - 普通文件， I 链接文件）</li>
+<li>第2-4位：所属用户权限</li>
+<li>第5-7位：所属组权限</li>
+<li>第8-10位：其他用户权限</li>
+</ul>
+<blockquote>
+<p>u：当前用户；g：表示同组用户；o：表示其他用户；a：表示所有用户<br> r：可读；w：可写；x：可执行；-：无  ；<br> 数字表示权限：（r=4; w=2; x=1; -=0）</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>参数</th>
+<th>实例</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>chmod</td>
+<td></td>
+<td>chmod u+r 1.txt</td>
+<td>修改文件或目录权限，改1.txt文件给当前用户添加可执行权限</td>
+</tr>
+<tr>
+<td></td>
+<td>-R</td>
+<td>chmod -R u+r dir1</td>
+<td>修改制定目录及其子目录的所有文件权限</td>
+</tr>
+<tr>
+<td>chown</td>
+<td></td>
+<td>chown use1:group2 1.txt</td>
+<td>修改文件的所属用户和组</td>
+</tr>
+</tbody>
+</table>
+<h2 id="三、Linux常用快捷键"><a href="#三、Linux常用快捷键" class="headerlink" title="三、Linux常用快捷键"></a>三、Linux常用快捷键</h2><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>实例</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ctrl+c</td>
+<td></td>
+<td>停止进程</td>
+</tr>
+<tr>
+<td>ctrl+l</td>
+<td></td>
+<td>清屏</td>
+</tr>
+<tr>
+<td>ctrl+q</td>
+<td></td>
+<td>退出</td>
+</tr>
+<tr>
+<td>tab</td>
+<td></td>
+<td>自动补全</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>cat 1.txt</td>
+<td>grep “hello”</td>
+<td>管道命令，把前一个命令的输出作为输入，然后进行运算<br>例：打印（显示）1.txt中带有hello字符串的行</td>
+</tr>
+<tr>
+<td>echo</td>
+<td>echo “the echo command test!”</td>
+<td>显示一段字符</td>
+</tr>
+<tr>
+<td>&gt;</td>
+<td>“hahah”&gt;1.txt</td>
+<td>将文本清空，然后把前一个命令（字符串），追加到文本最后</td>
+</tr>
+<tr>
+<td>&gt;&gt;</td>
+<td>“hahaha”&gt;&gt; 1.txt</td>
+<td>不清空文本，把前一个命令（字符串），追加到文本最后</td>
+</tr>
+</tbody>
+</table>
+<h2 id="四、vim编辑器"><a href="#四、vim编辑器" class="headerlink" title="四、vim编辑器"></a>四、vim编辑器</h2><p><img src="en-resource://database/514:1" alt="c13dcffc424f0981bff5b7f3cac015f1.png"></p>
+<blockquote>
+<p>vi / vim是Linux上最常用的文本编辑器而且功能非常强大。只有命令，没有菜单，下图表示vi命令的各种模式的切换图。  </p>
+</blockquote>
+<p>vim filename : 进入命令模式 （i：切换到输入模式；x：删除当前光标所在的字符；：切换到底线命令模式，在最底一行输入命令）<br>i a o ：进入输入模式（Esc键退回一般模式）<br>:wq  ：保存退出（shift+zz，:q 退出程序； :w 保存文件 ）</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/06/27/Linux小结/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Javadoc" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/06/26/Javadoc/">Javadoc和Javadoc注释规范</a>
+    </h1>
+  
+
+        
+        <a href="/2019/06/26/Javadoc/" class="archive-article-date">
+  	<time datetime="2019-06-26T04:04:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-26</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>最近看源码，一些Javadoc常见的注释整理下</p>
+<blockquote>
+<p> Javadoc是Sun公司提供的一个技术，从程序源代码中抽取类、方法、成员等注释形成一个和源代码配套的API帮助文档。</p>
+</blockquote>
+<hr>
+<p>Javadoc命令是用来生成自己的API文档，使用方式：</p>
+<blockquote>
+<p>javadoc 源文件名.java<br>javadoc -d 文档存放目录 源文件名.java<br>通过IDEA生成Javadoc ： Tools -&gt; Generate JavaDoc </p>
+</blockquote>
+<h3 id="javadoc标签"><a href="#javadoc标签" class="headerlink" title="javadoc标签"></a>javadoc标签</h3><table>
+<thead>
+<tr>
+<th>标签</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>@author</td>
+<td>作者标识</td>
+</tr>
+<tr>
+<td>@version</td>
+<td>版本号</td>
+</tr>
+<tr>
+<td>@return</td>
+<td>对函数返回值的描述</td>
+</tr>
+<tr>
+<td>@deprecated</td>
+<td>标识过期API（为了保证兼容性，仍可用，但不推荐用）</td>
+</tr>
+<tr>
+<td>@throws</td>
+<td>构造函数或方法会抛出的异常</td>
+</tr>
+<tr>
+<td>@exception</td>
+<td>同@throws</td>
+</tr>
+<tr>
+<td>@see</td>
+<td>引用，查看相关的内容，如类，方法，变量等，必须顶头写</td>
+</tr>
+<tr>
+<td>{@link 包.类#成员}</td>
+<td>引用，同@see，但可写在任意位置</td>
+</tr>
+<tr>
+<td>{@value}</td>
+<td>对常量注释，如果其值包含在文档中，通过改标签引用常量的值</td>
+</tr>
+<tr>
+<td>{@code}}</td>
+<td>{@code text}将文本标记为code，会被解析成<code> text </code>} ,在Javadoc成只要涉及到类名或者方法名，都需要使用@code进行标记</td>
+</tr>
+<tr>
+<td>@param</td>
+<td>说明方法的参数</td>
+</tr>
+<tr>
+<td>@inheritDoc</td>
+<td>用于继承父类中的Javadoc，父类的文档注释，被继承到了子类</td>
+</tr>
+<tr>
+<td>{@docRoot}</td>
+<td>指明当前文档根目录的路径</td>
+</tr>
+</tbody>
+</table>
+<h3 id="javadoc注释规范"><a href="#javadoc注释规范" class="headerlink" title="javadoc注释规范"></a>javadoc注释规范</h3><p><strong>一、 Java文档</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">// 注释一行</span><br><span class="line">/ *    */ 注释若干行  </span><br><span class="line">/**   ……*/  注释若干行，写入Javadoc文档</span><br></pre></td></tr></table></figure></p>
+<p><strong>二、文档格式</strong><br>写在类上的文档标注一般分为三段：</p>
+<ul>
+<li>第一段：概要描述，通常用一句话或者一段话简要描述该类的作用，以英文句号结束</li>
+<li>第二段：详细描述，通常用一段或者多段话来详细描述该类的作用，一般每段话都以英文句号作为结束</li>
+<li>第三段：文档标注，用于标注作者，创建时间，参阅类等信息</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">生成文档是HTML格式。</span><br><span class="line">换行&lt;br&gt;</span><br><span class="line">分段&lt;p&gt;(写在段前）)</span><br></pre></td></tr></table></figure>
+<p>示例<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/** </span></span><br><span class="line"><span class="comment">* show 方法的简述.</span></span><br><span class="line"><span class="comment">* &lt;p&gt;show 方法的详细说明第一行&lt;br&gt; </span></span><br><span class="line"><span class="comment">* show 方法的详细说明第二行 </span></span><br><span class="line"><span class="comment">* <span class="doctag">@param</span> b true 表示显示，false 表示隐藏 </span></span><br><span class="line"><span class="comment">* <span class="doctag">@return</span> 没有返回值 </span></span><br><span class="line"><span class="comment">*/</span> </span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">show</span><span class="params">(<span class="keyword">boolean</span> b)</span> </span>&#123;</span><br><span class="line">    frame.show(b);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/06/26/Javadoc/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-JDK集合源码" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1020,168 +1630,6 @@ xiewei:10xujian:20
 
 
   
-    <article id="post-MD/框架使用/微服务架构/Springboot" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/13/MD/框架使用/微服务架构/Springboot/">SpringBoot</a>
-    </h1>
-  
-
-        
-        <a href="/2019/05/13/MD/框架使用/微服务架构/Springboot/" class="archive-article-date">
-  	<time datetime="2019-05-12T23:04:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-13</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="什么是springboot框架"><a href="#什么是springboot框架" class="headerlink" title="什么是springboot框架"></a>什么是springboot框架</h2><ul>
-<li>springboot框架是一款可以很方便的搭建web项目的框架，他通过使用springfarmework框架为基石，通过springfarmework框架发布的自动组装的新特性，来实现springboot的自动装配来提高项目的开发效率。并将很多配置以约定的方式进行装配，并同时对外提供修改的方法来保证框架的灵活性。总的来说springboot就是一款基于springfarmework整合了web层，service层，以及dao层的项目开发框架。</li>
-</ul>
-<h2 id="为什么要使用springboot框架"><a href="#为什么要使用springboot框架" class="headerlink" title="为什么要使用springboot框架"></a>为什么要使用springboot框架</h2>
-        
-          <a class="article-more-a" href="/2019/05/13/MD/框架使用/微服务架构/Springboot/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">框架</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/05/13/MD/框架使用/微服务架构/Springboot/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-从Jvm内存模型到调优" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/12/从Jvm内存模型到调优/">从 Jvm 内存模型到调优</a>
-    </h1>
-  
-
-        
-        <a href="/2019/05/12/从Jvm内存模型到调优/" class="archive-article-date">
-  	<time datetime="2019-05-12T04:46:11.667Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-12</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Jvm-内存模型"><a href="#Jvm-内存模型" class="headerlink" title="Jvm 内存模型"></a>Jvm 内存模型</h2><ul>
-<li>内存模型<ul>
-<li>运行时数据区<ul>
-<li>堆内存，虚拟机栈，本地方法栈，程序计数器，方法区</li>
-</ul>
-</li>
-<li>Jvm 内存模型<ul>
-<li>新生代（1-1.5）
-        
-          <a class="article-more-a" href="/2019/05/12/从Jvm内存模型到调优/#more">more >></a>
-        
-      
-
-      
-    </li></ul></li></ul></li></ul></div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">JVM</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/05/12/从Jvm内存模型到调优/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1278,11 +1726,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JVM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Maven</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1294,11 +1750,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Maven</a>
+                <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
+                <a href="javascript:void(0)" class="js-tag color3">框架</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1307,14 +1767,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">SQL</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">框架</a>
               </li>
             
             <div class="clearfix"></div>
